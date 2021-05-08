@@ -179,9 +179,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\Game2.csproj",
-      "projectName": "Game2",
-      "projectPath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\Game2.csproj",
+      "projectUniqueName": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\CircleGame.csproj",
+      "projectName": "CircleGame",
+      "projectPath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\CircleGame.csproj",
       "packagesPath": "C:\\Users\\jilki\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\obj\\",
       "projectStyle": "PackageReference",

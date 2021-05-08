@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game2", "Game2\Game2.csproj", "{FCC821CC-0D3E-4A56-A9C0-1C5CB0DE3CF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CircleGame", "Game2\CircleGame.csproj", "{FCC821CC-0D3E-4A56-A9C0-1C5CB0DE3CF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
