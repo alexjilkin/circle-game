@@ -17,17 +17,18 @@ namespace Game2
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            _graphics.PreferredBackBufferWidth = 1800;
-            _graphics.PreferredBackBufferHeight = 500;
- 
-            _graphics.ApplyChanges();
+            
 
         }
 
         protected override void Initialize()
         {
-       
 
+            _graphics.IsFullScreen = false;
+            _graphics.PreferredBackBufferWidth = 1800;
+            _graphics.PreferredBackBufferHeight = 1000;
+
+            _graphics.ApplyChanges();
             base.Initialize();
         }
 
@@ -35,17 +36,16 @@ namespace Game2
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _clips.Add(new MovingCircle(_graphics.GraphicsDevice));
+            _clips.Add(new MovingCircle(_graphics.GraphicsDevice, 100));
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            KeyboardState state = Keyboard.GetState();
 
             foreach (Clip clip in _clips)
             {
-                clip.update();
+                clip.update(state);
             }
 
             base.Update(gameTime);
