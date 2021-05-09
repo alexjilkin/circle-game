@@ -25,7 +25,6 @@ namespace CircleGame
 
         public override Texture2D draw(Vector2 camera)
         {
-            this._position -= camera;
             return _circle;
         }
         Texture2D createCircleText(int radius)

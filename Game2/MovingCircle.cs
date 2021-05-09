@@ -13,9 +13,11 @@ namespace CircleGame
         private int directionX = 1;
         private int directionY = 1;
         private Texture2D _circle;
+        private int radius;
         public MovingCircle(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice)
         {
             _circle = createCircleText(radius);
+            this.radius = radius;
         }
 
         public override void update(KeyboardState state)
@@ -41,13 +43,26 @@ namespace CircleGame
             {
                 directionY = 1;
             }
-            _position.X += directionX;
-            _position.Y += directionY;
+
+            if (_position.X + this.radius > Rules.width)
+            {
+                _position.X = Rules.width - this.radius - 1;
+                directionX *= -1;
+            }
+
+            if (_position.Y + this.radius > Rules.height)
+            {
+                _position.Y = Rules.height - this.radius - 1;
+                directionY *= -1;
+            }
+
+            _position.X += directionX * 5;
+            _position.Y += directionY * 5;
         }
 
         public override Texture2D draw(Vector2 camera)
         {
-            this._position -= camera;
+            //this._position -= camera;
             return _circle;
         }
         Texture2D createCircleText(int radius)
