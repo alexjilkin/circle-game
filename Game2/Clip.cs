@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Game2
+namespace CircleGame
 {
     class Clip
     {
@@ -21,9 +21,16 @@ namespace Game2
             
             _position = new Vector2(0, 0);
         }
-
-        public virtual Texture2D getTexture()
+        public Clip(GraphicsDevice graphicsDevice, Vector2 position)
         {
+            _graphicsDevice = graphicsDevice;
+
+            _position = position;
+        }
+
+        public virtual Texture2D draw(Vector2 camera)
+        {
+            this._position -= camera;
             return new Texture2D(_graphicsDevice, 1, 1);
         }
 

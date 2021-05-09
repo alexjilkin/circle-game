@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Game2
+namespace CircleGame
 {
     public static class Program
     {

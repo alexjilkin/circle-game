@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Game2
+namespace CircleGame
 {
     public class Game1 : Game
     {
@@ -17,8 +17,6 @@ namespace Game2
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            
-
         }
 
         protected override void Initialize()
@@ -37,6 +35,8 @@ namespace Game2
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _clips.Add(new MovingCircle(_graphics.GraphicsDevice, 100));
+            _clips.Add(new EnemyCircle(_graphics.GraphicsDevice, 30, new Vector2(300, 300)));
+            _clips.Add(new EnemyCircle(_graphics.GraphicsDevice, 70, new Vector2(600, 100)));
         }
 
         protected override void Update(GameTime gameTime)
@@ -58,7 +58,7 @@ namespace Game2
             _spriteBatch.Begin();
             foreach (Clip clip in _clips)
             {
-                _spriteBatch.Draw(clip.getTexture(), clip._position, Color.White);
+                _spriteBatch.Draw(clip.draw(Camera.Instance.position), clip._position, Color.White);
             }
             
             _spriteBatch.End();

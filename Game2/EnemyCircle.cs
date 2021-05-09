@@ -7,42 +7,20 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CircleGame
 {
-    class MovingCircle:Clip
+    class EnemyCircle : Clip
 
     {
         private int directionX = 1;
         private int directionY = 1;
         private Texture2D _circle;
-        public MovingCircle(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice)
+        public EnemyCircle(GraphicsDevice graphicsDevice, int radius, Vector2 position) : base(graphicsDevice, position)
         {
             _circle = createCircleText(radius);
         }
 
         public override void update(KeyboardState state)
         {
-            if ((state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Up) || state.IsKeyDown(Keys.Down))) {
-                directionX = 0;
-                directionY = 0;
-            }
-
-            if (state.IsKeyDown(Keys.Right))
-            {
-                directionX = 1;
-            } 
-            if (state.IsKeyDown(Keys.Left))
-            {
-                directionX = -1;
-            }
-            if (state.IsKeyDown(Keys.Up))
-            {
-                directionY = -1;
-            }
-            if (state.IsKeyDown(Keys.Down))
-            {
-                directionY = 1;
-            }
-            _position.X += directionX;
-            _position.Y += directionY;
+     
         }
 
         public override Texture2D draw(Vector2 camera)
