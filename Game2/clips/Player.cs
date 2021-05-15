@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CircleGame
 {
-    class Player : MovingCircle
+    public class Player : MovingCircle
     {
         public Player(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice, radius)
         {
@@ -17,7 +17,10 @@ namespace CircleGame
         public override void update(KeyboardState state)
         {
             base.update(state);
+            this.movement(state);
+        }
 
+        private void movement(KeyboardState state) {
             if ((state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Up) || state.IsKeyDown(Keys.Down)))
             {
                 this.directionX = 0;
@@ -40,6 +43,10 @@ namespace CircleGame
             {
                 directionY = 1;
             }
+        }
+
+        private void intersection() {
+            
         }
     }
 }

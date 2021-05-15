@@ -1,27 +1,23 @@
-﻿using System;   
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using CircleGame.world;
 namespace CircleGame
 {
-    class MovingCircle:Clip
+    public class MovingCircle: Clip
 
     {
         protected int directionX = 1;
         protected int directionY = 1;
-        private Texture2D _circle;
         protected int radius;
         protected int speed;
 
         public MovingCircle(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice)
         {
-            _circle = createCircleText(radius * 2);
             this.radius = radius;
             this.speed = 5;
             this.origin = new Vector2(radius, radius);
+            this.texture = createCircleText(radius * 2);
         }
 
     public override void update(KeyboardState state)
@@ -55,14 +51,13 @@ namespace CircleGame
             directionY *= -1;
         }
     }
-
-    public override Texture2D draw(Vector2 camera)
-    {
-        return _circle;
+    public bool isIntersecting(MovingCircle circle) {
+        return false;
     }
+
     Texture2D createCircleText(int diam)
     {
-        Texture2D texture = new Texture2D(_graphicsDevice, diam, diam);
+        Texture2D texture = new Texture2D(this.GraphicsDevice, diam, diam);
         Color[] colorData = new Color[diam * diam];
 
         float radius = diam / 2f;
@@ -89,4 +84,6 @@ namespace CircleGame
             return texture;
         }
     }
+
+    
 }
