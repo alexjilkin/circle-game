@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CircleGame
 {
-    public class Player : MovingCircle
+    public class Player: MovingCircle
     {
         public Player(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice, radius)
         {

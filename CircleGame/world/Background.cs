@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CircleGame.world
 {
-    class Background: Clip
+    public class Background: Clip
     {
         private Texture2D background;
 

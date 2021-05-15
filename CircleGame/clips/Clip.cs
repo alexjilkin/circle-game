@@ -5,7 +5,7 @@ using CircleGame.world;
 
 namespace CircleGame
 {
-    public class Clip
+    public class Clip: IClip
     {
         private GraphicsDevice _graphicsDevice;
         public Vector2 origin;

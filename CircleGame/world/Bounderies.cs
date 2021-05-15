@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CircleGame.world
 {
-    class Bounderies: Clip
+    public class Bounderies: Clip
     {
         private Texture2D whiteRect;
         public Bounderies(GraphicsDevice device): base(device) {

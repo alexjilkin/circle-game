@@ -9,7 +9,6 @@ namespace CircleGame
 {
     public class EnemyCircle : MovingCircle
     {
-      
         public EnemyCircle(GraphicsDevice graphicsDevice, int radius, Vector2 position) : base(graphicsDevice, radius)
         {
             this._position = position;

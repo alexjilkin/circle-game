@@ -8,7 +8,7 @@ using CircleGame;
 
 namespace CircleGame
 {
-    public static class GameManager
+    static class GameManager
     {
         public static List<T> handleItersection<T>(IEnumerable<MovingCircle> enemies, Player player) {
             foreach (MovingCircle enemy in enemies) 

@@ -42,12 +42,12 @@ namespace CircleGame
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            player = new Player(_graphics.GraphicsDevice, 50);
+            player = new Player(GraphicsDevice, 50);
 
             _clips.Add(player);
             
-            enemies.Add(new EnemyCircle(_graphics.GraphicsDevice, 15, new Vector2(300, 300)));
-            enemies.Add(new EnemyCircle(_graphics.GraphicsDevice, 35, new Vector2(600, 100)));
+            enemies.Add(new EnemyCircle(GraphicsDevice, 15, new Vector2(300, 300)));
+            enemies.Add(new EnemyCircle(GraphicsDevice, 35, new Vector2(600, 100)));
         }
 
         protected override void Update(GameTime gameTime)
@@ -61,7 +61,7 @@ namespace CircleGame
                 clip.update(state);
             }
 
-             foreach (Clip enemy in enemies)
+            foreach (Clip enemy in enemies)
             {
                 enemy.update(state);
             }

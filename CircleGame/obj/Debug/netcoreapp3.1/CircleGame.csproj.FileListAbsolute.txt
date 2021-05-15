@@ -44,3 +44,13 @@ C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\obj\Debug\netcoreapp3.1\C
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\obj\Debug\netcoreapp3.1\CircleGame.dll
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\obj\Debug\netcoreapp3.1\CircleGame.pdb
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\obj\Debug\netcoreapp3.1\CircleGame.genruntimeconfig.cache
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\System.Text.Json.dll

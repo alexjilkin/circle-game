@@ -5,8 +5,8 @@ using CircleGame.world;
 namespace CircleGame
 {
     public class MovingCircle: Clip
-
     {
+        
         protected int directionX = 1;
         protected int directionY = 1;
         protected int radius;
