@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\CircleGame.csproj": {}
+    "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CircleGame\\CircleGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\CircleGame.csproj": {
+    "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CircleGame\\CircleGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\CircleGame.csproj",
+        "projectUniqueName": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CircleGame\\CircleGame.csproj",
         "projectName": "CircleGame",
-        "projectPath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\CircleGame.csproj",
+        "projectPath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CircleGame\\CircleGame.csproj",
         "packagesPath": "C:\\Users\\jilki\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\Game2\\obj\\",
+        "outputPath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CircleGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jilki\\AppData\\Roaming\\NuGet\\NuGet.Config",
