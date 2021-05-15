@@ -7,8 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CircleGame
 {
-    class EnemyCircle : MovingCircle
-
+    public class EnemyCircle : MovingCircle
     {
       
         public EnemyCircle(GraphicsDevice graphicsDevice, int radius, Vector2 position) : base(graphicsDevice, radius)

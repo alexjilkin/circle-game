@@ -21,5 +21,18 @@ namespace CircleGame.world
             position = new Vector2(0, 0);
         }
 
+        public void update(Player player) {
+            Camera.Instance.position = player.Position - new Vector2(Rules.width / 2, Rules.height / 2);
+
+            if (Camera.Instance.position.X < 0)
+            {
+                Camera.Instance.position = new Vector2(0, Camera.Instance.position.Y);
+            }
+            if (Camera.Instance.position.Y < 0)
+            {
+                Camera.Instance.position = new Vector2(Camera.Instance.position.X, 0);
+            }
+        }
+
     }
 }

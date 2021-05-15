@@ -14,10 +14,10 @@ namespace CircleGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private List<Clip> _clips = new List<Clip>();
-        private Clip player;
+        private Player player;
         private Background background;
         private Bounderies bounderies;
-        private List<Clip> enemies = new List<Clip>();
+        private List<EnemyCircle> enemies = new List<EnemyCircle>();
         
         public Game1()
         {
@@ -53,18 +53,8 @@ namespace CircleGame
         protected override void Update(GameTime gameTime)
         {
             KeyboardState state = Keyboard.GetState();
-
-            Camera.Instance.position = player.Position - new Vector2(width / 2, height / 2);
-
-            if (Camera.Instance.position.X < 0)
-            {
-                Camera.Instance.position = new Vector2(0, Camera.Instance.position.Y);
-            }
-            if (Camera.Instance.position.Y < 0)
-            {
-                Camera.Instance.position = new Vector2(Camera.Instance.position.X, 0);
-            }
-
+            Camera.Instance.update(player);
+            enemies = GameManager.handleItersection<EnemyCircle>(enemies, player);
 
             foreach (Clip clip in _clips)
             {

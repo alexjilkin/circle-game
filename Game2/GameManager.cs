@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,8 +10,15 @@ namespace CircleGame
 {
     public static class GameManager
     {
-        public static void handleItersection(List<Clip> enemies, Player player) {
-            
+        public static List<T> handleItersection<T>(IEnumerable<MovingCircle> enemies, Player player) {
+            foreach (MovingCircle enemy in enemies) 
+            {
+                if (player.isIntersecting(enemy)) {
+                    enemies = enemies.Where(e => e != enemy);
+                }
+            }
+
+            return enemies.Cast<T>().ToList();
         }
     }
 }

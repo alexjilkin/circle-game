@@ -15,7 +15,7 @@ namespace CircleGame
         public MovingCircle(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice)
         {
             this.radius = radius;
-            this.speed = 5;
+            this.speed = 7;
             this.origin = new Vector2(radius, radius);
             this.texture = createCircleText(radius * 2);
         }
@@ -52,6 +52,12 @@ namespace CircleGame
         }
     }
     public bool isIntersecting(MovingCircle circle) {
+        int diam = this.radius * 2;
+        if (this.Position.X + diam > circle.Position.X && this.Position.X < circle.Position.X + diam 
+        && this.Position.Y + diam > circle.Position.Y && this.Position.Y < circle.Position.Y + diam) {
+            return true;
+        }
+
         return false;
     }
 
@@ -73,12 +79,12 @@ namespace CircleGame
                 {
                     colorData[index] = Color.White;
                 }
-                    else
-                    {
-                        colorData[index] = Color.Transparent;
-                    }
+                else
+                {
+                    colorData[index] = Color.Transparent;
                 }
             }
+        }
 
             texture.SetData(colorData);
             return texture;
