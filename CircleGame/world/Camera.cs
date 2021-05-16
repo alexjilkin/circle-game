@@ -1,5 +1,8 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using CircleGame;
 
 namespace CircleGame.world
 {
@@ -21,8 +24,11 @@ namespace CircleGame.world
             position = new Vector2(0, 0);
         }
 
-        public void update(Player player) {
-            Camera.Instance.position = player.Position - new Vector2(Rules.width / 2, Rules.height / 2);
+        public void update(Player player, GraphicsDevice device) {
+            int width = device.DisplayMode.Width;
+            int height = device.DisplayMode.Height;
+
+            Camera.Instance.position = player.Position - new Vector2(width / 2, height / 2);
 
             if (Camera.Instance.position.X < 0)
             {

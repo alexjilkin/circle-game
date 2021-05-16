@@ -5,18 +5,38 @@ using System.IO;
 
 namespace CircleGame.world
 {
-    public static class Rules
+    public sealed class Rules
     {
-        public static int width = Rules.getConfig<int>("width");
-        public static int height = Rules.getConfig<int>("height");
+        private static readonly Lazy<Rules> lazy = new Lazy<Rules>(() => new Rules());
+        public int Width {
+            get {
+                return this.getConfig<int>("width");
+            }
+        }
 
-        public static T getConfig<T>(string key) {
+        public int Height {
+            get {
+                return this.getConfig<int>("height");
+            }
+        }
+
+        private IConfigurationRoot configuration;
+        public static Rules Instance
+        {
+            get
+            {
+                return lazy.Value;
+            }
+        }
+        private Rules() {
             var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("config.json", optional: true, reloadOnChange: true);
 
-            IConfigurationRoot configuration = builder.Build();
-            return configuration.GetSection(key).Get<T>();
+            configuration = builder.Build();
+        }
+        private T getConfig<T>(string key) { 
+            return this.configuration.GetSection(key).Get<T>();
         }
 
     }

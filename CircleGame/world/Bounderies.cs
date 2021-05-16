@@ -11,10 +11,13 @@ namespace CircleGame.world
             whiteRect.SetData(new[] { Color.White });
         }
         public override void draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(whiteRect, Vector2.Multiply(Camera.Instance.position, -1f), null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(30f, Rules.height), SpriteEffects.None, 0f);
-            spriteBatch.Draw(whiteRect, Vector2.Multiply(Camera.Instance.position, -1f), null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(Rules.width, 30f), SpriteEffects.None, 0f);
-            spriteBatch.Draw(whiteRect, new Vector2(Rules.width, 0) - Camera.Instance.position, null, Color.Chocolate, 0f, Vector2.Zero,  new Vector2(30f, Rules.height), SpriteEffects.None, 0f);
-            spriteBatch.Draw(whiteRect, new Vector2(0, Rules.height) - Camera.Instance.position, null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(Rules.width, 30f), SpriteEffects.None, 0f);
+            int width = Rules.Instance.Width;
+            int height = Rules.Instance.Height;
+
+            spriteBatch.Draw(whiteRect, Vector2.Multiply(Camera.Instance.position, -1f), null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(30f, height), SpriteEffects.None, 0f);
+            spriteBatch.Draw(whiteRect, Vector2.Multiply(Camera.Instance.position, -1f), null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(width, 30f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(whiteRect, new Vector2(width, 0) - Camera.Instance.position, null, Color.Chocolate, 0f, Vector2.Zero,  new Vector2(30f, height), SpriteEffects.None, 0f);
+            spriteBatch.Draw(whiteRect, new Vector2(0, height) - Camera.Instance.position, null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(width, 30f), SpriteEffects.None, 0f);
         }    
     }
 }

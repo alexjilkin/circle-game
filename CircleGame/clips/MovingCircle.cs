@@ -29,15 +29,18 @@ namespace CircleGame
 
     protected void handleBorderCollision(KeyboardState state)
     {
-        if (_position.X + this.radius > Rules.width)
+        int width = Rules.Instance.Width;
+        int height = Rules.Instance.Height;
+
+        if (_position.X + this.radius > width)
         {
-            _position.X = Rules.width - this.radius - 1;
+            _position.X = width - this.radius - 1;
             directionX *= -1;
         }
 
-        if (_position.Y + this.radius > Rules.height)
+        if (_position.Y + this.radius > height)
         {
-            _position.Y = Rules.height - this.radius - 1;
+            _position.Y = height - this.radius - 1;
             directionY *= -1;
         }
         else if (_position.X - this.radius < 0)

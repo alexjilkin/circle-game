@@ -32,8 +32,8 @@ namespace CircleGame
             bounderies = new Bounderies(GraphicsDevice);
 
             _graphics.IsFullScreen = false;
-            _graphics.PreferredBackBufferWidth = 1800;
-            _graphics.PreferredBackBufferHeight = 1000;
+            _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+            _graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
 
             _graphics.ApplyChanges();
             base.Initialize();
@@ -53,7 +53,7 @@ namespace CircleGame
         protected override void Update(GameTime gameTime)
         {
             KeyboardState state = Keyboard.GetState();
-            Camera.Instance.update(player);
+            Camera.Instance.update(player, GraphicsDevice);
             enemies = GameManager.handleItersection<EnemyCircle>(enemies, player);
 
             foreach (Clip clip in _clips)
