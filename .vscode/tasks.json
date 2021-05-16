@@ -5,6 +5,7 @@
             "label": "build",
             "command": "dotnet",
             "type": "process",
+            "group": "build",
             "args": [
                 "build",
                 "${workspaceFolder}/CircleGame/CircleGame.csproj",
@@ -37,6 +38,18 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildapi",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CircleGameApi/CircleGameApi.csproj"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "dependsOn":["cleanapi"]
         }
     ]
 }

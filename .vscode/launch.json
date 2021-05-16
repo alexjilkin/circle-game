@@ -5,18 +5,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-            "name": ".NET Core Launch (console)",
+            "name": "Game",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/CircleGame/bin/Debug/netcoreapp3.1/CircleGame.dll",
             "args": [],
             "cwd": "${workspaceFolder}/CircleGame",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Api",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildapi",
+            "program": "${workspaceFolder}/CircleGameApi/bin/Debug/net5.0/CircleGameApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CircleGameApi",
             "console": "internalConsole",
             "stopAtEntry": false
         },
@@ -25,6 +31,12 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Game/Api",
+            "configurations": ["Game", "Api"]
         }
     ]
 }
