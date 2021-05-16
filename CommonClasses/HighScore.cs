@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 
-namespace CircleGameApi
+namespace CommonClasses
 {
-    public class HighScore
+     public class HighScore
     {
         public string name { get; set; }
 

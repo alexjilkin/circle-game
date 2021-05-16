@@ -562,6 +562,16 @@
             "rid": "win"
           }
         }
+      },
+      "CommonClasses/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/CommonClasses.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommonClasses.dll": {}
+        }
       }
     }
   },
@@ -1597,10 +1607,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "CommonClasses/1.0.0": {
+      "type": "project",
+      "path": "../CommonClasses/CommonClasses.csproj",
+      "msbuildProject": "../CommonClasses/CommonClasses.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "CommonClasses >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.1",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 5.0.1",
       "StackExchange.Redis >= 2.2.4",
@@ -1634,7 +1650,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CommonClasses\\CommonClasses.csproj": {
+              "projectPath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CommonClasses\\CommonClasses.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

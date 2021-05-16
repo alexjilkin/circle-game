@@ -50,6 +50,18 @@
             "group": "build",
             "problemMatcher": "$msCompile",
             "dependsOn":["cleanapi"]
+        },
+        {
+            "label": "buildlibrary",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CommonClasses/CommonClasses.csproj"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "dependsOn":["cleanapi"]
         }
     ]
 }

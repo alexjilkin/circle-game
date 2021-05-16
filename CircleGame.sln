@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircleGameApi", "CircleGame
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircleGame", "CircleGame\CircleGame.csproj", "{B6F8C97F-88EB-4D2B-B4A0-08E6F263A032}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonClasses", "CommonClasses\CommonClasses.csproj", "{9EEE630D-CF18-4639-A5E9-51584D36EB0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B6F8C97F-88EB-4D2B-B4A0-08E6F263A032}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6F8C97F-88EB-4D2B-B4A0-08E6F263A032}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6F8C97F-88EB-4D2B-B4A0-08E6F263A032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EEE630D-CF18-4639-A5E9-51584D36EB0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EEE630D-CF18-4639-A5E9-51584D36EB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EEE630D-CF18-4639-A5E9-51584D36EB0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EEE630D-CF18-4639-A5E9-51584D36EB0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
