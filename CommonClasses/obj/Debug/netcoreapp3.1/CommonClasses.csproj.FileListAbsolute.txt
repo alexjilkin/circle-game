@@ -1,0 +1,9 @@
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\bin\Debug\netcoreapp3.1\CommonClasses.deps.json
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\bin\Debug\netcoreapp3.1\CommonClasses.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\bin\Debug\netcoreapp3.1\CommonClasses.pdb
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\obj\Debug\netcoreapp3.1\CommonClasses.csprojAssemblyReference.cache
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\obj\Debug\netcoreapp3.1\CommonClasses.AssemblyInfoInputs.cache
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\obj\Debug\netcoreapp3.1\CommonClasses.AssemblyInfo.cs
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\obj\Debug\netcoreapp3.1\CommonClasses.csproj.CoreCompileInputs.cache
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\obj\Debug\netcoreapp3.1\CommonClasses.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\obj\Debug\netcoreapp3.1\CommonClasses.pdb

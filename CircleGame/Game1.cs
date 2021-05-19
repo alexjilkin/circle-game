@@ -1,16 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Microsoft.Xna;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using CircleGame.world;
+using CircleGame.ui;
+using Myra;
 
 namespace CircleGame
 {
     public class Game1 : Game
     {
+        MainMenu mainMenu;
         private int width = 1800;
         private int height = 1000;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private List<Clip> _clips = new List<Clip>();
@@ -41,6 +46,9 @@ namespace CircleGame
 
         protected override void LoadContent()
         {
+            MyraEnvironment.Game = this;
+            mainMenu = new MainMenu(GraphicsDevice);
+           
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             player = new Player(GraphicsDevice, 50);
 
@@ -68,9 +76,14 @@ namespace CircleGame
 
             base.Update(gameTime);
         }
-
+        
         protected override void Draw(GameTime gameTime)
         {
+            if (mainMenu.IsOpen) {
+                GraphicsDevice.Clear(Color.SeaGreen);
+                mainMenu.draw();
+                return;
+            }
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
             background.draw(_spriteBatch);

@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Vf2XOoNa04UHgnSYMkKjYEDh2bn+fbr8LInF2yhK++X9Wvx3g9vLjMteGOYzwyUIaZqA+XhV5xY960h2fcI4Iw==",
+  "dgSpecHash": "pQEwmhuZ9KbLpzV2VNclfak+e8GIRXXl+0C7Ttc/QCQeMU0M14RlGL+cWC7yjcH3KJGXpJRO4fatHfwySf1Q3w==",
   "success": true,
   "projectFilePath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CircleGame\\CircleGame.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\jilki\\.nuget\\packages\\assetmanagementbase\\0.5.2\\assetmanagementbase.0.5.2.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\cyotek.drawing.bitmapfont\\2.0.1\\cyotek.drawing.bitmapfont.2.0.1.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\fontstashsharp.monogame\\0.9.2\\fontstashsharp.monogame.0.9.2.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\info.lundin.math.dll\\1.2.6\\info.lundin.math.dll.1.2.6.nupkg.sha512",
     "C:\\Users\\jilki\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\jilki\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\jilki\\.nuget\\packages\\microsoft.extensions.configuration.binder\\5.0.0\\microsoft.extensions.configuration.binder.5.0.0.nupkg.sha512",
@@ -15,6 +19,10 @@
     "C:\\Users\\jilki\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\jilki\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
     "C:\\Users\\jilki\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\myra\\1.2.3\\myra.1.2.3.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\stbimagesharp\\2.22.4\\stbimagesharp.2.22.4.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\stbtruetypesharp\\1.24.7\\stbtruetypesharp.1.24.7.nupkg.sha512",
     "C:\\Users\\jilki\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512"
   ],
   "logs": []

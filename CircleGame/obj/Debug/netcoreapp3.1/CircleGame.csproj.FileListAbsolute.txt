@@ -54,3 +54,13 @@ C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\M
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\AssetManagementBase.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Cyotek.Drawing.BitmapFont.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\FontStashSharp.MonoGame.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\info.lundin.math.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Myra.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\StbImageSharp.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\StbTrueTypeSharp.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\CommonClasses.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\CommonClasses.pdb
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
