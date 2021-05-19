@@ -76,7 +76,7 @@ namespace CircleGame.ui
             HttpClient client = new HttpClient();
 
             try {
-                var res = await client.GetAsync("https://localhost:5001/api/HighScore");
+                var res = await client.GetAsync("http://localhost:5000/api/HighScore");
                 
                 string score = await res.Content.ReadAsStringAsync();
 
