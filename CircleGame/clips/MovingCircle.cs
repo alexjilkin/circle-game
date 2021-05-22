@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Runtime;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using CircleGame.world;
@@ -7,8 +8,8 @@ namespace CircleGame
     public class MovingCircle: Clip
     {
         
-        protected int directionX = 1;
-        protected int directionY = 1;
+        protected int directionX = new System.Random().Next(0, 2) * 2 - 1;
+        protected int directionY = new System.Random().Next(0, 2) * 2 - 1;
         protected int radius;
         protected int speed;
 

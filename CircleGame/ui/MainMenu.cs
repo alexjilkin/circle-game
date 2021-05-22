@@ -7,10 +7,8 @@ using Microsoft.Xna.Framework.Input;
 using System.Threading.Tasks;
 using CircleGame;
 using Myra;
-using Myra.Attributes;
+using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
-using Myra.MML;
-using Myra.Utility;
 using CommonClasses;
 using Newtonsoft.Json;
 
@@ -19,47 +17,59 @@ namespace CircleGame.ui
     public class MainMenu: Clip
     {
         private Desktop _desktop;
+  
 
         public bool IsOpen {
             get; set;
         }
         public MainMenu(GraphicsDevice graphicsDevice) : base(graphicsDevice) {
-            IsOpen = true;
+            IsOpen = false;
             _desktop = new Desktop();
             initHighScore();
         }
-
         private void drawHighscore(HighScore highScore) {
-            var grid = new Grid
-                {
-                RowSpacing = 2,
-                ColumnSpacing = 2
-                };
+            var panel = new Panel();
 
-            grid.ColumnsProportions.Add(new Proportion(ProportionType.Auto));
-            grid.ColumnsProportions.Add(new Proportion(ProportionType.Auto));
-            grid.RowsProportions.Add(new Proportion(ProportionType.Auto));
-            grid.RowsProportions.Add(new Proportion(ProportionType.Auto));
-
-            var name = new Label
-            {
-                Id = "label",
-                Text = highScore.name
+            var title = new TextBox{
+                Text = "Circle Game",
+                TextColor=Color.Pink,
+                HorizontalAlignment=HorizontalAlignment.Center,
+                VerticalAlignment=VerticalAlignment.Top,
+                Margin=new Thickness(0, 20, 0 ,0),
+                Padding=new Thickness(20)
             };
-            var number = new Label
-            {
-                Id = "asd",
-                Text = highScore.score.ToString()
-            };
-            grid.Widgets.Add(name);
-            grid.Widgets.Add(number);
 
-            // Button
+            panel.Widgets.Add(title);
+
+            var scorePanel = new Panel(){
+                HorizontalAlignment=HorizontalAlignment.Center,
+                Margin=new Thickness(0, 100, 0 ,0),
+            };
+
+            var name = new TextBox
+            {
+                Id = "name",
+                Text = highScore.name,
+                TextColor = Color.Red,
+            };
+            var score = new TextBox
+            {
+                Id = "score",
+                Text = highScore.score.ToString(),
+                TextColor = Color.Red,
+            };
+
+            scorePanel.Widgets.Add(name);
+            scorePanel.Widgets.Add(score);
+            panel.Widgets.Add(scorePanel);
+
             var button = new TextButton
             {
-            GridColumn = 0,
-            GridRow = 1,
-            Text = "Start"
+                Text = "Start",
+                HorizontalAlignment=HorizontalAlignment.Center,
+                VerticalAlignment=VerticalAlignment.Center,
+                Margin=new Thickness(0, 0, 0, 50),
+                Padding=new Thickness(10)
             };
 
             button.Click += (s, a) =>
@@ -67,9 +77,9 @@ namespace CircleGame.ui
                 this.IsOpen = false;
             };
 
-            grid.Widgets.Add(button);
+            panel.Widgets.Add(button);
 
-            _desktop.Root = grid;
+            _desktop.Root = panel;
         }
 
         public async Task initHighScore() {

@@ -21,6 +21,7 @@ namespace CircleGame
         private List<Clip> _clips = new List<Clip>();
         private Player player;
         private Background background;
+        private HUD hud;
         private Bounderies bounderies;
         private List<EnemyCircle> enemies = new List<EnemyCircle>();
         
@@ -48,18 +49,26 @@ namespace CircleGame
         {
             MyraEnvironment.Game = this;
             mainMenu = new MainMenu(GraphicsDevice);
+            hud = new HUD(GraphicsDevice);
            
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            player = new Player(GraphicsDevice, 50);
+            player = new Player(GraphicsDevice, 30);
 
             _clips.Add(player);
             
             enemies.Add(new EnemyCircle(GraphicsDevice, 15, new Vector2(300, 300)));
             enemies.Add(new EnemyCircle(GraphicsDevice, 35, new Vector2(600, 100)));
+            enemies.Add(new EnemyCircle(GraphicsDevice, 50, new Vector2(500, 500)));
+            enemies.Add(new EnemyCircle(GraphicsDevice, 20, new Vector2(300, 300)));
+            enemies.Add(new EnemyCircle(GraphicsDevice, 25, new Vector2(900, 300)));
+            enemies.Add(new EnemyCircle(GraphicsDevice, 90, new Vector2(900, 900)));
         }
 
         protected override void Update(GameTime gameTime)
         {
+            if (mainMenu.IsOpen) {
+                return;
+            }
             KeyboardState state = Keyboard.GetState();
             Camera.Instance.update(player, GraphicsDevice);
             enemies = GameManager.handleItersection<EnemyCircle>(enemies, player);
@@ -74,6 +83,9 @@ namespace CircleGame
                 enemy.update(state);
             }
 
+
+            hud.update(state);
+
             base.Update(gameTime);
         }
         
@@ -84,6 +96,7 @@ namespace CircleGame
                 mainMenu.draw();
                 return;
             }
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
             background.draw(_spriteBatch);
@@ -100,7 +113,7 @@ namespace CircleGame
             }
 
             _spriteBatch.End();
-
+            hud.draw();
             base.Draw(gameTime);
         }
     }

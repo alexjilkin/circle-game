@@ -8,12 +8,14 @@ using CircleGame;
 
 namespace CircleGame
 {
-    static class GameManager
+    class GameManager
     {
+        public static int Score {get; set;}
         public static List<T> handleItersection<T>(IEnumerable<MovingCircle> enemies, Player player) {
             foreach (MovingCircle enemy in enemies) 
             {
                 if (player.isIntersecting(enemy)) {
+                    Score++;
                     enemies = enemies.Where(e => e != enemy);
                 }
             }
