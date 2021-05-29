@@ -32,8 +32,8 @@ namespace CircleGame.ui
 
             score = new TextBox{
                 Text = "Score: " + GameManager.Score,
-                TextColor=Color.Pink,
-                Padding=new Thickness(15)
+                TextColor = Color.Pink,
+                Padding = new Thickness(15)
             };
 
             panel.Widgets.Add(score);

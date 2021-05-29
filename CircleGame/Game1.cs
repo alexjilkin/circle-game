@@ -19,11 +19,10 @@ namespace CircleGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private List<Clip> _clips = new List<Clip>();
-        private Player player;
+        
         private Background background;
         private HUD hud;
         private Bounderies bounderies;
-        private List<EnemyCircle> enemies = new List<EnemyCircle>();
         
         public Game1()
         {
@@ -34,6 +33,7 @@ namespace CircleGame
 
         protected override void Initialize()
         {
+            GameManager.graphicsDevice = GraphicsDevice;
             background = new Background(GraphicsDevice);
             bounderies = new Bounderies(GraphicsDevice);
 
@@ -50,18 +50,13 @@ namespace CircleGame
             MyraEnvironment.Game = this;
             mainMenu = new MainMenu(GraphicsDevice);
             hud = new HUD(GraphicsDevice);
-           
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            player = new Player(GraphicsDevice, 30);
+            initGame();
+        }
 
-            _clips.Add(player);
-            
-            enemies.Add(new EnemyCircle(GraphicsDevice, 15, new Vector2(300, 300)));
-            enemies.Add(new EnemyCircle(GraphicsDevice, 35, new Vector2(600, 100)));
-            enemies.Add(new EnemyCircle(GraphicsDevice, 50, new Vector2(500, 500)));
-            enemies.Add(new EnemyCircle(GraphicsDevice, 20, new Vector2(300, 300)));
-            enemies.Add(new EnemyCircle(GraphicsDevice, 25, new Vector2(900, 300)));
-            enemies.Add(new EnemyCircle(GraphicsDevice, 90, new Vector2(900, 900)));
+        private void initGame() {
+            GameManager.init();
+            //_clips.Add(GameManager.Player);
         }
 
         protected override void Update(GameTime gameTime)
@@ -70,15 +65,12 @@ namespace CircleGame
                 return;
             }
             KeyboardState state = Keyboard.GetState();
-            Camera.Instance.update(player, GraphicsDevice);
-            enemies = GameManager.handleItersection<EnemyCircle>(enemies, player);
+            Camera.Instance.update(GameManager.Player, GraphicsDevice);
+            GameManager.handleItersection();
 
-            foreach (Clip clip in _clips)
-            {
-                clip.update(state);
-            }
+            GameManager.Player.update(state);
 
-            foreach (Clip enemy in enemies)
+            foreach (Clip enemy in GameManager.Enemies)
             {
                 enemy.update(state);
             }
@@ -102,15 +94,12 @@ namespace CircleGame
             background.draw(_spriteBatch);
             bounderies.draw(_spriteBatch);
 
-            foreach (Clip clip in _clips)
-            {
-               clip.draw(_spriteBatch);
-            }
-
-             foreach (Clip enemy in enemies)
+            foreach (Clip enemy in GameManager.Enemies)
             {
               enemy.draw(_spriteBatch);
             }
+
+            GameManager.Player.draw(_spriteBatch);
 
             _spriteBatch.End();
             hud.draw();

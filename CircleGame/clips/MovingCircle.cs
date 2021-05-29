@@ -13,12 +13,18 @@ namespace CircleGame
         protected int radius;
         protected int speed;
 
+        public int Radius {
+            get {
+                return this.radius;
+            }
+        }
+
         public MovingCircle(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice)
         {
             this.radius = radius;
-            this.speed = 7;
+            this.speed = 6;
             this.origin = new Vector2(radius, radius);
-            this.texture = createCircleText(radius * 2);
+            this.updateTexture();
         }
 
     public override void update(KeyboardState state)
@@ -26,6 +32,10 @@ namespace CircleGame
         this.handleBorderCollision(state);
         _position.X += directionX * speed;
         _position.Y += directionY * speed;
+    }
+
+    public void updateTexture() {
+        this.texture = createCircleText(radius * 2);
     }
 
     protected void handleBorderCollision(KeyboardState state)

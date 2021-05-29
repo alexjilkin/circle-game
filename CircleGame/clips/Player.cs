@@ -17,10 +17,20 @@ namespace CircleGame
         public override void update(KeyboardState state)
         {
             base.update(state);
-            this.movement(state);
+            this.handleMovement(state);
+            this.handleSize();
         }
 
-        private void movement(KeyboardState state) {
+        private void handleSize() {
+            int newRadius = 20 + (GameManager.Score);
+
+             if (newRadius != this.radius) {
+                this.radius = newRadius;
+                this.updateTexture();
+            }
+        }
+
+        private void handleMovement(KeyboardState state) {
             if ((state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Up) || state.IsKeyDown(Keys.Down)))
             {
                 this.directionX = 0;
