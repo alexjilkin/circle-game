@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;    
@@ -10,7 +7,6 @@ using Myra;
 using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
 using CommonClasses;
-using Newtonsoft.Json;
 
 namespace CircleGame.ui
 {
@@ -30,10 +26,10 @@ namespace CircleGame.ui
         private void drawScore() {
             var panel = new Panel() {};
 
-            score = new TextBox{
+            score = new TextBox {
                 Text = "Score: " + GameManager.Score,
                 TextColor = Color.Pink,
-                Padding = new Thickness(15)
+                Padding = new Thickness(12)
             };
 
             panel.Widgets.Add(score);

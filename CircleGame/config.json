@@ -1,4 +1,6 @@
 {
+    "boundry-start-x": 500,
+    "boundry-start-y": 500,
     "width": 1000,
     "height": 1000,
     "perks": {

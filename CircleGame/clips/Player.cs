@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using CircleGame.world;
 
 namespace CircleGame
 {
@@ -11,7 +12,9 @@ namespace CircleGame
     {
         public Player(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice, radius)
         {
-            this._color = Color.LightGreen;   
+            this._color = Color.LightGreen;
+            this._position = Rules.Instance.BoundryPosition + new Vector2(100, 100);
+            this.speed = 6;
         }
 
         public override void update(KeyboardState state)
@@ -53,10 +56,6 @@ namespace CircleGame
             {
                 directionY = 1;
             }
-        }
-
-        private void intersection() {
-            
         }
     }
 }

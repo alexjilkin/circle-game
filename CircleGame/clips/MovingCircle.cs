@@ -22,7 +22,7 @@ namespace CircleGame
         public MovingCircle(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice)
         {
             this.radius = radius;
-            this.speed = 6;
+            this.speed = 5;
             this.origin = new Vector2(radius, radius);
             this.updateTexture();
         }
@@ -42,26 +42,28 @@ namespace CircleGame
     {
         int width = Rules.Instance.Width;
         int height = Rules.Instance.Height;
+        float x = Rules.Instance.BoundryPosition.X;
+        float y = Rules.Instance.BoundryPosition.Y;
 
-        if (_position.X + this.radius > width)
+        if (_position.X + this.radius > width + x)
         {
-            _position.X = width - this.radius - 1;
+            _position.X = x + width - this.radius - 1;
             directionX *= -1;
         }
 
-        if (_position.Y + this.radius > height)
+        if (_position.Y + this.radius > height + y)
         {
-            _position.Y = height - this.radius - 1;
+            _position.Y = y + height - this.radius - 1;
             directionY *= -1;
         }
-        else if (_position.X - this.radius < 0)
+        else if (_position.X - this.radius < x + 15)
         {
-            _position.X = 0 + this.radius + 1;
+            _position.X = x + this.radius + 16;
             directionX *= -1;
         }
-        else if (_position.Y - this.radius < 0)
+        else if (_position.Y - this.radius < y + 15)
         {
-            _position.Y = 0 + this.radius + 1;
+            _position.Y = y + this.radius + 16;
             directionY *= -1;
         }
     }
