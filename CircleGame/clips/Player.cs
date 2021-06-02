@@ -14,7 +14,7 @@ namespace CircleGame
         {
             this._color = Color.LightGreen;
             this._position = Rules.Instance.BoundryPosition + new Vector2(100, 100);
-            this.speed = 6;
+            this.speed = 5;
         }
 
         public override void update(KeyboardState state)
@@ -27,8 +27,8 @@ namespace CircleGame
         private void handleSize() {
             int newRadius = 20 + (GameManager.Score);
 
-             if (newRadius != this.radius) {
-                this.radius = newRadius;
+             if (newRadius != this.Radius) {
+                this.Radius = newRadius;
                 this.updateTexture();
             }
         }

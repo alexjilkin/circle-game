@@ -18,7 +18,6 @@ namespace CircleGame.ui
     {
         private Desktop _desktop;
   
-
         public bool IsOpen {
             get; set;
         }

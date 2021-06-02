@@ -8,22 +8,27 @@ namespace CircleGame
     public class MovingCircle: Clip
     {
         
-        protected int directionX = new System.Random().Next(0, 2) * 2 - 1;
+        protected int directionX;
         protected int directionY = new System.Random().Next(0, 2) * 2 - 1;
-        protected int radius;
+        private int radius;
         protected int speed;
 
         public int Radius {
             get {
                 return this.radius;
+            } 
+            protected set {
+                this.origin = new Vector2(radius, radius);
+                this.radius = value;
             }
         }
 
         public MovingCircle(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice)
         {
-            this.radius = radius;
-            this.speed = 5;
+            this.Radius = radius;
             this.origin = new Vector2(radius, radius);
+            this.directionX = new System.Random().Next(0, 2) * 2 - 1;
+            this.directionY = new System.Random().Next(0, 2) * 2 - 1;
             this.updateTexture();
         }
 

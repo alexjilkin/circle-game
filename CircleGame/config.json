@@ -1,8 +1,8 @@
 {
     "boundry-start-x": 500,
     "boundry-start-y": 500,
-    "width": 1000,
-    "height": 1000,
+    "width": 1300,
+    "height": 1300,
     "perks": {
         "flash": {
             "speed": 10

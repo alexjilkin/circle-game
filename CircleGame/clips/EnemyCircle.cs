@@ -13,6 +13,7 @@ namespace CircleGame
         {
             this._position = position;
             this._color = Color.LightPink;
+            this.speed = 3;
         }
 
     }

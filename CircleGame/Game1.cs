@@ -13,6 +13,7 @@ namespace CircleGame
     public class Game1 : Game
     {
         MainMenu mainMenu;
+        DeathScreen deathScreen;
         private int width = 1800;
         private int height = 1000;
 
@@ -49,21 +50,22 @@ namespace CircleGame
         {
             MyraEnvironment.Game = this;
             mainMenu = new MainMenu(GraphicsDevice);
+            deathScreen = new DeathScreen(GraphicsDevice);
             hud = new HUD(GraphicsDevice);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             initGame();
         }
 
         private void initGame() {
-            GameManager.init();
-            //_clips.Add(GameManager.Player);
+            GameManager.initCircles();
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (mainMenu.IsOpen) {
+            if (mainMenu.IsOpen || GameManager.IsDead) {
                 return;
             }
+
             KeyboardState state = Keyboard.GetState();
             Camera.Instance.update(GameManager.Player, GraphicsDevice);
             GameManager.handleItersection();
@@ -86,6 +88,12 @@ namespace CircleGame
             if (mainMenu.IsOpen) {
                 GraphicsDevice.Clear(Color.SeaGreen);
                 mainMenu.draw();
+                return;
+            }
+
+            if (GameManager.IsDead) {
+                GraphicsDevice.Clear(Color.SeaShell);
+                deathScreen.draw();
                 return;
             }
 

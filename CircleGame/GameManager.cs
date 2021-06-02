@@ -12,6 +12,12 @@ namespace CircleGame
     class GameManager
     {
         private static int score = 0;
+        private static bool isDead = false;
+        public static bool IsDead {
+            get {
+                return isDead;
+            }
+        }
         public static int Score {
             get {
                 return score;
@@ -42,11 +48,10 @@ namespace CircleGame
                     score += enemy.Radius / 5;
                     enemies = enemies.FindAll(e => e != enemy);
                 } else {
-                    //GameManager.init();
+                    isDead = true;
                 }
             }
         }
-
 
          public static MovingCircle getIntersecting(IEnumerable<MovingCircle> circles, Player player) {
             foreach (MovingCircle circle in circles) 
@@ -59,16 +64,24 @@ namespace CircleGame
             return null;
          }
         
-
-        public static void init() {
+        public static void restart() {
+            isDead = false;
             score = 0;
+            initCircles();
+        }
+
+        public static void initCircles() {   
             enemies = new List<EnemyCircle>();
             player = new Player(graphicsDevice, 30);
             Vector2 boundryPosition = Rules.Instance.BoundryPosition;
 
+            enemies.Add(new EnemyCircle(graphicsDevice, 10, boundryPosition + new Vector2(300, 300)));
+            enemies.Add(new EnemyCircle(graphicsDevice, 10, boundryPosition + new Vector2(300, 300)));
             enemies.Add(new EnemyCircle(graphicsDevice, 15, boundryPosition + new Vector2(300, 300)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 35, boundryPosition + new Vector2(600, 900)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 50, boundryPosition + new Vector2(500, 500)));
+            enemies.Add(new EnemyCircle(graphicsDevice, 25, boundryPosition + new Vector2(600, 900)));
+            enemies.Add(new EnemyCircle(graphicsDevice, 25, boundryPosition + new Vector2(600, 900)));
+            enemies.Add(new EnemyCircle(graphicsDevice, 40, boundryPosition + new Vector2(500, 500)));
+            enemies.Add(new EnemyCircle(graphicsDevice, 40, boundryPosition + new Vector2(1000, 1000)));
             enemies.Add(new EnemyCircle(graphicsDevice, 20, boundryPosition + new Vector2(300, 300)));
             enemies.Add(new EnemyCircle(graphicsDevice, 25, boundryPosition + new Vector2(900, 300)));
             enemies.Add(new EnemyCircle(graphicsDevice, 60, boundryPosition + new Vector2(900, 900)));
