@@ -10,22 +10,22 @@ using Myra;
 
 namespace CircleGame
 {
-    public class Game1 : Game
+    public class CircleGame : Game
     {
         MainMenu mainMenu;
-        DeathScreen deathScreen;
+        MainModal mainModal;
         private int width = 1800;
         private int height = 1000;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private List<Clip> _clips = new List<Clip>();
+        private List<IDrawable> drawables = new List<IDrawable>();
         
         private Background background;
         private HUD hud;
         private Bounderies bounderies;
         
-        public Game1()
+        public CircleGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -37,7 +37,6 @@ namespace CircleGame
             GameManager.graphicsDevice = GraphicsDevice;
             background = new Background(GraphicsDevice);
             bounderies = new Bounderies(GraphicsDevice);
-
             _graphics.IsFullScreen = false;
             _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
             _graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
@@ -49,9 +48,15 @@ namespace CircleGame
         protected override void LoadContent()
         {
             MyraEnvironment.Game = this;
-            mainMenu = new MainMenu(GraphicsDevice);
-            deathScreen = new DeathScreen(GraphicsDevice);
+            mainMenu = new MainMenu();
+            mainModal = new MainModal();
             hud = new HUD(GraphicsDevice);
+
+            drawables.Add(mainModal);
+            drawables.Add(hud);
+            drawables.Add(background);
+            drawables.Add(bounderies);
+
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             initGame();
         }
@@ -77,9 +82,9 @@ namespace CircleGame
                 enemy.update(state);
             }
 
-
-            hud.update(state);
-
+            foreach (IDrawable drawable in drawables) {
+                drawable.update(state);
+            }
             base.Update(gameTime);
         }
         
@@ -93,24 +98,25 @@ namespace CircleGame
 
             if (GameManager.IsDead) {
                 GraphicsDevice.Clear(Color.SeaShell);
-                deathScreen.draw();
+                mainModal.draw(_spriteBatch);
                 return;
             }
 
-            GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
-            background.draw(_spriteBatch);
-            bounderies.draw(_spriteBatch);
 
+            foreach (IDrawable drawable in drawables) 
+            {
+                drawable.draw(_spriteBatch);
+            }
             foreach (Clip enemy in GameManager.Enemies)
             {
               enemy.draw(_spriteBatch);
             }
 
             GameManager.Player.draw(_spriteBatch);
-
+            
             _spriteBatch.End();
-            hud.draw();
+            
             base.Draw(gameTime);
         }
     }

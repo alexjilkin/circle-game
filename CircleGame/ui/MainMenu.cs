@@ -1,12 +1,6 @@
-using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;    
+using Microsoft.Xna.Framework;    
 using System.Threading.Tasks;
-using CircleGame;
-using Myra;
 using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
 using CommonClasses;
@@ -14,14 +8,14 @@ using Newtonsoft.Json;
 
 namespace CircleGame.ui
 {
-    public class MainMenu: Clip
+    public class MainMenu: IModal
     {
         private Desktop _desktop;
   
         public bool IsOpen {
             get; set;
         }
-        public MainMenu(GraphicsDevice graphicsDevice) : base(graphicsDevice) {
+        public MainMenu() {
             IsOpen = false;
             _desktop = new Desktop();
             initHighScore();
@@ -96,7 +90,7 @@ namespace CircleGame.ui
                 drawHighscore(new HighScore(){name="asd", score=5});
             }
         }
-        public override void draw()
+        public void draw()
         {
             _desktop.Render();
         }

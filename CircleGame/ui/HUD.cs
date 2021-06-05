@@ -42,7 +42,7 @@ namespace CircleGame.ui
             score.Text = "Score: " + GameManager.Score;
         }
 
-        public override void draw()
+        public override void draw(SpriteBatch _)
         {
             _desktop.Render();
         }

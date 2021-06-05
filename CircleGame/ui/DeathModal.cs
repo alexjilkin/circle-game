@@ -14,12 +14,16 @@ using Newtonsoft.Json;
 
 namespace CircleGame.ui
 {
-    public class DeathScreen: Clip
+    public class DeathModal: IModal
     {
-        private Desktop _desktop;
-  
-        public DeathScreen(GraphicsDevice graphicsDevice) : base(graphicsDevice) {
-            _desktop = new Desktop();
+        private Panel content;
+
+        public Panel Content {
+            get {
+                return content;
+            }
+        }
+        public DeathModal() {
             init();
         }
         private void init() {
@@ -52,13 +56,7 @@ namespace CircleGame.ui
 
             panel.Widgets.Add(button);
 
-            _desktop.Root = panel;
+            content = panel;
         }
-        public override void draw()
-        {
-            _desktop.Render();
-        }
-
-
     }
 }

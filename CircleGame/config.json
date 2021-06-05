@@ -11,7 +11,11 @@
         "Radius": 15
     },{
         "Radius": 25
-    },{
+    },
+    {
+        "Radius": 25
+    },
+    {
         "Radius": 20
     },{
         "Radius": 30

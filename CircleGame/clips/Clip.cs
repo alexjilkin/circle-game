@@ -30,9 +30,7 @@ namespace CircleGame
         public virtual void draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.texture, this.Position - Camera.Instance.position, null, this.Color, 0, this.origin, 1, SpriteEffects.None, 0);
-        }       
-
-        public virtual void draw() {}                        
+        }                            
 
         public virtual void update(KeyboardState state) {}
 
