@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration.Json;
+﻿using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace CircleGame.world
 {
+    public class Enemy {
+        public int Radius { get; set; }
+    }
     public sealed class Rules
     {
         private static readonly Lazy<Rules> lazy = new Lazy<Rules>(() => new Rules());
@@ -25,6 +28,12 @@ namespace CircleGame.world
         public int Height {
             get {
                 return this.getConfig<int>("height");
+            }
+        }
+
+        public Enemy[] Enemies {
+            get {
+                return this.getConfig<Enemy[]>("Enemies");
             }
         }
 

@@ -21,15 +21,14 @@ namespace CircleGame
         {
             base.update(state);
             this.handleMovement(state);
-            this.handleSize();
+            this.handleRadiusChange();
         }
 
-        private void handleSize() {
+        private void handleRadiusChange() {
             int newRadius = 20 + (GameManager.Score);
 
              if (newRadius != this.Radius) {
                 this.Radius = newRadius;
-                this.updateTexture();
             }
         }
 

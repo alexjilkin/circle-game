@@ -18,8 +18,9 @@ namespace CircleGame
                 return this.radius;
             } 
             protected set {
-                this.origin = new Vector2(radius, radius);
                 this.radius = value;
+                this.origin = new Vector2(radius, radius);
+                this.updateTexture();
             }
         }
 
@@ -39,8 +40,8 @@ namespace CircleGame
         _position.Y += directionY * speed;
     }
 
-    public void updateTexture() {
-        this.texture = createCircleText(radius * 2);
+    private void updateTexture() {
+        this.texture = createCircleTexture(radius * 2);
     }
 
     protected void handleBorderCollision(KeyboardState state)
@@ -82,7 +83,7 @@ namespace CircleGame
         return false;
     }
 
-    Texture2D createCircleText(int diam)
+    private Texture2D createCircleTexture(int diam)
     {
         Texture2D texture = new Texture2D(this.GraphicsDevice, diam, diam);
         Color[] colorData = new Color[diam * diam];

@@ -71,20 +71,16 @@ namespace CircleGame
         }
 
         public static void initCircles() {   
+            Enemy[] enemiesConfig = Rules.Instance.Enemies;
+
             enemies = new List<EnemyCircle>();
             player = new Player(graphicsDevice, 30);
             Vector2 boundryPosition = Rules.Instance.BoundryPosition;
 
-            enemies.Add(new EnemyCircle(graphicsDevice, 10, boundryPosition + new Vector2(300, 300)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 10, boundryPosition + new Vector2(300, 300)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 15, boundryPosition + new Vector2(300, 300)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 25, boundryPosition + new Vector2(600, 900)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 25, boundryPosition + new Vector2(600, 900)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 40, boundryPosition + new Vector2(500, 500)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 40, boundryPosition + new Vector2(1000, 1000)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 20, boundryPosition + new Vector2(300, 300)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 25, boundryPosition + new Vector2(900, 300)));
-            enemies.Add(new EnemyCircle(graphicsDevice, 60, boundryPosition + new Vector2(900, 900)));
+            foreach (Enemy enemyConfig in enemiesConfig)
+            {
+                enemies.Add(new EnemyCircle(graphicsDevice, enemyConfig.Radius, boundryPosition + new Vector2(new System.Random().Next(100, Rules.Instance.Width), new System.Random().Next(100, Rules.Instance.Height))));
+            }
         }
     }
 }

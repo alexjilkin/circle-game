@@ -3,6 +3,26 @@
     "boundry-start-y": 500,
     "width": 1300,
     "height": 1300,
+    "Enemies": [{
+        "Radius": 10
+    },{
+        "Radius": 10
+    },{
+        "Radius": 15
+    },{
+        "Radius": 25
+    },{
+        "Radius": 20
+    },{
+        "Radius": 30
+    },{
+        "Radius": 40
+    },{
+        "Radius": 40
+    },{
+        "Radius": 60
+    }
+    ],
     "perks": {
         "flash": {
             "speed": 10

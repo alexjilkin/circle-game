@@ -5,14 +5,12 @@ using CircleGame.world;
 
 namespace CircleGame
 {
-    public interface IClip
+    public interface IDrawable
     {
-        void draw(SpriteBatch spriteBatch);
-        void update(KeyboardState state);
-            
         Color Color { get; }
         Vector2 Position { get; }
-        GraphicsDevice GraphicsDevice { get; }
-
+        void draw(SpriteBatch spriteBatch);
+        void draw();
+        void update(KeyboardState state);
     }
 }

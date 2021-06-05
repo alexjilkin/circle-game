@@ -5,7 +5,7 @@ using CircleGame.world;
 
 namespace CircleGame
 {
-    public class Clip: IClip
+    public class Clip: IDrawable
     {
         private GraphicsDevice _graphicsDevice;
         public Vector2 origin;
@@ -15,8 +15,8 @@ namespace CircleGame
 
         public Color Color { get { return _color; } }
         public Vector2 Position { get {
-                return _position;
-            }}
+            return _position;
+        }}
 
         public GraphicsDevice GraphicsDevice { get { return _graphicsDevice; } }
         public Clip(GraphicsDevice graphicsDevice)
@@ -26,13 +26,7 @@ namespace CircleGame
             origin = new Vector2(0, 0);
             texture = new Texture2D(_graphicsDevice, 1, 1);
         }
-        public Clip(GraphicsDevice graphicsDevice, Vector2 position)
-        {
-            _graphicsDevice = graphicsDevice;
-
-            _position = position;
-        }
-
+       
         public virtual void draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.texture, this.Position - Camera.Instance.position, null, this.Color, 0, this.origin, 1, SpriteEffects.None, 0);
@@ -40,10 +34,7 @@ namespace CircleGame
 
         public virtual void draw() {}                        
 
-        public virtual void update(KeyboardState state)
-        {
-
-        }
+        public virtual void update(KeyboardState state) {}
 
     }
 }

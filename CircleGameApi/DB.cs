@@ -11,7 +11,7 @@ namespace CircleGameApi
         readonly ConnectionMultiplexer muxer = ConnectionMultiplexer.Connect("redis-14224.c73.us-east-1-2.ec2.cloud.redislabs.com:14224,password=CoSCoK5V0DgKmFpJOK1yIc2zLnltVpcT");
         IDatabase db;
 
-        public static DB Instace {
+        public static DB Instance {
             get {
                 return lazy.Value;
             }

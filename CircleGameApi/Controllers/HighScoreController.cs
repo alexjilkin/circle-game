@@ -25,7 +25,7 @@ namespace CircleGameApi.Controllers
         {
             this._logger.LogInformation("Get HighScore");
 
-            return await DB.Instace.GetObjectAsync<HighScore>("score");
+            return await DB.Instance.GetObjectAsync<HighScore>("score");
         }
 
         [HttpPost]
@@ -34,7 +34,7 @@ namespace CircleGameApi.Controllers
         public async Task<ActionResult> Post(HighScore highScore)
         {
              this._logger.LogInformation("Set score for " + highScore.name);
-            await DB.Instace.SetObjectAsync<HighScore>("score", highScore);
+            await DB.Instance.SetObjectAsync<HighScore>("score", highScore);
 
             return Ok();
         }
