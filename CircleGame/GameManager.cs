@@ -13,9 +13,15 @@ namespace CircleGame
     {
         private static int score = 0;
         private static bool isDead = false;
+        private static bool isMainMenuOpen = true;
         public static bool IsDead {
             get {
                 return isDead;
+            }
+        }
+        public static bool IsMainMenuOpen {
+            get {
+                return isMainMenuOpen;
             }
         }
         public static int Score {
@@ -66,6 +72,7 @@ namespace CircleGame
         
         public static void restart() {
             isDead = false;
+            isMainMenuOpen = false;
             score = 0;
             initCircles();
         }

@@ -10,15 +10,15 @@ namespace CircleGame.ui
 {
     public class MainMenu: IModal
     {
-        private Desktop _desktop;
+        private Panel content;
   
-        public bool IsOpen {
-            get; set;
+        public Panel Content {
+            get {
+                return content;
+            }
         }
         public MainMenu() {
-            IsOpen = false;
-            _desktop = new Desktop();
-            initHighScore();
+            init();
         }
         private void drawHighscore(HighScore highScore) {
             var panel = new Panel();
@@ -67,12 +67,12 @@ namespace CircleGame.ui
 
             button.Click += (s, a) =>
             {
-                this.IsOpen = false;
+                GameManager.restart();
             };
 
             panel.Widgets.Add(button);
 
-            _desktop.Root = panel;
+            content = panel;
         }
 
         public async Task initHighScore() {
@@ -87,12 +87,11 @@ namespace CircleGame.ui
                 drawHighscore(highScore);
             }
             catch(HttpRequestException e) {
-                drawHighscore(new HighScore(){name="asd", score=5});
+                drawHighscore(new HighScore(){name="Error", score=5});
             }
         }
-        public void draw()
-        {
-            _desktop.Render();
+        public void init() {
+            initHighScore();
         }
 
 

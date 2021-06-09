@@ -16,10 +16,18 @@ namespace CircleGame.ui
     {
         private Desktop desktop;
         private DeathModal deathModal;
+        private MainMenu mainMenu;
+        private bool isModalOpen;
+        public bool IsModalOpen {
+            get {
+                return isModalOpen;
+            }
+        }
 
         public MainModal() {
             desktop = new Desktop();
             deathModal = new DeathModal();
+            mainMenu = new MainMenu();
         }
 
         public void draw(SpriteBatch _) {
@@ -27,9 +35,13 @@ namespace CircleGame.ui
         }
 
         public void update(KeyboardState _) {
-            if(GameManager.IsDead) {
+            if(GameManager.IsDead && desktop.Root != deathModal.Content) {
                 desktop.Root = deathModal.Content;
+            } else if(GameManager.IsMainMenuOpen && mainMenu.Content != null && desktop.Root != mainMenu.Content) {
+                desktop.Root = mainMenu.Content;
             }
+
+            isModalOpen = GameManager.IsDead || GameManager.IsMainMenuOpen;
         }
     }
 }

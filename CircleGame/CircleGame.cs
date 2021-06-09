@@ -12,7 +12,6 @@ namespace CircleGame
 {
     public class CircleGame : Game
     {
-        MainMenu mainMenu;
         MainModal mainModal;
         private int width = 1800;
         private int height = 1000;
@@ -48,7 +47,6 @@ namespace CircleGame
         protected override void LoadContent()
         {
             MyraEnvironment.Game = this;
-            mainMenu = new MainMenu();
             mainModal = new MainModal();
             hud = new HUD(GraphicsDevice);
 
@@ -67,11 +65,14 @@ namespace CircleGame
 
         protected override void Update(GameTime gameTime)
         {
-            if (mainMenu.IsOpen || GameManager.IsDead) {
+             KeyboardState state = Keyboard.GetState();
+
+            if (mainModal.IsModalOpen) {
+                mainModal.update(state);
                 return;
             }
 
-            KeyboardState state = Keyboard.GetState();
+           
             Camera.Instance.update(GameManager.Player, GraphicsDevice);
             GameManager.handleItersection();
 
@@ -90,13 +91,7 @@ namespace CircleGame
         
         protected override void Draw(GameTime gameTime)
         {
-            if (mainMenu.IsOpen) {
-                GraphicsDevice.Clear(Color.SeaGreen);
-                mainMenu.draw();
-                return;
-            }
-
-            if (GameManager.IsDead) {
+            if (mainModal.IsModalOpen) {
                 GraphicsDevice.Clear(Color.SeaShell);
                 mainModal.draw(_spriteBatch);
                 return;
