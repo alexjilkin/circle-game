@@ -7,7 +7,6 @@ namespace CircleGame
 {
     public class MovingCircle: Clip
     {
-        
         protected int directionX;
         protected int directionY = new System.Random().Next(0, 2) * 2 - 1;
         private int radius;
@@ -19,15 +18,16 @@ namespace CircleGame
             } 
             protected set {
                 this.radius = value;
-                this.origin = new Vector2(radius, radius);
+                this.Origin = new Vector2(radius, radius);
                 this.updateTexture();
             }
         }
 
-        public MovingCircle(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice)
+        public MovingCircle(int radius, Vector2 position) : base()
         {
+            this.Position = position;
             this.Radius = radius;
-            this.origin = new Vector2(radius, radius);
+            this.Origin = new Vector2(radius, radius);
             this.directionX = new System.Random().Next(0, 2) * 2 - 1;
             this.directionY = new System.Random().Next(0, 2) * 2 - 1;
             this.updateTexture();
@@ -36,12 +36,11 @@ namespace CircleGame
     public override void update(KeyboardState state)
     {
         this.handleBorderCollision(state);
-        _position.X += directionX * speed;
-        _position.Y += directionY * speed;
+        this.Position = Vector2.Add(this.Position, new Vector2(directionX * speed, directionY * speed));
     }
 
     private void updateTexture() {
-        this.texture = createCircleTexture(radius * 2);
+        this.Texture = createCircleTexture(radius * 2);
     }
 
     protected void handleBorderCollision(KeyboardState state)
@@ -51,30 +50,30 @@ namespace CircleGame
         float x = Rules.Instance.BoundryPosition.X;
         float y = Rules.Instance.BoundryPosition.Y;
 
-        if (_position.X + this.radius > width + x)
+        if (this.Position.X + this.Radius > width + x)
         {
-            _position.X = x + width - this.radius - 1;
+            this.Position = new Vector2(x + width - this.Radius - 1, this.Position.Y);
             directionX *= -1;
         }
 
-        if (_position.Y + this.radius > height + y)
+        if (this.Position.Y + this.Radius > height + y)
         {
-            _position.Y = y + height - this.radius - 1;
+            this.Position = new Vector2(this.Position.X, y + height - this.Radius - 1);
             directionY *= -1;
         }
-        else if (_position.X - this.radius < x + 15)
+        else if (this.Position.X - this.Radius < x + 15)
         {
-            _position.X = x + this.radius + 16;
+            this.Position = new Vector2(x + this.Radius + 16, this.Position.Y);
             directionX *= -1;
         }
-        else if (_position.Y - this.radius < y + 15)
+        else if (this.Position.Y - this.Radius < y + 15)
         {
-            _position.Y = y + this.radius + 16;
+            this.Position = new Vector2(this.Position.X, y + this.Radius + 16);
             directionY *= -1;
         }
     }
     public bool isIntersecting(MovingCircle circle) {
-        int diam = this.radius * 2;
+        int diam = this.Radius * 2;
         if (this.Position.X + diam > circle.Position.X && this.Position.X < circle.Position.X + diam 
         && this.Position.Y + diam > circle.Position.Y && this.Position.Y < circle.Position.Y + diam) {
             return true;

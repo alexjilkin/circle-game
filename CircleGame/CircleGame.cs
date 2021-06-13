@@ -12,14 +12,10 @@ namespace CircleGame
 {
     public class CircleGame : Game
     {
-        MainModal mainModal;
-        private int width = 1800;
-        private int height = 1000;
-
+        private MainModal mainModal;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private List<IDrawable> drawables = new List<IDrawable>();
-        
         private Background background;
         private HUD hud;
         private Bounderies bounderies;
@@ -34,8 +30,9 @@ namespace CircleGame
         protected override void Initialize()
         {
             GameManager.graphicsDevice = GraphicsDevice;
-            background = new Background(GraphicsDevice);
-            bounderies = new Bounderies(GraphicsDevice);
+            background = new Background();
+            bounderies = new Bounderies();
+
             _graphics.IsFullScreen = false;
             _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
             _graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
@@ -48,7 +45,7 @@ namespace CircleGame
         {
             MyraEnvironment.Game = this;
             mainModal = new MainModal();
-            hud = new HUD(GraphicsDevice);
+            hud = new HUD();
 
             drawables.Add(mainModal);  
             drawables.Add(background);

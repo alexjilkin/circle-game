@@ -18,9 +18,10 @@ namespace CircleGame.ui
             get; set;
         }
 
-        public HUD(GraphicsDevice graphicsDevice) : base(graphicsDevice) {
+        public HUD() : base() {
             IsOpen = true;
             _desktop = new Desktop();
+            
             drawScore();
         }
         private void drawScore() {

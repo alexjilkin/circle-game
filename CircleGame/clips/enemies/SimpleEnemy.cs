@@ -7,8 +7,8 @@ namespace CircleGame
     {
         public SimpleEnemy(int radius, Vector2 position) : base(radius, position)
         {
-            this._position = position;
-            this._color = Color.LightPink;
+            this.Position = position;
+            this.Color = Color.LightPink;
             this.speed = 3;
         }
 

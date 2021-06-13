@@ -3,6 +3,8 @@
     "boundry-start-y": 500,
     "width": 1300,
     "height": 1300,
+    "BaseSpeed": 3,
+    "PlayerSpeed": 5,
     "Enemies": [{
         "Type": "flash",
         "Radius": 10
@@ -30,11 +32,11 @@
         "Radius": 60
     }
     ],
-    "perks": {
-        "flash": {
+    "Perks": {
+        "Flash": {
             "speed": 10
         },
-        "hulk": {
+        "Hulk": {
             "speed": 4,
             "scale": 2
         }

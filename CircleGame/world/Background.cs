@@ -10,7 +10,7 @@ namespace CircleGame.world
     {
         private Texture2D background;
 
-        public Background(GraphicsDevice graphicsDevice) : base(graphicsDevice)
+        public Background() : base()
         {
             FileStream setStream = File.Open("assets\\background.png", FileMode.Open);
  

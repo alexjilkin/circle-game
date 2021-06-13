@@ -19,22 +19,29 @@ namespace CircleGame.world
                 return new Vector2(this.getConfig<int>("boundry-start-x"), this.getConfig<int>("boundry-start-y"));
             }
         }
-
         public int Width {
             get {
                 return this.getConfig<int>("width");
             }
         }
-
         public int Height {
             get {
                 return this.getConfig<int>("height");
             }
         }
-
         public Enemy[] Enemies {
             get {
                 return this.getConfig<Enemy[]>("Enemies");
+            }
+        }
+        public int BaseSpeed {
+            get {
+                return this.getConfig<int>("BaseSpeed");
+            }
+        }
+        public int PlayerSpeed {
+            get {
+                return this.getConfig<int>("PlayerSpeed");
             }
         }
 

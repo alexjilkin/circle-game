@@ -82,7 +82,7 @@ namespace CircleGame
             Enemy[] enemiesConfig = Rules.Instance.Enemies;
 
             enemies = new List<EnemyCircle>();
-            player = new Player(graphicsDevice, 30);
+            player = new Player(30);
             Vector2 boundryPosition = Rules.Instance.BoundryPosition;
 
             foreach (Enemy enemyConfig in enemiesConfig)

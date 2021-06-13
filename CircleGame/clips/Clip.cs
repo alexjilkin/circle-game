@@ -8,21 +8,48 @@ namespace CircleGame
     public class Clip: IDrawable
     {
         private GraphicsDevice _graphicsDevice;
-        public Vector2 origin;
-        public Vector2 _position;
-        protected Color _color;
-        public Texture2D texture;
+        private Vector2 origin;
+        private Vector2 position;
+        private Color _color;
+        private Texture2D texture;
+        public Color Color { 
+            get { return _color; } 
+            protected set {
+                _color = value;
+            }
+        }
+        public Vector2 Position { 
+            get {
+                return position;
+            }
+            protected set {
+                position = value;
+            }
+        }
 
-        public Color Color { get { return _color; } }
-        public Vector2 Position { get {
-            return _position;
-        }}
+        protected Vector2 Origin { 
+            get {
+                return origin;
+            }
+            set {
+                origin = value;
+            }
+        }
+
+        protected Texture2D Texture {
+            get {
+                return texture;
+            }
+            set {
+                texture = value;
+            }
+        }
 
         public GraphicsDevice GraphicsDevice { get { return _graphicsDevice; } }
-        public Clip(GraphicsDevice graphicsDevice)
+        public Clip()
         {
-            _graphicsDevice = graphicsDevice;
-            _position = new Vector2(0, 0);
+            _graphicsDevice = GameManager.graphicsDevice;
+            position = new Vector2(0, 0);
             origin = new Vector2(0, 0);
             texture = new Texture2D(_graphicsDevice, 1, 1);
         }

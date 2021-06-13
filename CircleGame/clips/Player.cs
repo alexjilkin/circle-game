@@ -10,11 +10,10 @@ namespace CircleGame
 {
     public class Player: MovingCircle
     {
-        public Player(GraphicsDevice graphicsDevice, int radius) : base(graphicsDevice, radius)
+        public Player(int radius) : base(radius, Rules.Instance.BoundryPosition + new Vector2(100, 100))
         {
-            this._color = Color.LightGreen;
-            this._position = Rules.Instance.BoundryPosition + new Vector2(100, 100);
-            this.speed = 5;
+            this.Color = Color.LightGreen;
+            this.speed = Rules.Instance.PlayerSpeed;
         }
 
         public override void update(KeyboardState state)
