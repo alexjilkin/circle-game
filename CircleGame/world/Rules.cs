@@ -8,6 +8,7 @@ namespace CircleGame.world
 {
     public class Enemy {
         public int Radius { get; set; }
+        public string Type { get; set; }
     }
     public sealed class Rules
     {

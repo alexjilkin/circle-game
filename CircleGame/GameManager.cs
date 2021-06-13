@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using CircleGame;
 using CircleGame.world;
+using CircleGame.clips.enemies.factory;
 
 namespace CircleGame
 {
@@ -13,12 +14,12 @@ namespace CircleGame
     {
         private static int score = 0;
         private static bool isDead = false;
-        private static bool isMainMenuOpen = true;
+        private static bool isMainMenuOpen = false;
         public static bool IsDead {
             get {
                 return isDead;
             }
-        }
+        }   
         public static bool IsMainMenuOpen {
             get {
                 return isMainMenuOpen;
@@ -86,7 +87,8 @@ namespace CircleGame
 
             foreach (Enemy enemyConfig in enemiesConfig)
             {
-                enemies.Add(new EnemyCircle(graphicsDevice, enemyConfig.Radius, boundryPosition + new Vector2(new System.Random().Next(100, Rules.Instance.Width), new System.Random().Next(100, Rules.Instance.Height))));
+                EnemyCircle enemy = EnemyManager.createEnemy(enemyConfig.Type, enemyConfig.Radius, boundryPosition + new Vector2(new System.Random().Next(100, Rules.Instance.Width), new System.Random().Next(100, Rules.Instance.Height)));
+                enemies.Add(enemy);
             }
         }
     }

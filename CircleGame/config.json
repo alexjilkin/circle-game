@@ -4,8 +4,10 @@
     "width": 1300,
     "height": 1300,
     "Enemies": [{
+        "Type": "flash",
         "Radius": 10
     },{
+        "Type": "hulk",
         "Radius": 10
     },{
         "Radius": 15
@@ -18,6 +20,7 @@
     {
         "Radius": 20
     },{
+        "Type": "flash",
         "Radius": 30
     },{
         "Radius": 40

@@ -50,10 +50,10 @@ namespace CircleGame
             mainModal = new MainModal();
             hud = new HUD(GraphicsDevice);
 
-            drawables.Add(mainModal);
-            drawables.Add(hud);
+            drawables.Add(mainModal);  
             drawables.Add(background);
             drawables.Add(bounderies);
+            drawables.Add(hud);
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             initGame();
