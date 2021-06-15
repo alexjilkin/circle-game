@@ -12,7 +12,7 @@ namespace CircleGame
 {
     public class CircleGame : Game
     {
-        private MainModal mainModal;
+        private ModalManager mainModal;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private List<IDrawable> drawables = new List<IDrawable>();
@@ -44,7 +44,7 @@ namespace CircleGame
         protected override void LoadContent()
         {
             MyraEnvironment.Game = this;
-            mainModal = new MainModal();
+            mainModal = new ModalManager();
             hud = new HUD();
 
             drawables.Add(mainModal);  

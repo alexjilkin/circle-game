@@ -2,9 +2,13 @@ using System.Net.Http;
 using Microsoft.Xna.Framework;    
 using System.Threading.Tasks;
 using Myra.Graphics2D;
+using Myra.Graphics2D.Brushes;
+using Myra;
 using Myra.Graphics2D.UI;
 using CommonClasses;
 using Newtonsoft.Json;
+using FontStashSharp;
+using System.IO;
 
 namespace CircleGame.ui
 {
@@ -17,6 +21,7 @@ namespace CircleGame.ui
                 return content;
             }
         }
+        
         public MainMenu() {
             init();
         }
@@ -29,32 +34,52 @@ namespace CircleGame.ui
                 HorizontalAlignment=HorizontalAlignment.Center,
                 VerticalAlignment=VerticalAlignment.Top,
                 Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(20)
+                Padding=new Thickness(20),
+                Background= new SolidBrush(Color.Transparent)
             };
+            var font = FontSystemFactory.Create(GameManager.graphicsDevice);
+            font.AddFont(File.ReadAllBytes("assets\\ka1.ttf"));
+            title.Font = font.GetFont(65);
 
             panel.Widgets.Add(title);
 
-            var scorePanel = new Panel(){
-                HorizontalAlignment=HorizontalAlignment.Center,
-                Margin=new Thickness(0, 100, 0 ,0),
+            var scoreGrid = new Grid(){
+                ColumnSpacing = 50,
+                RowSpacing = 50,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin=new Thickness(0, 150, 0, 0),
             };
+
+            scoreGrid.ColumnsProportions.Add(new Proportion());
+            scoreGrid.RowsProportions.Add(new Proportion());
 
             var name = new TextBox
             {
                 Id = "name",
                 Text = highScore.name,
                 TextColor = Color.Red,
+                GridColumn = 1,
+                Background= new SolidBrush(Color.Transparent)
             };
             var score = new TextBox
             {
                 Id = "score",
                 Text = highScore.score.ToString(),
                 TextColor = Color.Red,
+                GridColumn = 2,
+                Background= new SolidBrush(Color.Transparent)
             };
 
-            scorePanel.Widgets.Add(name);
-            scorePanel.Widgets.Add(score);
-            panel.Widgets.Add(scorePanel);
+            scoreGrid.Widgets.Add(name);
+            scoreGrid.Widgets.Add(score);
+
+            var a = FontSystemFactory.Create(GameManager.graphicsDevice);
+            
+            name.Font = font.GetFont(25);
+            score.Font = font.GetFont(25);
+
+
+            panel.Widgets.Add(scoreGrid);
 
             var button = new TextButton
             {
@@ -62,8 +87,11 @@ namespace CircleGame.ui
                 HorizontalAlignment=HorizontalAlignment.Center,
                 VerticalAlignment=VerticalAlignment.Center,
                 Margin=new Thickness(0, 0, 0, 50),
-                Padding=new Thickness(10)
+                Padding=new Thickness(10),
+                Background= new SolidBrush(Color.LightGreen)
             };
+
+            button.Font = font.GetFont(50);
 
             button.Click += (s, a) =>
             {
@@ -87,7 +115,7 @@ namespace CircleGame.ui
                 drawHighscore(highScore);
             }
             catch(HttpRequestException e) {
-                drawHighscore(new HighScore(){name="Error", score=5});
+                drawHighscore(new HighScore(){name="Error", score=-1});
             }
         }
         public void init() {

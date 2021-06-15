@@ -9,6 +9,7 @@
       "CircleGame/1.0.0": {
         "dependencies": {
           "CommonClasses": "1.0.0",
+          "FontStashSharp.MonoGame": "0.9.3",
           "Microsoft.Extensions.Configuration.Binder": "5.0.0",
           "Microsoft.Extensions.Configuration.Json": "5.0.0",
           "MonoGame.Content.Builder.Task": "3.8.0.1641",
@@ -36,7 +37,7 @@
           }
         }
       },
-      "FontStashSharp.MonoGame/0.9.2": {
+      "FontStashSharp.MonoGame/0.9.3": {
         "dependencies": {
           "Cyotek.Drawing.BitmapFont": "2.0.1",
           "StbImageSharp": "2.22.4",
@@ -44,8 +45,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/FontStashSharp.MonoGame.dll": {
-            "assemblyVersion": "0.9.2.0",
-            "fileVersion": "0.9.2.0"
+            "assemblyVersion": "0.9.3.0",
+            "fileVersion": "0.9.3.0"
           }
         }
       },
@@ -215,7 +216,7 @@
       "Myra/1.2.3": {
         "dependencies": {
           "AssetManagementBase": "0.5.2",
-          "FontStashSharp.MonoGame": "0.9.2",
+          "FontStashSharp.MonoGame": "0.9.3",
           "info.lundin.math.dll": "1.2.6"
         },
         "runtime": {
@@ -284,12 +285,12 @@
       "path": "cyotek.drawing.bitmapfont/2.0.1",
       "hashPath": "cyotek.drawing.bitmapfont.2.0.1.nupkg.sha512"
     },
-    "FontStashSharp.MonoGame/0.9.2": {
+    "FontStashSharp.MonoGame/0.9.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3oXgpupCwfphSEb7MKlYpR3iQzGoOEmChYOW/gg18X1OA8aDdSXYwEV7F5s1SU7VYZ9wwHsNcblC9vdiIJJ9kg==",
-      "path": "fontstashsharp.monogame/0.9.2",
-      "hashPath": "fontstashsharp.monogame.0.9.2.nupkg.sha512"
+      "sha512": "sha512-3uToo8rgwBP7RLC4Z1VYo7JnqtN/7pOaauARj7bQtQCNuqqNwMLQ3ZXhIdS8Yrt15f9m6l06y2/P596eCZhuhQ==",
+      "path": "fontstashsharp.monogame/0.9.3",
+      "hashPath": "fontstashsharp.monogame.0.9.3.nupkg.sha512"
     },
     "info.lundin.math.dll/1.2.6": {
       "type": "package",

@@ -12,7 +12,7 @@ using Myra.Graphics2D.UI;
 
 namespace CircleGame.ui
 {
-    public class MainModal: IDrawable
+    public class ModalManager: IDrawable
     {
         private Desktop desktop;
         private DeathModal deathModal;
@@ -24,7 +24,7 @@ namespace CircleGame.ui
             }
         }
 
-        public MainModal() {
+        public ModalManager() {
             desktop = new Desktop();
             deathModal = new DeathModal();
             mainMenu = new MainMenu();
