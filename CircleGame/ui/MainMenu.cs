@@ -25,7 +25,7 @@ namespace CircleGame.ui
         public MainMenu() {
             init();
         }
-        private void drawHighscore(HighScore highScore) {
+        private void drawHighscore(HighScore[] highScores) {
             var panel = new Panel();
 
             var title = new TextBox{
@@ -50,33 +50,40 @@ namespace CircleGame.ui
                 Margin=new Thickness(0, 150, 0, 0),
             };
 
-            scoreGrid.ColumnsProportions.Add(new Proportion());
-            scoreGrid.RowsProportions.Add(new Proportion());
-
-            var name = new TextBox
-            {
-                Id = "name",
-                Text = highScore.name,
-                TextColor = Color.Red,
-                GridColumn = 1,
-                Background= new SolidBrush(Color.Transparent)
-            };
-            var score = new TextBox
-            {
-                Id = "score",
-                Text = highScore.score.ToString(),
-                TextColor = Color.Red,
-                GridColumn = 2,
-                Background= new SolidBrush(Color.Transparent)
-            };
-
-            scoreGrid.Widgets.Add(name);
-            scoreGrid.Widgets.Add(score);
-
             var a = FontSystemFactory.Create(GameManager.graphicsDevice);
+
+            for (int i = 0; i < highScores.Length; i++)
+            {
+                    scoreGrid.ColumnsProportions.Add(new Proportion());
+                scoreGrid.RowsProportions.Add(new Proportion());
+
+                var name = new TextBox
+                {
+                    Id = "name",
+                    Text = highScores[i].name,
+                    TextColor = Color.Red,
+                    GridColumn = 1,
+                    GridRow = i,
+                    Background= new SolidBrush(Color.Transparent)
+                };
+                var score = new TextBox
+                {
+                    Id = "score",
+                    Text = highScores[i].score.ToString(),
+                    TextColor = Color.Red,
+                    GridColumn = 2,
+                    GridRow = i,
+                    Background= new SolidBrush(Color.Transparent)
+                };
             
-            name.Font = font.GetFont(25);
-            score.Font = font.GetFont(25);
+                name.Font = font.GetFont(25);
+                score.Font = font.GetFont(25);
+
+                scoreGrid.Widgets.Add(name);
+                scoreGrid.Widgets.Add(score);
+            }
+
+            
 
 
             panel.Widgets.Add(scoreGrid);
@@ -111,11 +118,11 @@ namespace CircleGame.ui
                 
                 string score = await res.Content.ReadAsStringAsync();
 
-                HighScore highScore = JsonConvert.DeserializeObject<HighScore>(score);
+                HighScore[] highScore = JsonConvert.DeserializeObject<HighScore[]>(score);
                 drawHighscore(highScore);
             }
             catch(HttpRequestException e) {
-                drawHighscore(new HighScore(){name="Error", score=-1});
+                //drawHighscore([new HighScore(){name="Error", score=-1}]);
             }
         }
         public void init() {

@@ -1,10 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using CircleGame;
 using CircleGame.world;
 using CircleGame.clips.enemies.factory;
 

@@ -21,11 +21,11 @@ namespace CircleGameApi.Controllers
         }
 
         [HttpGet]
-        public async Task<HighScore> Get()
+        public async Task<HighScore[]> Get()
         {
             this._logger.LogInformation("Get HighScore");
 
-            return await DB.Instance.GetObjectAsync<HighScore>("score");
+            return await DB.Instance.GetSortedSet<HighScore>("score", 5);
         }
 
         [HttpPost]
@@ -34,7 +34,7 @@ namespace CircleGameApi.Controllers
         public async Task<ActionResult> Post(HighScore highScore)
         {
              this._logger.LogInformation("Set score for " + highScore.name);
-            await DB.Instance.SetObjectAsync<HighScore>("score", highScore);
+            await DB.Instance.SortedSetAddAsync<HighScore>("score", highScore.score, highScore);
 
             return Ok();
         }
