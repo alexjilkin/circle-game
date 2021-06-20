@@ -4,9 +4,10 @@ using System.Threading.Tasks;
 using Myra.Graphics2D;
 using Myra.Graphics2D.Brushes;
 using Myra;
+using CircleGame.utils;
 using Myra.Graphics2D.UI;
 using CommonClasses;
-using Newtonsoft.Json;
+
 using FontStashSharp;
 using System.IO;
 
@@ -25,21 +26,22 @@ namespace CircleGame.ui
         public MainMenu() {
             init();
         }
-        private void drawHighscore(HighScore[] highScores) {
+        private void draw(HighScore[] highScores) {
             var panel = new Panel();
 
-            var title = new TextBox{
+            var title = new Label {
                 Text = "Circle Game",
-                TextColor=Color.Pink,
-                HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Top,
-                Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(20),
-                Background= new SolidBrush(Color.Transparent)
+                TextColor = Color.Pink,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 20, 0 ,0),
+                Padding = new Thickness(20),
+                Background = new SolidBrush(Color.Transparent)
             };
+
             var font = FontSystemFactory.Create(GameManager.graphicsDevice);
             font.AddFont(File.ReadAllBytes("assets\\ka1.ttf"));
-            title.Font = font.GetFont(65);
+            title.Font = Common.Font.GetFont(65);
 
             panel.Widgets.Add(title);
 
@@ -54,10 +56,10 @@ namespace CircleGame.ui
 
             for (int i = 0; i < highScores.Length; i++)
             {
-                    scoreGrid.ColumnsProportions.Add(new Proportion());
+                scoreGrid.ColumnsProportions.Add(new Proportion());
                 scoreGrid.RowsProportions.Add(new Proportion());
 
-                var name = new TextBox
+                var name = new Label
                 {
                     Id = "name",
                     Text = highScores[i].name,
@@ -66,7 +68,8 @@ namespace CircleGame.ui
                     GridRow = i,
                     Background= new SolidBrush(Color.Transparent)
                 };
-                var score = new TextBox
+
+                var score = new Label
                 {
                     Id = "score",
                     Text = highScores[i].score.ToString(),
@@ -88,6 +91,38 @@ namespace CircleGame.ui
 
             panel.Widgets.Add(scoreGrid);
 
+            var button = Common.getButton("Start", 50);
+            button.Margin = new Thickness(0, 0, 0, 50);
+            button.HorizontalAlignment = HorizontalAlignment.Center;
+            button.VerticalAlignment = VerticalAlignment.Center;
+
+            button.Click += (s, a) =>
+            {
+                GameManager.restart();
+            };
+
+            panel.Widgets.Add(button);
+
+            content = panel;
+        }
+
+        private void draw() {
+            var panel = new Panel();
+
+            var title = new TextBox{
+                Text = "Circle Game",
+                TextColor=Color.Pink,
+                HorizontalAlignment=HorizontalAlignment.Center,
+                VerticalAlignment=VerticalAlignment.Top,
+                Margin=new Thickness(0, 20, 0 ,0),
+                Padding=new Thickness(20),
+                Background= new SolidBrush(Color.Transparent)
+            };
+
+            title.Font = Common.Font.GetFont(65);
+
+            panel.Widgets.Add(title);
+
             var button = new TextButton
             {
                 Text = "Start",
@@ -98,7 +133,7 @@ namespace CircleGame.ui
                 Background= new SolidBrush(Color.LightGreen)
             };
 
-            button.Font = font.GetFont(50);
+            button.Font = Common.Font.GetFont(50);
 
             button.Click += (s, a) =>
             {
@@ -114,15 +149,11 @@ namespace CircleGame.ui
             HttpClient client = new HttpClient();
 
             try {
-                var res = await client.GetAsync("http://localhost:5000/api/HighScore");
-                
-                string score = await res.Content.ReadAsStringAsync();
-
-                HighScore[] highScore = JsonConvert.DeserializeObject<HighScore[]>(score);
-                drawHighscore(highScore);
+                var highScores = await Api.GetHighScores();
+                draw(highScores);
             }
             catch(HttpRequestException e) {
-                //drawHighscore([new HighScore(){name="Error", score=-1}]);
+                draw();
             }
         }
         public void init() {

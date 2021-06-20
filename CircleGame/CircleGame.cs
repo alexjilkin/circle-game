@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿
 using System.IO;
 using Microsoft.Xna;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,7 +13,7 @@ namespace CircleGame
 {
     public class CircleGame : Game
     {
-        private ModalManager mainModal;
+        private ModalManager modalManager;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private List<IDrawable> drawables = new List<IDrawable>();
@@ -44,10 +45,15 @@ namespace CircleGame
         protected override void LoadContent()
         {
             MyraEnvironment.Game = this;
-            mainModal = new ModalManager();
+            modalManager = new ModalManager();
             hud = new HUD();
-
-            drawables.Add(mainModal);  
+            
+            Window.TextInput += (s, a) =>
+            {
+                modalManager.Desktop.OnChar(a.Character);
+            };
+            
+            drawables.Add(modalManager);  
             drawables.Add(background);
             drawables.Add(bounderies);
             drawables.Add(hud);
@@ -64,8 +70,8 @@ namespace CircleGame
         {
              KeyboardState state = Keyboard.GetState();
 
-            if (mainModal.IsModalOpen) {
-                mainModal.update(state);
+            if (modalManager.IsModalOpen) {
+                modalManager.update(state);
                 return;
             }
 
@@ -88,9 +94,9 @@ namespace CircleGame
         
         protected override void Draw(GameTime gameTime)
         {
-            if (mainModal.IsModalOpen) {
+            if (modalManager.IsModalOpen) {
                 GraphicsDevice.Clear(Color.SeaShell);
-                mainModal.draw(_spriteBatch);
+                modalManager.draw(_spriteBatch);
                 return;
             }
 

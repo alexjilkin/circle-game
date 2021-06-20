@@ -1,12 +1,10 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
 using Microsoft.Xna.Framework;
-
 using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
-using Newtonsoft.Json;
-using FontStashSharp;
+using Myra.Graphics2D.Brushes;
+using CircleGame.utils;
+using CommonClasses;
+using System.Net.Http;
 
 namespace CircleGame.ui
 {
@@ -22,31 +20,29 @@ namespace CircleGame.ui
         public DeathModal() {
             init();
         }
-        private void init() {
-            var font = FontSystemFactory.Create(GameManager.graphicsDevice);
-            font.AddFont(File.ReadAllBytes("assets\\ka1.ttf"));
+        public void init() {
             var panel = new Panel();
 
-            var title = new TextBox{
+            var title = new Label {
                 Text = "You are DEAD",
                 TextColor=Color.Red,
                 HorizontalAlignment=HorizontalAlignment.Center,
                 VerticalAlignment=VerticalAlignment.Top,
                 Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(20)
+                Padding=new Thickness(20),
+                Background = new SolidBrush(Color.Transparent)
             };
-            title.Font = font.GetFont(62);
+
+            title.Font = Common.Font.GetFont(62);
             panel.Widgets.Add(title);
 
-            var button = new TextButton
-            {
-                Text = "Restart",
-                HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Center,
-                Margin=new Thickness(0, 0, 0, 50),
-                Padding=new Thickness(10)
-            };
+            panel.Widgets.Add(getNameInputGrid());
 
+            var button = Common.getButton("Restart", 50);
+            button.HorizontalAlignment = HorizontalAlignment.Center;
+            button.VerticalAlignment = VerticalAlignment.Bottom;
+            button.Margin = new Thickness(0, 0, 0, 50);
+            
             button.Click += (s, a) =>
             {
                 GameManager.restart();
@@ -55,6 +51,83 @@ namespace CircleGame.ui
             panel.Widgets.Add(button);
 
             content = panel;
+        }
+
+        private Grid getNameInputGrid() {
+            var grid = new Grid
+            {
+                ShowGridLines = true,
+                ColumnSpacing = 8,
+                RowSpacing = 8,
+                HorizontalAlignment=HorizontalAlignment.Center,
+                VerticalAlignment=VerticalAlignment.Center,
+            };
+
+            grid.RowsProportions.Add(new Proportion());
+            grid.RowsProportions.Add(new Proportion());
+            grid.RowsProportions.Add(new Proportion());
+            grid.ColumnsProportions.Add(new Proportion());
+
+            var text = new Label {
+                Text = "You scored " + GameManager.Score + ", add yourself to the leaderbord",
+                TextColor=Color.Red,
+                Padding=new Thickness(20),
+                Background = new SolidBrush(Color.Transparent),
+                GridRow = 1
+            };
+
+            var nameInput = new TextBox {
+                TextColor=Color.White,
+                Padding=new Thickness(20),
+                Background = new SolidBrush(Color.Blue),
+                GridRow = 2
+            };
+
+
+            var button = Common.getButton("Submit", 20);
+            button.GridRow = 3;
+
+            button.Click += async (s, a) =>
+            {
+                try {
+                    await Api.SetHighScore(new HighScore(){
+                        score=GameManager.Score,
+                        name=nameInput.Text
+                    });
+
+                    grid.Widgets.Clear();
+
+                    var text = new Label {
+                        Text = "Submitted!",
+                        TextColor=Color.Green,
+                        Padding=new Thickness(20),
+                        Background = new SolidBrush(Color.Transparent),
+                        GridRow = 1,
+                        Font = Common.Font.GetFont(32)
+                    };
+
+                    grid.Widgets.Add(text);
+                } catch (HttpRequestException e) {
+                    var text = new Label {
+                        Text = "Failed to submit, try again later or never.",
+                        TextColor=Color.Red,
+                        Padding=new Thickness(20),
+                        Background = new SolidBrush(Color.Transparent),
+                        GridRow = 1,
+                        Font = Common.Font.GetFont(32)
+                    };
+
+                    grid.Widgets.Add(text);
+                }
+                
+            };
+
+
+            grid.Widgets.Add(text);
+            grid.Widgets.Add(nameInput);
+            grid.Widgets.Add(button);
+
+            return grid;
         }
     }
 }

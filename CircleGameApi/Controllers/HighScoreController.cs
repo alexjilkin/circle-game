@@ -28,6 +28,15 @@ namespace CircleGameApi.Controllers
             return await DB.Instance.GetSortedSet<HighScore>("score", 5);
         }
 
+        [HttpGet]
+        [Route("Max")]
+        public async Task<HighScore> GetMax()
+        {
+            this._logger.LogInformation("Get Max HighScore");
+
+            return await DB.Instance.GetHighestInSet<HighScore>("score");
+        }
+
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]

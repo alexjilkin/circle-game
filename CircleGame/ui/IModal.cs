@@ -14,10 +14,12 @@ using Newtonsoft.Json;
 
 namespace CircleGame.ui
 {
-    public class IModal
+    public interface IModal
     {
         public Panel Content {
             get;
         }
+
+        public void init();
     }
 }

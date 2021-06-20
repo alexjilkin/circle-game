@@ -24,10 +24,18 @@ namespace CircleGame.ui
             }
         }
 
+        public Desktop Desktop {
+            get {
+                return desktop;
+            }
+        }
+
         public ModalManager() {
             desktop = new Desktop();
             deathModal = new DeathModal();
             mainMenu = new MainMenu();
+
+            desktop.HasExternalTextInput = true;
         }
 
         public void draw(SpriteBatch _) {
@@ -36,12 +44,17 @@ namespace CircleGame.ui
 
         public void update(KeyboardState _) {
             if(GameManager.IsDead && desktop.Root != deathModal.Content) {
+                deathModal.init();
                 desktop.Root = deathModal.Content;
             } else if(GameManager.IsMainMenuOpen && mainMenu.Content != null && desktop.Root != mainMenu.Content) {
+                mainMenu.init();
                 desktop.Root = mainMenu.Content;
-            }
+            } 
 
             isModalOpen = GameManager.IsDead || GameManager.IsMainMenuOpen;
+            if (!isModalOpen) {
+                desktop.Root = null;
+            }
         }
     }
 }

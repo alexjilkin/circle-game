@@ -64,3 +64,5 @@ C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\S
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\CommonClasses.dll
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\CommonClasses.pdb
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGame\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

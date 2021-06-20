@@ -13,7 +13,7 @@ namespace CircleGame.ui
     public class HUD: Clip
     {
         private Desktop _desktop;
-        TextBox score;
+        Label score;
         public bool IsOpen {
             get; set;
         }
@@ -27,7 +27,7 @@ namespace CircleGame.ui
         private void drawScore() {
             var panel = new Panel() {};
 
-            score = new TextBox {
+            score = new Label() {
                 Text = "Score: " + GameManager.Score,
                 TextColor = Color.Pink,
                 Padding = new Thickness(12)
