@@ -7,6 +7,7 @@ using Myra;
 using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
 using CommonClasses;
+using CircleGame.utils;
 
 namespace CircleGame.ui
 {
@@ -28,10 +29,11 @@ namespace CircleGame.ui
             var panel = new Panel() {};
 
             score = new Label() {
-                Text = "Score: " + GameManager.Score,
+                Text = "Score " + GameManager.Score,
                 TextColor = Color.Pink,
                 Padding = new Thickness(12)
             };
+            score.Font = Common.Font.GetFont(32);
 
             panel.Widgets.Add(score);
         
@@ -40,7 +42,7 @@ namespace CircleGame.ui
 
         public override void update(KeyboardState state)
         {
-            score.Text = "Score: " + GameManager.Score;
+            score.Text = "Score " + GameManager.Score;
         }
 
         public override void draw(SpriteBatch _)

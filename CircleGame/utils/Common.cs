@@ -17,7 +17,7 @@ namespace CircleGame.utils
         public static TextButton getButton(string text, int fontSize) {
             return new TextButton {
                 Text = text,
-                Padding=new Thickness(10),
+                Padding = new Thickness(10),
                 Font = Common.Font.GetFont(fontSize),
                 Background = new SolidBrush(Color.LightGreen),
                 PressedBackground = new SolidBrush(Color.DarkGreen),

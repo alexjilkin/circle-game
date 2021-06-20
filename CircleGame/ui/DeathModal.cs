@@ -69,17 +69,18 @@ namespace CircleGame.ui
             grid.ColumnsProportions.Add(new Proportion());
 
             var text = new Label {
-                Text = "You scored " + GameManager.Score + ", add yourself to the leaderbord",
+                Text = "You scored " + GameManager.Score + " !  type in your name for eternal glory",
                 TextColor=Color.Red,
                 Padding=new Thickness(20),
                 Background = new SolidBrush(Color.Transparent),
-                GridRow = 1
+                GridRow = 1,
+                Font = Common.Font.GetFont(20)
             };
 
             var nameInput = new TextBox {
                 TextColor=Color.White,
                 Padding=new Thickness(20),
-                Background = new SolidBrush(Color.Blue),
+                Background = new SolidBrush(Color.LightSlateGray),
                 GridRow = 2
             };
 
