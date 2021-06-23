@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using CircleGame.world;
 
+
 namespace CircleGame.clips.enemies
 {
     public class FlashEnemy: EnemyCircle, IPerk 
@@ -8,8 +9,9 @@ namespace CircleGame.clips.enemies
         private readonly string perkName = "flash";
         public string PerkName {
             get { return perkName; }
+            private set { }
         }
-        private readonly int speedIncrease = 3;
+        private readonly int speedIncrease = Rules.Instance.FlashPerk.SpeedIncrease;
         public int SpeedIncrease {
             get { return speedIncrease; }
         }

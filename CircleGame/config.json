@@ -10,7 +10,7 @@
         "Radius": 10
     },{
         "Type": "hulk",
-        "Radius": 10
+        "Radius": 20
     },{
         "Radius": 15
     },{
@@ -32,13 +32,14 @@
         "Radius": 60
     }
     ],
-    "Perks": {
-        "Flash": {
-            "speed": 10
+    "Perks": [
+         {
+            "PerkName": "flash",
+            "SpeedIncrease": 10
         },
-        "Hulk": {
-            "speed": 4,
-            "scale": 2
+        {
+            "PerkName": "hulk",
+            "ScaleIncrease": 2
         }
-    }
+    ]
 }

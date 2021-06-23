@@ -11,11 +11,11 @@ namespace CircleGame.clips.enemies
         public string PerkName {
             get { return perkName; }
         }
-        private readonly int speedIncrease = 3;
+        private readonly int speedIncrease = 0;
         public int SpeedIncrease {
             get { return speedIncrease; }
         }
-        private readonly int scaleIncrease = 0; 
+        private readonly int scaleIncrease = Rules.Instance.HulkPerk.ScaleIncrease; 
         public int ScaleIncrease {
             get { return scaleIncrease; }
         }
@@ -24,6 +24,7 @@ namespace CircleGame.clips.enemies
         {
             this.Color = Color.Green;
             this.speed = Rules.Instance.BaseSpeed;
+            this.Scale = this.ScaleIncrease;
         }
     }
 }
