@@ -11,7 +11,6 @@ namespace CircleGame
         protected int directionY = new System.Random().Next(0, 2) * 2 - 1;
         private int radius;
         private int scale;
-        protected int speed;
 
         public int Radius {
             get {
@@ -22,6 +21,10 @@ namespace CircleGame
                 this.Origin = new Vector2(radius, radius);
                 this.updateTexture();
             }
+        }
+
+        public int Speed {
+            get; protected set;
         }
 
         public int Scale {
@@ -48,7 +51,7 @@ namespace CircleGame
     public override void update(KeyboardState state)
     {
         this.handleBorderCollision(state);
-        this.Position = Vector2.Add(this.Position, new Vector2(directionX * speed, directionY * speed));
+        this.Position = Vector2.Add(this.Position, new Vector2(directionX * Speed, directionY * Speed));
     }
 
     private void updateTexture() {

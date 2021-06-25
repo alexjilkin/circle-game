@@ -60,6 +60,7 @@ namespace CircleGame
         }                            
 
         public virtual void update(KeyboardState state) {}
+        public virtual void update(KeyboardState state, GameTime gameTime) {}
 
     }
 }

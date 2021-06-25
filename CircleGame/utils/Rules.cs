@@ -4,15 +4,16 @@ using System;
 using System.IO;
 using Microsoft.Xna.Framework;
 using System.Linq;
+using CircleGame.clips;
 
 namespace CircleGame.world
 {
-    public class Enemy {
+    public class EnemyConfig {
         public int Radius { get; set; }
         public string Type { get; set; }
     }
 
-    public class Perk {
+    public class Perk: IPerk {
         public string PerkName { get; set;  }
 
         public int SpeedIncrease { get; set; }
@@ -38,9 +39,9 @@ namespace CircleGame.world
                 return this.getConfig<int>("height");
             }
         }
-        public Enemy[] Enemies {
+        public EnemyConfig[] Enemies {
             get {
-                return this.getConfig<Enemy[]>("Enemies");
+                return this.getConfig<EnemyConfig[]>("Enemies");
             }
         }
 

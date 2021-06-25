@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using CircleGame.world;
 using CircleGame.ui;
+using CircleGame.clips;
 using Myra;
 
 namespace CircleGame
@@ -79,7 +80,7 @@ namespace CircleGame
             Camera.Instance.update(GameManager.Player, GraphicsDevice);
             GameManager.handleItersection();
 
-            GameManager.Player.update(state);
+            GameManager.Player.update(state, gameTime);
 
             foreach (Clip enemy in GameManager.Enemies)
             {

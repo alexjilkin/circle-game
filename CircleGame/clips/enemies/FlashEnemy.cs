@@ -23,8 +23,8 @@ namespace CircleGame.clips.enemies
         public FlashEnemy(int radius, Vector2 position) : base(radius, position)
         {
             this.Color = Color.Red;
-            this.speed = Rules.Instance.BaseSpeed;
-            this.speed = this.speed + speedIncrease;
+            this.Speed = Rules.Instance.BaseSpeed;
+            this.Speed = this.Speed + speedIncrease;
         }
     }
 }

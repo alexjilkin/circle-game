@@ -23,7 +23,7 @@ namespace CircleGame.clips.enemies
         public HulkEnemy(int radius, Vector2 position) : base(radius, position)
         {
             this.Color = Color.Green;
-            this.speed = Rules.Instance.BaseSpeed;
+            this.Speed = Rules.Instance.BaseSpeed;
             this.Scale = this.ScaleIncrease;
         }
     }

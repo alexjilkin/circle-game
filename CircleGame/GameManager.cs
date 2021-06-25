@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CircleGame.world;
+using CircleGame.clips;
+using CircleGame.clips.enemies;
 using CircleGame.clips.enemies.factory;
 
 namespace CircleGame
@@ -50,6 +52,11 @@ namespace CircleGame
                 if (player.Radius >= enemy.Radius) {
                     score += enemy.Radius / 5;
                     enemies = enemies.FindAll(e => e != enemy);
+                    if(enemy is FlashEnemy) {
+                        player.setPerk(Rules.Instance.FlashPerk);
+                    } else if (enemy is HulkEnemy) {
+                        player.setPerk(Rules.Instance.HulkPerk);
+                    }
                 } else {
                     isDead = true;
                 }
@@ -75,13 +82,13 @@ namespace CircleGame
         }
 
         public static void initCircles() {   
-            Enemy[] enemiesConfig = Rules.Instance.Enemies;
+            EnemyConfig[] enemiesConfig = Rules.Instance.Enemies;
 
             enemies = new List<EnemyCircle>();
             player = new Player(30);
             Vector2 boundryPosition = Rules.Instance.BoundryPosition;
 
-            foreach (Enemy enemyConfig in enemiesConfig)
+            foreach (EnemyConfig enemyConfig in enemiesConfig)
             {
                 EnemyCircle enemy = EnemyManager.createEnemy(enemyConfig.Type, enemyConfig.Radius, boundryPosition + new Vector2(new System.Random().Next(100, Rules.Instance.Width), new System.Random().Next(100, Rules.Instance.Height)));
                 enemies.Add(enemy);
