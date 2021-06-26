@@ -1,0 +1,12 @@
+body {
+    font-family: 'Roboto', sans-serif !important;
+}
+.scores {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+input.filter {
+    width: 200px;
+    margin: 10px;
+}

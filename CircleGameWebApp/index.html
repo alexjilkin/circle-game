@@ -8,25 +8,58 @@
     <title></title>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" />
   </head>
 
   <body>
-    <section class="section">
-        <div class="container">
-            <h1 class="title">
-            Welcome to the Circle Game Web App
-            </h1>
-            <nav class="leaderboard">
-                <p class="panel-heading">
-                  Leaderboard
-                </p>
-                <div class="scores">
-                  
-                </div>
-            </nav>
+
+    <div class="container">
+      <div class="section">
+        <h1 class="title is-1">
+          Circle Game Data
+        </h1>
+      </div>
+      <div class="tile is-ancestor is-vertical">
+        
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <header>
+              <p class="title is-3">
+                Leaderboard
+              </p>
+              <input class="input filter" id="input-filter" type="text" placeholder="Filter by name">
+            </header>
+            <div class="scores">
+              
+            </div>
+          </article>
         </div>
-    </section>
+        <div class="tile">
+          <div class="tile is-parent">
+          <article class="tile is-child box">
+            <header>
+              <p class="card-header-title">
+                Best
+              </p>
+             
+            </header>
+          </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <header>
+                <p class="card-header-title">
+                  Best
+                </p>
+               
+              </header>
+            </article>
+          </div>
+        </div>
+      </div>
     <script src="/circleGameApiClient.js"></script>
     <script src="/main.js"></script>
   </body>
