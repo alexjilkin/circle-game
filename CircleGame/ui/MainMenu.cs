@@ -86,15 +86,12 @@ namespace CircleGame.ui
                 scoreGrid.Widgets.Add(score);
             }
 
-            
-
-
             panel.Widgets.Add(scoreGrid);
 
             var button = Common.getButton("Start", 50);
             button.Margin = new Thickness(0, 0, 0, 50);
             button.HorizontalAlignment = HorizontalAlignment.Center;
-            button.VerticalAlignment = VerticalAlignment.Center;
+            button.VerticalAlignment = VerticalAlignment.Bottom;
 
             button.Click += (s, a) =>
             {
@@ -127,7 +124,7 @@ namespace CircleGame.ui
             {
                 Text = "Start",
                 HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Center,
+                VerticalAlignment=VerticalAlignment.Bottom,
                 Margin=new Thickness(0, 0, 0, 50),
                 Padding=new Thickness(10),
                 Background= new SolidBrush(Color.LightGreen)

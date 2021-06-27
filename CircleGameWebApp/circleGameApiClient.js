@@ -1,8 +1,9 @@
 const circleGameApiClient = (() => {
-    const getScores = () => 
-        fetch('http://localhost:5000/api/HighScore').then(res => res.json())
-    
+    const basePath = 'https://circlegameapi.azurewebsites.net/api'
 
+    const getScores = () => 
+        fetch(`${basePath}/Score`).then(res => res.json())
+    
     return {
         getScores
     }

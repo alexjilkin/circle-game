@@ -22,7 +22,7 @@
     })
 
     const input = document.getElementById('input-filter')
-
+P
     input.addEventListener('input', e => {
         filterValue = e.target.value
         filteredScores = scores.filter(({name}) => name.toLowerCase().includes(filterValue.toLowerCase()))
