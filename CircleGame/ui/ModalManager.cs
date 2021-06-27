@@ -12,12 +12,17 @@ using Myra.Graphics2D.UI;
 
 namespace CircleGame.ui
 {
+    public enum ModalState {
+        TheEnd,
+        MainMenu
+    }
     public class ModalManager: IDrawable
     {
         private Desktop desktop;
-        private DeathModal deathModal;
+        private TheEndModal theEndModal;
         private MainMenu mainMenu;
         private bool isModalOpen;
+        private ModalState state;
         public bool IsModalOpen {
             get {
                 return isModalOpen;
@@ -32,7 +37,7 @@ namespace CircleGame.ui
 
         public ModalManager() {
             desktop = new Desktop();
-            deathModal = new DeathModal();
+            theEndModal = new TheEndModal();
             mainMenu = new MainMenu();
 
             desktop.HasExternalTextInput = true;
@@ -43,15 +48,17 @@ namespace CircleGame.ui
         }
 
         public void update(KeyboardState _) {
-            if(GameManager.IsDead && desktop.Root != deathModal.Content) {
-                deathModal.init();
-                desktop.Root = deathModal.Content;
-            } else if(GameManager.IsMainMenuOpen && mainMenu.Content != null && desktop.Root != mainMenu.Content) {
+            if(GameManager.IsEnd && state != ModalState.TheEnd) {
+                state = ModalState.TheEnd;
+                theEndModal.init();
+                desktop.Root = theEndModal.Content;
+            } else if(GameManager.IsMainMenuOpen && mainMenu.Content != null && state != ModalState.MainMenu) {
+                state = ModalState.MainMenu;
                 mainMenu.init();
                 desktop.Root = mainMenu.Content;
             } 
 
-            isModalOpen = GameManager.IsDead || GameManager.IsMainMenuOpen;
+            isModalOpen = GameManager.IsEnd || GameManager.IsMainMenuOpen ;
             if (!isModalOpen) {
                 desktop.Root = null;
             }

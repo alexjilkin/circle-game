@@ -12,6 +12,7 @@ namespace CircleGame
     {
         private static int score = 0;
         private static bool isDead = false;
+        private static bool isEnd = false;
         private static bool isMainMenuOpen = true;
         public static bool IsDead {
             get {
@@ -21,6 +22,11 @@ namespace CircleGame
         public static bool IsMainMenuOpen {
             get {
                 return isMainMenuOpen;
+            }
+        }
+        public static bool IsEnd {
+            get {
+                return isEnd;
             }
         }
         public static int Score {
@@ -52,6 +58,9 @@ namespace CircleGame
                 if (player.Radius >= enemy.Radius) {
                     score += enemy.Radius / 5;
                     enemies = enemies.FindAll(e => e != enemy);
+                    if (enemies.Count == 0) {
+                        isEnd = true;
+                    }
                     if(enemy is FlashEnemy) {
                         player.setPerk(Rules.Instance.FlashPerk);
                     } else if (enemy is HulkEnemy) {
@@ -59,6 +68,7 @@ namespace CircleGame
                     }
                 } else {
                     isDead = true;
+                    isEnd = true;
                 }
             }
         }
@@ -76,6 +86,7 @@ namespace CircleGame
         
         public static void restart() {
             isDead = false;
+            isEnd = false;
             isMainMenuOpen = false;
             score = 0;
             initCircles();

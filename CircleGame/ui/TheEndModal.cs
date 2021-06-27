@@ -8,7 +8,7 @@ using System.Net.Http;
 
 namespace CircleGame.ui
 {
-    public class DeathModal: IModal
+    public class TheEndModal: IModal
     {
         private Panel content;
 
@@ -17,14 +17,15 @@ namespace CircleGame.ui
                 return content;
             }
         }
-        public DeathModal() {
+        public TheEndModal() {
             init();
         }
         public void init() {
             var panel = new Panel();
 
+            string titleText = GameManager.IsDead ? "You are DEAD" : "You Finished!";
             var title = new Label {
-                Text = "You are DEAD",
+                Text = titleText,
                 TextColor=Color.Red,
                 HorizontalAlignment=HorizontalAlignment.Center,
                 VerticalAlignment=VerticalAlignment.Top,
