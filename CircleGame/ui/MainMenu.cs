@@ -149,12 +149,12 @@ namespace CircleGame.ui
                 var highScores = await Api.GetHighScores();
                 draw(highScores);
             }
-            catch(HttpRequestException e) {
+            catch(HttpRequestException) {
                 draw();
             }
         }
         public void init() {
-            initHighScore();
+            Task _ = initHighScore();
         }
 
 

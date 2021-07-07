@@ -69,8 +69,8 @@ namespace CircleGame
 
         protected override void Update(GameTime gameTime)
         {
-             KeyboardState state = Keyboard.GetState();
-
+            KeyboardState state = Keyboard.GetState();
+            
             if (modalManager.IsModalOpen) {
                 modalManager.update(state);
                 return;
@@ -78,7 +78,7 @@ namespace CircleGame
 
            
             Camera.Instance.update(GameManager.Player, GraphicsDevice);
-            GameManager.handleItersection();
+            GameManager.handleItersection(gameTime);
 
             GameManager.Player.update(state, gameTime);
 

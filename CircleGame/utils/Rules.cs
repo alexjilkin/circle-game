@@ -62,14 +62,14 @@ namespace CircleGame.world
                 return this.Perks.Where(p => p.PerkName == "hulk").First();
             }
         }
-        public int BaseSpeed {
+        public float BaseSpeed {
             get {
-                return this.getConfig<int>("BaseSpeed");
+                return this.getConfig<float>("BaseSpeed");
             }
         }
-        public int PlayerSpeed {
+        public float PlayerSpeed {
             get {
-                return this.getConfig<int>("PlayerSpeed");
+                return this.getConfig<float>("PlayerSpeed");
             }
         }
 

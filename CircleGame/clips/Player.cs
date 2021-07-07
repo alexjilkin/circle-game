@@ -10,6 +10,7 @@ namespace CircleGame.clips
 {
     public class Player: MovingCircle
     {
+        private double totalSecondsAtPerk;
         public IPerk Perk { get; private set; }
 
         public Player(int radius) : base(radius, Rules.Instance.BoundryPosition + new Vector2(100, 100))
@@ -24,12 +25,14 @@ namespace CircleGame.clips
             base.update(state);
             this.handleMovement(state);
             this.handleRadiusChange();
-            this.handlePerk();
+            this.handlePerk(gameTime);
         }
 
-        private void handlePerk() {
-            if (this.Perk != null) {
-                
+        private void handlePerk(GameTime gameTime) {
+           
+            if (this.Perk != null && (gameTime.TotalGameTime.TotalSeconds - this.totalSecondsAtPerk) > 5) {
+                this.Perk = null;
+                this.Speed = Rules.Instance.PlayerSpeed;
             }
         }
         private void handleRadiusChange() {
@@ -40,9 +43,10 @@ namespace CircleGame.clips
             }
         }
 
-        public void setPerk(IPerk perk) {
+        public void setPerk(IPerk perk, GameTime gameTime) {
             this.Perk = perk;
-            this.Speed += this.Perk.SpeedIncrease;
+            this.Speed = Rules.Instance.PlayerSpeed + this.Perk.SpeedIncrease;
+            totalSecondsAtPerk = gameTime.TotalGameTime.TotalSeconds;
         }
 
         private void handleMovement(KeyboardState state) {

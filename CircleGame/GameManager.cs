@@ -50,7 +50,7 @@ namespace CircleGame
 
         public static GraphicsDevice graphicsDevice;
         
-        public static void handleItersection() {
+        public static void handleItersection(GameTime gameTime) {
             MovingCircle enemy;
             enemy = getIntersecting(enemies, player);
 
@@ -62,13 +62,13 @@ namespace CircleGame
                         isEnd = true;
                     }
                     if(enemy is FlashEnemy) {
-                        player.setPerk(Rules.Instance.FlashPerk);
+                        player.setPerk(Rules.Instance.FlashPerk, gameTime);
                     } else if (enemy is HulkEnemy) {
-                        player.setPerk(Rules.Instance.HulkPerk);
+                        player.setPerk(Rules.Instance.HulkPerk, gameTime);
                     }
                 } else {
-                    isDead = true;
-                    isEnd = true;
+                    // isDead = true;
+                    // isEnd = true;
                 }
             }
         }

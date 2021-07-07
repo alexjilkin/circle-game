@@ -109,7 +109,7 @@ namespace CircleGame.ui
                     };
 
                     grid.Widgets.Add(text);
-                } catch (HttpRequestException e) {
+                } catch (HttpRequestException) {
                     var text = new Label {
                         Text = "Failed to submit, try again later or never.",
                         TextColor=Color.Red,

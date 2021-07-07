@@ -3,8 +3,8 @@
     "boundry-start-y": 500,
     "width": 1300,
     "height": 1300,
-    "BaseSpeed": 3,
-    "PlayerSpeed": 5,
+    "BaseSpeed": 2.5,
+    "PlayerSpeed": 4.0,
     "Enemies": [{
         "Type": "flash",
         "Radius": 10

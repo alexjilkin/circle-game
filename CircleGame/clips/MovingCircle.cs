@@ -23,7 +23,7 @@ namespace CircleGame
             }
         }
 
-        public int Speed {
+        public float Speed {
             get; protected set;
         }
 

@@ -13,6 +13,7 @@ using Myra.Graphics2D.UI;
 namespace CircleGame.ui
 {
     public enum ModalState {
+        None,
         TheEnd,
         MainMenu
     }
@@ -61,6 +62,7 @@ namespace CircleGame.ui
             isModalOpen = GameManager.IsEnd || GameManager.IsMainMenuOpen ;
             if (!isModalOpen) {
                 desktop.Root = null;
+                state = ModalState.None;
             }
         }
     }
