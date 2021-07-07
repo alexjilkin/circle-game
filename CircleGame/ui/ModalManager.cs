@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;    
@@ -15,15 +13,20 @@ namespace CircleGame.ui
     public enum ModalState {
         None,
         TheEnd,
-        MainMenu
+        MainMenu,
+        Instructions
     }
-    public class ModalManager: IDrawable
+    public sealed class  ModalManager: IDrawable
     {
+        private static readonly Lazy<ModalManager> lazy = new Lazy<ModalManager>(() => new ModalManager());
         private Desktop desktop;
         private TheEndModal theEndModal;
         private MainMenu mainMenu;
+        private InstructionsModal instructionsModal;
         private bool isModalOpen;
-        private ModalState state;
+        public ModalState State {
+            set; get;
+        }
         public bool IsModalOpen {
             get {
                 return isModalOpen;
@@ -36,10 +39,19 @@ namespace CircleGame.ui
             }
         }
 
-        public ModalManager() {
+        public static ModalManager Instance
+        {
+            get
+            {
+                return lazy.Value;
+            }
+        }
+
+        private ModalManager() {
             desktop = new Desktop();
             theEndModal = new TheEndModal();
             mainMenu = new MainMenu();
+            instructionsModal = new InstructionsModal();
 
             desktop.HasExternalTextInput = true;
         }
@@ -49,20 +61,23 @@ namespace CircleGame.ui
         }
 
         public void update(KeyboardState _) {
-            if(GameManager.IsEnd && state != ModalState.TheEnd) {
-                state = ModalState.TheEnd;
+            if (State == ModalState.Instructions && desktop.Root != instructionsModal.Content) {
+                instructionsModal.init();
+                desktop.Root = instructionsModal.Content;
+            } else if(GameManager.IsEnd && State != ModalState.TheEnd) {
+                State = ModalState.TheEnd;
                 theEndModal.init();
                 desktop.Root = theEndModal.Content;
-            } else if(GameManager.IsMainMenuOpen && mainMenu.Content != null && state != ModalState.MainMenu) {
-                state = ModalState.MainMenu;
+            } else if(GameManager.IsMainMenuOpen && desktop.Root != mainMenu.Content && mainMenu.Content != null && State != ModalState.Instructions) {
+                State = ModalState.MainMenu;
                 mainMenu.init();
                 desktop.Root = mainMenu.Content;
-            } 
+            }
 
             isModalOpen = GameManager.IsEnd || GameManager.IsMainMenuOpen ;
             if (!isModalOpen) {
                 desktop.Root = null;
-                state = ModalState.None;
+                State = ModalState.None;
             }
         }
     }

@@ -88,10 +88,8 @@ namespace CircleGame.ui
 
             panel.Widgets.Add(scoreGrid);
 
-            var button = Common.getButton("Start", 50);
+            var button = Common.getButton("Start", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom);
             button.Margin = new Thickness(0, 0, 0, 50);
-            button.HorizontalAlignment = HorizontalAlignment.Center;
-            button.VerticalAlignment = VerticalAlignment.Bottom;
 
             button.Click += (s, a) =>
             {
@@ -99,6 +97,16 @@ namespace CircleGame.ui
             };
 
             panel.Widgets.Add(button);
+
+            var instructionsButton = Common.getButton("How?", 30, HorizontalAlignment.Left, VerticalAlignment.Bottom);
+            instructionsButton.Margin = new Thickness(50, 0, 0, 50);
+
+            instructionsButton.Click += (s, a) =>
+            {
+                ModalManager.Instance.State = ModalState.Instructions;
+            };
+
+            panel.Widgets.Add(instructionsButton);
 
             content = panel;
         }

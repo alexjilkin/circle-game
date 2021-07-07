@@ -24,5 +24,14 @@ namespace CircleGame.utils
                 OverBackground = new SolidBrush(Color.LimeGreen),
             };
         }
+
+        public static TextButton getButton(string text, int fontSize, HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment) {
+            var button = Common.getButton(text, fontSize);
+            
+            button.HorizontalAlignment = horizontalAlignment;
+            button.VerticalAlignment = verticalAlignment;
+
+            return button;
+        }
     }
 }

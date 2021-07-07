@@ -67,8 +67,8 @@ namespace CircleGame
                         player.setPerk(Rules.Instance.HulkPerk, gameTime);
                     }
                 } else {
-                    // isDead = true;
-                    // isEnd = true;
+                    isDead = true;
+                    isEnd = true;
                 }
             }
         }
