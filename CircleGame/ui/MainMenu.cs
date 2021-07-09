@@ -15,12 +15,10 @@ namespace CircleGame.ui
 {
     public class MainMenu: IModal
     {
-        private Panel content;
+        private Panel content = new Panel();
   
         public Panel Content {
-            get {
-                return content;
-            }
+            get => content;
         }
         
         public MainMenu() {
@@ -100,18 +98,19 @@ namespace CircleGame.ui
 
             var instructionsButton = Common.getButton("How?", 30, HorizontalAlignment.Left, VerticalAlignment.Bottom);
             instructionsButton.Margin = new Thickness(50, 0, 0, 50);
-
+    
             instructionsButton.Click += (s, a) =>
             {
-                ModalManager.Instance.State = ModalState.Instructions;
+                ModalManager.Instance.OpenModal = ModalType.Instructions;
             };
 
             panel.Widgets.Add(instructionsButton);
 
-            content = panel;
+            content.Widgets.Clear();
+            content.Widgets.Add(panel);
         }
 
-        private void draw() {
+        private void noScoreDraw() {
             var panel = new Panel();
 
             var title = new TextBox{
@@ -147,7 +146,8 @@ namespace CircleGame.ui
 
             panel.Widgets.Add(button);
 
-            content = panel;
+            content.Widgets.Clear();
+            content.Widgets.Add(panel);
         }
 
         public async Task initHighScore() {
@@ -158,7 +158,7 @@ namespace CircleGame.ui
                 draw(highScores);
             }
             catch(HttpRequestException) {
-                draw();
+                noScoreDraw();
             }
         }
         public void init() {

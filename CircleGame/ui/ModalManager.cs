@@ -7,10 +7,11 @@ using CircleGame;
 using Myra;
 using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
+using System.Linq;
 
 namespace CircleGame.ui
 {
-    public enum ModalState {
+    public enum ModalType {
         None,
         TheEnd,
         MainMenu,
@@ -23,28 +24,14 @@ namespace CircleGame.ui
         private TheEndModal theEndModal;
         private MainMenu mainMenu;
         private InstructionsModal instructionsModal;
-        private bool isModalOpen;
-        public ModalState State {
-            set; get;
-        }
-        public bool IsModalOpen {
-            get {
-                return isModalOpen;
-            }
-        }
+        public ModalType OpenModal { set; get; }
 
         public Desktop Desktop {
-            get {
-                return desktop;
-            }
+            get => desktop;
         }
 
-        public static ModalManager Instance
-        {
-            get
-            {
-                return lazy.Value;
-            }
+        public static ModalManager Instance {
+            get => lazy.Value;
         }
 
         private ModalManager() {
@@ -52,8 +39,28 @@ namespace CircleGame.ui
             theEndModal = new TheEndModal();
             mainMenu = new MainMenu();
             instructionsModal = new InstructionsModal();
+            instructionsModal.init();
 
             desktop.HasExternalTextInput = true;
+            
+            mainMenu.init();
+            OpenModal = ModalType.MainMenu; 
+            desktop.Root = mainMenu.Content;
+            
+            GameManager.StateChanged += () => {
+                if(new GameState[]{GameState.End, GameState.Dead}.Contains(GameManager.State)) {
+                    theEndModal.init();
+                    OpenModal = ModalType.TheEnd;
+                    desktop.Root = theEndModal.Content;
+                } else if(GameManager.State == GameState.Initial) {
+                    mainMenu.init();
+                    OpenModal = ModalType.MainMenu;
+                    desktop.Root = mainMenu.Content;
+                } else if (GameManager.State == GameState.Play) {
+                    desktop.Root = null;
+                    OpenModal = ModalType.None;
+                }
+            };
         }
 
         public void draw(SpriteBatch _) {
@@ -61,24 +68,7 @@ namespace CircleGame.ui
         }
 
         public void update(KeyboardState _) {
-            if (State == ModalState.Instructions && desktop.Root != instructionsModal.Content) {
-                instructionsModal.init();
-                desktop.Root = instructionsModal.Content;
-            } else if(GameManager.IsEnd && State != ModalState.TheEnd) {
-                State = ModalState.TheEnd;
-                theEndModal.init();
-                desktop.Root = theEndModal.Content;
-            } else if(GameManager.IsMainMenuOpen && desktop.Root != mainMenu.Content && mainMenu.Content != null && State != ModalState.Instructions) {
-                State = ModalState.MainMenu;
-                mainMenu.init();
-                desktop.Root = mainMenu.Content;
-            }
-
-            isModalOpen = GameManager.IsEnd || GameManager.IsMainMenuOpen ;
-            if (!isModalOpen) {
-                desktop.Root = null;
-                State = ModalState.None;
-            }
+            
         }
     }
 }

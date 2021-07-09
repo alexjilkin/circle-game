@@ -13,9 +13,7 @@ namespace CircleGame.ui
         private Panel content;
 
         public Panel Content {
-            get {
-                return content;
-            }
+            get => content;
         }
         public TheEndModal() {
             init();
@@ -23,7 +21,7 @@ namespace CircleGame.ui
         public void init() {
             var panel = new Panel();
 
-            string titleText = GameManager.IsDead ? "You are DEAD" : "You Finished!";
+            string titleText = GameManager.State == GameState.Dead ? "You are DEAD" : "You Finished!";
             var title = new Label {
                 Text = titleText,
                 TextColor=Color.Red,

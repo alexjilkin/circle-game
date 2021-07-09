@@ -13,9 +13,7 @@ namespace CircleGame
         private int scale;
 
         public int Radius {
-            get {
-                return this.radius;
-            } 
+            get => this.Radius;
             protected set {
                 this.radius = value;
                 this.Origin = new Vector2(radius, radius);
@@ -28,9 +26,7 @@ namespace CircleGame
         }
 
         public int Scale {
-            get {
-                return this.scale;
-            } 
+            get => this.scale;
             protected set {
                 this.scale = value;
                 this.updateTexture();

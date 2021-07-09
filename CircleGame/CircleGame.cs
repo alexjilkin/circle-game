@@ -31,6 +31,7 @@ namespace CircleGame
         protected override void Initialize()
         {
             GameManager.graphicsDevice = GraphicsDevice;
+            GameManager.State = GameState.Initial;
             background = new Background();
             bounderies = new Bounderies();
 
@@ -69,7 +70,7 @@ namespace CircleGame
         {
             KeyboardState state = Keyboard.GetState();
             
-            if (ModalManager.Instance.IsModalOpen) {
+            if (GameManager.State != GameState.Play) {
                 ModalManager.Instance.update(state);
                 return;
             }
@@ -93,7 +94,7 @@ namespace CircleGame
         
         protected override void Draw(GameTime gameTime)
         {
-            if (ModalManager.Instance.IsModalOpen) {
+            if (GameManager.State != GameState.Play) {
                 GraphicsDevice.Clear(Color.SeaShell);
                 ModalManager.Instance.draw(_spriteBatch);
                 return;

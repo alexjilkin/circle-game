@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,44 +9,40 @@ using CircleGame.clips.enemies.factory;
 
 namespace CircleGame
 {
+    public enum GameState {
+        Initial,
+        Play,
+        Pause,
+        End,
+        Dead
+    }
+
     class GameManager
     {
         private static int score = 0;
-        private static bool isDead = false;
-        private static bool isEnd = false;
-        private static bool isMainMenuOpen = true;
-        public static bool IsDead {
-            get {
-                return isDead;
-            }
-        }   
-        public static bool IsMainMenuOpen {
-            get {
-                return isMainMenuOpen;
+        private static GameState state;
+        public static Action StateChanged;
+        private static void OnStateChanged() => StateChanged?.Invoke();
+
+        public static GameState State {
+            get => state;
+            set {
+                state = value;
+                OnStateChanged();
             }
         }
-        public static bool IsEnd {
-            get {
-                return isEnd;
-            }
-        }
+
         public static int Score {
-            get {
-                return score;
-            }
+            get => score;
         }
 
         private static List<EnemyCircle> enemies = new List<EnemyCircle>();
         public static List<EnemyCircle> Enemies {
-            get {
-                return enemies;
-            }
+            get => enemies;
         }
         private static Player player;
         public static Player Player {
-            get {
-                return player;
-            }
+            get => player;
         }
 
         public static GraphicsDevice graphicsDevice;
@@ -59,7 +56,7 @@ namespace CircleGame
                     score += enemy.Radius / 5;
                     enemies = enemies.FindAll(e => e != enemy);
                     if (enemies.Count == 0) {
-                        isEnd = true;
+                       State = GameState.End;
                     }
                     if(enemy is FlashEnemy) {
                         player.setPerk(Rules.Instance.FlashPerk, gameTime);
@@ -67,8 +64,7 @@ namespace CircleGame
                         player.setPerk(Rules.Instance.HulkPerk, gameTime);
                     }
                 } else {
-                    isDead = true;
-                    isEnd = true;
+                    State = GameState.Dead;
                 }
             }
         }
@@ -85,9 +81,7 @@ namespace CircleGame
          }
         
         public static void restart() {
-            isDead = false;
-            isEnd = false;
-            isMainMenuOpen = false;
+            State = GameState.Play;
             score = 0;
             initCircles();
         }
@@ -101,7 +95,12 @@ namespace CircleGame
 
             foreach (EnemyConfig enemyConfig in enemiesConfig)
             {
-                EnemyCircle enemy = EnemyManager.createEnemy(enemyConfig.Type, enemyConfig.Radius, boundryPosition + new Vector2(new System.Random().Next(100, Rules.Instance.Width), new System.Random().Next(100, Rules.Instance.Height)));
+                EnemyCircle enemy = EnemyManager.createEnemy(
+                    enemyConfig.Type, 
+                    enemyConfig.Radius, 
+                    boundryPosition + new Vector2(new System.Random().Next(100, Rules.Instance.Width), 
+                    new System.Random().Next(100, Rules.Instance.Height))
+                );
                 enemies.Add(enemy);
             }
         }

@@ -13,9 +13,7 @@ namespace CircleGame.ui
         private Panel content;
 
         public Panel Content {
-            get {
-                return content;
-            }
+            get => content;
         }
         public InstructionsModal() {
             init();
@@ -63,7 +61,7 @@ namespace CircleGame.ui
             
             button.Click += (s, a) =>
             {
-                ModalManager.Instance.State = ModalState.MainMenu;
+                ModalManager.Instance.OpenModal = ModalType.MainMenu;
             };
 
             panel.Widgets.Add(button);
