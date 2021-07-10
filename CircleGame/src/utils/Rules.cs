@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 using Microsoft.Xna.Framework;
@@ -15,9 +14,7 @@ namespace CircleGame.world
 
     public class Perk: IPerk {
         public string PerkName { get; set;  }
-
         public int SpeedIncrease { get; set; }
-
         public int ScaleIncrease { get; set; }
     }
     public sealed class Rules
@@ -25,61 +22,39 @@ namespace CircleGame.world
         private static readonly Lazy<Rules> lazy = new Lazy<Rules>(() => new Rules());
 
         public Vector2 BoundryPosition {
-            get {
-                return new Vector2(this.getConfig<int>("boundry-start-x"), this.getConfig<int>("boundry-start-y"));
-            }
+            get => new Vector2(this.getConfig<int>("boundry-start-x"), this.getConfig<int>("boundry-start-y"));
         }
         public int Width {
-            get {
-                return this.getConfig<int>("width");
-            }
+            get => this.getConfig<int>("width");
         }
         public int Height {
-            get {
-                return this.getConfig<int>("height");
-            }
+            get => this.getConfig<int>("height");
         }
         public EnemyConfig[] Enemies {
-            get {
-                return this.getConfig<EnemyConfig[]>("Enemies");
-            }
+            get => this.getConfig<EnemyConfig[]>("Enemies");
         }
 
         public Perk[] Perks {
-            get {
-                return this.getConfig<Perk[]>("Perks");
-            }
+            get => this.getConfig<Perk[]>("Perks");
         }
 
         public Perk FlashPerk {
-            get {
-                return this.Perks.Where(p => p.PerkName == "flash").First();
-            }
+            get => this.Perks.Where(p => p.PerkName == "flash").First();
         }
 
         public Perk HulkPerk {
-            get {
-                return this.Perks.Where(p => p.PerkName == "hulk").First();
-            }
+            get => this.Perks.Where(p => p.PerkName == "hulk").First();
         }
         public float BaseSpeed {
-            get {
-                return this.getConfig<float>("BaseSpeed");
-            }
+            get => this.getConfig<float>("BaseSpeed");
         }
         public float PlayerSpeed {
-            get {
-                return this.getConfig<float>("PlayerSpeed");
-            }
+            get => this.getConfig<float>("PlayerSpeed");
         }
 
         private IConfigurationRoot configuration;
-        public static Rules Instance
-        {
-            get
-            {
-                return lazy.Value;
-            }
+        public static Rules Instance {
+            get => lazy.Value;
         }
         private Rules() {
             var builder = new ConfigurationBuilder()
@@ -88,9 +63,7 @@ namespace CircleGame.world
 
             configuration = builder.Build();
         }
-        private T getConfig<T>(string key) { 
-            return this.configuration.GetSection(key).Get<T>();
-        }
-
+        private T getConfig<T>(string key) =>
+            this.configuration.GetSection(key).Get<T>();
     }
 }

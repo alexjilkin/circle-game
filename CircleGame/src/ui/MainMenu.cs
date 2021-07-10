@@ -16,6 +16,7 @@ namespace CircleGame.ui
     public class MainMenu: IModal
     {
         private Panel content = new Panel();
+        private InstructionsModal instructionsModal;
   
         public Panel Content {
             get => content;
@@ -23,6 +24,8 @@ namespace CircleGame.ui
         
         public MainMenu() {
             init();
+            instructionsModal = new InstructionsModal();
+            instructionsModal.init();
         }
         private void draw(HighScore[] highScores) {
             var panel = new Panel();
@@ -37,8 +40,6 @@ namespace CircleGame.ui
                 Background = new SolidBrush(Color.Transparent)
             };
 
-            var font = FontSystemFactory.Create(GameManager.graphicsDevice);
-            font.AddFont(File.ReadAllBytes("assets\\ka1.ttf"));
             title.Font = Common.Font.GetFont(65);
 
             panel.Widgets.Add(title);
@@ -77,8 +78,8 @@ namespace CircleGame.ui
                     Background= new SolidBrush(Color.Transparent)
                 };
             
-                name.Font = font.GetFont(25);
-                score.Font = font.GetFont(25);
+                name.Font = Common.Font.GetFont(25);
+                score.Font = Common.Font.GetFont(25);
 
                 scoreGrid.Widgets.Add(name);
                 scoreGrid.Widgets.Add(score);
@@ -101,7 +102,12 @@ namespace CircleGame.ui
     
             instructionsButton.Click += (s, a) =>
             {
-                ModalManager.Instance.OpenModal = ModalType.Instructions;
+                content.Widgets.Clear();
+                content.Widgets.Add(instructionsModal.Content);
+                instructionsModal.Back += () => {
+                    content.Widgets.Clear();
+                    content.Widgets.Add(panel);
+                };
             };
 
             panel.Widgets.Add(instructionsButton);

@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using CircleGame.clips;
 
 namespace CircleGame.world
 {
@@ -12,11 +11,10 @@ namespace CircleGame.world
 
         public Background() : base()
         {
-            FileStream setStream = File.Open("assets\\background.png", FileMode.Open);
+            FileStream setStream = File.Open("..\\assets\\background.png", FileMode.Open);
  
             this.background = Texture2D.FromStream(this.GraphicsDevice, setStream);
         }
-
         public override void draw(SpriteBatch spriteBatch) {
             spriteBatch.End();
             spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale(3f));

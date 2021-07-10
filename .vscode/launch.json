@@ -11,7 +11,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/CircleGame/bin/Debug/netcoreapp3.1/CircleGame.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/CircleGame",
+            "cwd": "${workspaceFolder}/CircleGame/src",
             "console": "internalConsole",
             "stopAtEntry": false,
             "logging": {

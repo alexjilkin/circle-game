@@ -1,13 +1,12 @@
 ﻿
-using System.IO;
 using Microsoft.Xna;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using CircleGame.world;
 using CircleGame.ui;
 using CircleGame.clips;
+using CircleGame.world;
 using Myra;
 
 namespace CircleGame
@@ -16,7 +15,7 @@ namespace CircleGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private List<IDrawable> drawables = new List<IDrawable>();
+        private List<clips.IDrawable> drawables = new List<clips.IDrawable>();
         private Background background;
         private HUD hud;
         private Bounderies bounderies;
@@ -86,7 +85,7 @@ namespace CircleGame
                 enemy.update(state);
             }
 
-            foreach (IDrawable drawable in drawables) {
+            foreach (clips.IDrawable drawable in drawables) {
                 drawable.update(state);
             }
             base.Update(gameTime);
@@ -102,7 +101,7 @@ namespace CircleGame
 
             _spriteBatch.Begin();
 
-            foreach (IDrawable drawable in drawables) 
+            foreach (clips.IDrawable drawable in drawables) 
             {
                 drawable.draw(_spriteBatch);
             }

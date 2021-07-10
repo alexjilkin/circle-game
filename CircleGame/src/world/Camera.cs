@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using CircleGame.clips;
 
 namespace CircleGame.world
@@ -11,12 +10,8 @@ namespace CircleGame.world
         private static readonly Lazy<Camera> lazy = new Lazy<Camera>(() => new Camera());
         public Vector2 position { get; set;}
 
-        public static Camera Instance
-        {
-            get
-            {
-                return lazy.Value;
-            }
+        public static Camera Instance {
+            get => lazy.Value;
         }
 
         private Camera()

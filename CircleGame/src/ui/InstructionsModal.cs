@@ -1,16 +1,18 @@
+using System;
 using Microsoft.Xna.Framework;
 using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
 using Myra.Graphics2D.Brushes;
 using CircleGame.utils;
 using CommonClasses;
-using System.Net.Http;
 
 namespace CircleGame.ui
 {
     public class InstructionsModal: IModal
     {
         private Panel content;
+        public Action Back;
+        private void OnBack() => Back?.Invoke();
 
         public Panel Content {
             get => content;
@@ -61,7 +63,7 @@ namespace CircleGame.ui
             
             button.Click += (s, a) =>
             {
-                ModalManager.Instance.OpenModal = ModalType.MainMenu;
+                OnBack();
             };
 
             panel.Widgets.Add(button);

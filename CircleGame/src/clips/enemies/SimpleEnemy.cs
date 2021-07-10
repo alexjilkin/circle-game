@@ -1,7 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using CircleGame.world;
 
-namespace CircleGame
+namespace CircleGame.clips.enemies
 {
     public class SimpleEnemy : EnemyCircle
     {
@@ -9,7 +10,7 @@ namespace CircleGame
         {
             this.Position = position;
             this.Color = Color.LightPink;
-            this.Speed = 3;
+            this.Speed = Rules.Instance.BaseSpeed;
         }
 
     }

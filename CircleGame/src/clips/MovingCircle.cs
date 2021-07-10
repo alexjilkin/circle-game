@@ -3,17 +3,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using CircleGame.world;
-namespace CircleGame
+
+namespace CircleGame.clips
 {
     public class MovingCircle: Clip
     {
-        protected int directionX;
-        protected int directionY = new System.Random().Next(0, 2) * 2 - 1;
+        protected int DirectionX {get; set;}
+        protected int DirectionY {get; set;}
         private int radius;
         private int scale;
 
         public int Radius {
-            get => this.Radius;
+            get => this.radius;
             protected set {
                 this.radius = value;
                 this.Origin = new Vector2(radius, radius);
@@ -39,15 +40,15 @@ namespace CircleGame
             this.scale = 1;
             this.Radius = radius;
             this.Origin = new Vector2(radius, radius);
-            this.directionX = new System.Random().Next(0, 2) * 2 - 1;
-            this.directionY = new System.Random().Next(0, 2) * 2 - 1;
+            this.DirectionX = new System.Random().Next(0, 2) * 2 - 1;
+            this.DirectionY = new System.Random().Next(0, 2) * 2 - 1;
             this.updateTexture();
         }
 
     public override void update(KeyboardState state)
     {
         this.handleBorderCollision(state);
-        this.Position = Vector2.Add(this.Position, new Vector2(directionX * Speed, directionY * Speed));
+        this.Position = Vector2.Add(this.Position, new Vector2(DirectionX * Speed, DirectionY * Speed));
     }
 
     private void updateTexture() {
@@ -65,23 +66,23 @@ namespace CircleGame
         if (this.Position.X + drawRadius > width + x)
         {
             this.Position = new Vector2(x + width - drawRadius - 1, this.Position.Y);
-            directionX *= -1;
+            DirectionX *= -1;
         }
 
         if (this.Position.Y + drawRadius > height + y)
         {
             this.Position = new Vector2(this.Position.X, y + height - drawRadius - 1);
-            directionY *= -1;
+            DirectionY *= -1;
         }
         else if (this.Position.X - drawRadius < x + 15)
         {
             this.Position = new Vector2(x + drawRadius + 16, this.Position.Y);
-            directionX *= -1;
+            DirectionX *= -1;
         }
         else if (this.Position.Y - drawRadius < y + 15)
         {
             this.Position = new Vector2(this.Position.X, y + drawRadius + 16);
-            directionY *= -1;
+            DirectionY *= -1;
         }
     }
     public bool isIntersecting(MovingCircle circle) {

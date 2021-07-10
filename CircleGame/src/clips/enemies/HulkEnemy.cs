@@ -9,15 +9,15 @@ namespace CircleGame.clips.enemies
     {
         private readonly string perkName = "hulk";
         public string PerkName {
-            get { return perkName; }
+            get => perkName;
         }
         private readonly int speedIncrease = 0;
         public int SpeedIncrease {
-            get { return speedIncrease; }
+            get => speedIncrease;
         }
         private readonly int scaleIncrease = Rules.Instance.HulkPerk.ScaleIncrease; 
         public int ScaleIncrease {
-            get { return scaleIncrease; }
+            get => scaleIncrease;
         }
 
         public HulkEnemy(int radius, Vector2 position) : base(radius, position)

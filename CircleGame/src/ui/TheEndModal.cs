@@ -11,7 +11,6 @@ namespace CircleGame.ui
     public class TheEndModal: IModal
     {
         private Panel content;
-
         public Panel Content {
             get => content;
         }
@@ -77,9 +76,9 @@ namespace CircleGame.ui
             };
 
             var nameInput = new TextBox {
-                TextColor=Color.White,
-                Padding=new Thickness(20),
-                Background = new SolidBrush(Color.LightSlateGray),
+                TextColor = Color.Black,
+                Padding = new Thickness(20),
+                Background = new SolidBrush(Color.White),
                 GridRow = 2
             };
 

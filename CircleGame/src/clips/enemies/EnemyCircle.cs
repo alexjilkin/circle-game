@@ -1,8 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using CircleGame.world;
 
-namespace CircleGame
+namespace CircleGame.clips.enemies
 {
     abstract public class EnemyCircle : MovingCircle
     {

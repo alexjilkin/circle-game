@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using CircleGame.world;
 
-namespace CircleGame
+namespace CircleGame.clips
 {
     public interface IDrawable
     {

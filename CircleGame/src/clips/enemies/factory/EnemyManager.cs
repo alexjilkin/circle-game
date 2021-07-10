@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace CircleGame.clips.enemies.factory
+namespace CircleGame.clips.enemies
 {
     public static class EnemyManager
     {

@@ -29,7 +29,6 @@ namespace CircleGame.clips
         }
 
         private void handlePerk(GameTime gameTime) {
-           
             if (this.Perk != null && (gameTime.TotalGameTime.TotalSeconds - this.totalSecondsAtPerk) > 5) {
                 this.Perk = null;
                 this.Speed = Rules.Instance.PlayerSpeed;
@@ -52,25 +51,25 @@ namespace CircleGame.clips
         private void handleMovement(KeyboardState state) {
             if ((state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Up) || state.IsKeyDown(Keys.Down)))
             {
-                this.directionX = 0;
-                directionY = 0;
+                this.DirectionX = 0;
+                DirectionY = 0;
             }
             
             if (state.IsKeyDown(Keys.Right))
             {
-                this.directionX = 1;
+                this.DirectionX = 1;
             }
             if (state.IsKeyDown(Keys.Left))
             {
-                directionX = -1;
+                DirectionX = -1;
             }
             if (state.IsKeyDown(Keys.Up))
             {
-                directionY = -1;
+                DirectionY = -1;
             }
             if (state.IsKeyDown(Keys.Down))
             {
-                directionY = 1;
+                DirectionY = 1;
             }
         }
     }

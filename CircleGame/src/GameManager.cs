@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 using CircleGame.world;
 using CircleGame.clips;
 using CircleGame.clips.enemies;
-using CircleGame.clips.enemies.factory;
 
 namespace CircleGame
 {
