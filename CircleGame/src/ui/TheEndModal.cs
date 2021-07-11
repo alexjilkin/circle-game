@@ -93,7 +93,7 @@ namespace CircleGame.ui
                         score=GameManager.Score,
                         name=nameInput.Text
                     });
-
+                    SoundManager.positive.Play();
                     grid.Widgets.Clear();
 
                     var text = new Label {

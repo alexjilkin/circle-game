@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using CircleGame.utils;
 using Microsoft.Xna.Framework.Input;
 using CircleGame.world;
 
@@ -13,15 +10,14 @@ namespace CircleGame.clips
         private double totalSecondsAtPerk;
         public IPerk Perk { get; private set; }
 
-        public Player(int radius) : base(radius, Rules.Instance.BoundryPosition + new Vector2(100, 100))
-        {
+        public Player(int radius) : base(radius, Rules.Instance.BoundryPosition + new Vector2(100, 100)) {
             this.Color = Color.LightGreen;
             this.Speed = Rules.Instance.PlayerSpeed;
             this.Perk = null;
+            this.BorderHit += () => SoundManager.hit.Play();
         }
 
-        public override void update(KeyboardState state, GameTime gameTime)
-        {
+        public override void update(KeyboardState state, GameTime gameTime) {
             base.update(state);
             this.handleMovement(state);
             this.handleRadiusChange();

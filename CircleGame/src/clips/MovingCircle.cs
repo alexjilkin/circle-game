@@ -1,8 +1,9 @@
-﻿using System.Runtime;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using CircleGame.world;
+using CircleGame.utils;
 
 namespace CircleGame.clips
 {
@@ -10,6 +11,9 @@ namespace CircleGame.clips
     {
         protected int DirectionX {get; set;}
         protected int DirectionY {get; set;}
+        protected Action BorderHit;
+        private void OnBorderHit() => BorderHit?.Invoke();
+
         private int radius;
         private int scale;
 
@@ -34,8 +38,7 @@ namespace CircleGame.clips
             }
         }
 
-        public MovingCircle(int radius, Vector2 position) : base()
-        {
+        public MovingCircle(int radius, Vector2 position) : base() {
             this.Position = position;
             this.scale = 1;
             this.Radius = radius;
@@ -45,9 +48,11 @@ namespace CircleGame.clips
             this.updateTexture();
         }
 
-    public override void update(KeyboardState state)
-    {
-        this.handleBorderCollision(state);
+    public override void update(KeyboardState state) {
+        if(this.handleBorderCollision(state)) {
+            OnBorderHit();
+        }
+        
         this.Position = Vector2.Add(this.Position, new Vector2(DirectionX * Speed, DirectionY * Speed));
     }
 
@@ -55,35 +60,36 @@ namespace CircleGame.clips
         this.Texture = createCircleTexture(radius * 2 * this.Scale);
     }
 
-    protected void handleBorderCollision(KeyboardState state)
-    {
+    protected bool handleBorderCollision(KeyboardState state) {
         int width = Rules.Instance.Width;
         int height = Rules.Instance.Height;
         float x = Rules.Instance.BoundryPosition.X;
         float y = Rules.Instance.BoundryPosition.Y;
         int drawRadius = (this.Radius * this.Scale);
 
-        if (this.Position.X + drawRadius > width + x)
-        {
+        if (this.Position.X + drawRadius > width + x) {
             this.Position = new Vector2(x + width - drawRadius - 1, this.Position.Y);
             DirectionX *= -1;
-        }
 
-        if (this.Position.Y + drawRadius > height + y)
-        {
+            return true;
+        } else if (this.Position.Y + drawRadius > height + y) {
             this.Position = new Vector2(this.Position.X, y + height - drawRadius - 1);
             DirectionY *= -1;
-        }
-        else if (this.Position.X - drawRadius < x + 15)
-        {
+
+            return true;
+        } else if (this.Position.X - drawRadius < x + 15) {
             this.Position = new Vector2(x + drawRadius + 16, this.Position.Y);
             DirectionX *= -1;
-        }
-        else if (this.Position.Y - drawRadius < y + 15)
-        {
+
+            return true;
+        } else if (this.Position.Y - drawRadius < y + 15) {
             this.Position = new Vector2(this.Position.X, y + drawRadius + 16);
             DirectionY *= -1;
+
+            return true;
         }
+
+        return false;
     }
     public bool isIntersecting(MovingCircle circle) {
         int diam = this.Radius * 2 * this.Scale;
@@ -95,8 +101,7 @@ namespace CircleGame.clips
         return false;
     }
 
-    private Texture2D createCircleTexture(int diam)
-    {
+    private Texture2D createCircleTexture(int diam) {
         Texture2D texture = new Texture2D(this.GraphicsDevice, diam, diam);
         Color[] colorData = new Color[diam * diam];
 
@@ -124,6 +129,4 @@ namespace CircleGame.clips
             return texture;
         }
     }
-
-    
 }

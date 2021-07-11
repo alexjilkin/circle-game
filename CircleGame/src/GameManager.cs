@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using CircleGame.utils;
 using CircleGame.world;
 using CircleGame.clips;
 using CircleGame.clips.enemies;
@@ -22,6 +23,7 @@ namespace CircleGame
         private static GameState state;
         public static Action StateChanged;
         private static void OnStateChanged() => StateChanged?.Invoke();
+        
 
         public static GameState State {
             get => state;
@@ -62,8 +64,12 @@ namespace CircleGame
                     } else if (enemy is HulkEnemy) {
                         player.setPerk(Rules.Instance.HulkPerk, gameTime);
                     }
+
+                    
+                    SoundManager.positive.Play();   
                 } else {
                     State = GameState.Dead;
+                    SoundManager.death.Play();
                 }
             }
         }

@@ -1,15 +1,15 @@
 using System.Net.Http;
-using Microsoft.Xna.Framework;    
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using System.Threading.Tasks;
 using Myra.Graphics2D;
 using Myra.Graphics2D.Brushes;
-using Myra;
 using CircleGame.utils;
 using Myra.Graphics2D.UI;
 using CommonClasses;
 
 using FontStashSharp;
-using System.IO;
+
 
 namespace CircleGame.ui
 {
@@ -17,7 +17,7 @@ namespace CircleGame.ui
     {
         private Panel content = new Panel();
         private InstructionsModal instructionsModal;
-  
+        private SoundEffectInstance themeAudio;
         public Panel Content {
             get => content;
         }
@@ -26,6 +26,9 @@ namespace CircleGame.ui
             init();
             instructionsModal = new InstructionsModal();
             instructionsModal.init();
+            themeAudio = SoundManager.theme.CreateInstance();
+            themeAudio.Volume = 0.6f;
+            themeAudio.Play();
         }
         private void draw(HighScore[] highScores) {
             var panel = new Panel();
@@ -92,6 +95,7 @@ namespace CircleGame.ui
 
             button.Click += (s, a) =>
             {
+                themeAudio.Stop();
                 GameManager.restart();
             };
 
