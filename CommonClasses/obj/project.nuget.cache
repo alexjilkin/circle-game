@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "du04Kan1zqmAKvk8HyBnaH7KpQF7WvCrNQ4qjZMBYkEdOKdbunYrecduliHYsY/TAlesYipByC/3G2e++2LdUw==",
+  "dgSpecHash": "sCi+WK84Jg3DMupXV1drBM9iECeUHzk+DYbmGBUBV2J2QucuZyO0zFogywzrwnGnf+xuKSIyG9/GZmeBTCcl9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CommonClasses\\CommonClasses.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\jilki\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\3.1.10\\microsoft.netcore.app.runtime.win-x64.3.1.10.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\3.1.10\\microsoft.windowsdesktop.app.runtime.win-x64.3.1.10.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\3.1.10\\microsoft.aspnetcore.app.runtime.win-x64.3.1.10.nupkg.sha512"
+  ],
   "logs": []
 }
