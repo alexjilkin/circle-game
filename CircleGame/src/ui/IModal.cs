@@ -5,10 +5,7 @@ namespace CircleGame.ui
 {
     public interface IModal
     {
-        public Panel Content {
-            get;
-        }
-
+        public Panel Content { get; }
         public void init();
     }
 }

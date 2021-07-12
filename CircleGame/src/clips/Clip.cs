@@ -10,9 +10,7 @@ namespace CircleGame.clips
         private GraphicsDevice _graphicsDevice;
         public Color Color { get; protected set; }
         public Vector2 Position { get; protected set; }
-
         public Vector2 Origin { get; protected set; }
-
         protected Texture2D Texture { get; set; }
         public GraphicsDevice GraphicsDevice { get => _graphicsDevice; }
         public Clip()

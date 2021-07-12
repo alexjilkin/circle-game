@@ -11,7 +11,7 @@ namespace CircleGame.clips
         public IPerk Perk { get; private set; }
 
         public Player(int radius) : base(radius, Rules.Instance.BoundryPosition + new Vector2(100, 100)) {
-            this.Color = Color.LightGreen;
+            this.Color = Color.FloralWhite;
             this.Speed = Rules.Instance.PlayerSpeed;
             this.Perk = null;
             this.BorderHit += () => SoundManager.hit.Play();

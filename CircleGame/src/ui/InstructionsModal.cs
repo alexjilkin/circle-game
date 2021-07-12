@@ -35,30 +35,61 @@ namespace CircleGame.ui
             grid.RowsProportions.Add(new Proportion());
             grid.RowsProportions.Add(new Proportion());
             grid.RowsProportions.Add(new Proportion());
+            grid.RowsProportions.Add(new Proportion());
             grid.ColumnsProportions.Add(new Proportion());
 
-            string text = "Circles that are bigger than you are dangerous";
+            grid.Widgets.Add(new Label {
+                Text = "Use your arrow keys to change direction",
+                TextColor=Color.LightGreen,
+                HorizontalAlignment=HorizontalAlignment.Center,
+                VerticalAlignment=VerticalAlignment.Top,
+                Margin=new Thickness(0, 20, 0 ,0),
+                Padding=new Thickness(10),
+                GridRow=1,
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(36)
+            });
 
-            var line1 = new Label {
-                Text = text,
+            grid.Widgets.Add(new Label {
+                Text = "Eat circles whose radius is smaller then your own",
+                TextColor=Color.LightPink,
+                HorizontalAlignment=HorizontalAlignment.Center,
+                VerticalAlignment=VerticalAlignment.Top,
+                Margin=new Thickness(0, 20, 0 ,0),
+                Padding=new Thickness(10),
+                GridRow=2,
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(32)
+            });
+
+            grid.Widgets.Add(new Label {
+                Text = "Red enemy boosts your speed",
                 TextColor=Color.Red,
                 HorizontalAlignment=HorizontalAlignment.Center,
                 VerticalAlignment=VerticalAlignment.Top,
                 Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(20),
-                GridRow=1,
-                Background = new SolidBrush(Color.Transparent)
-            };
+                Padding=new Thickness(10),
+                GridRow=3,
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(28)
+            });
 
-            line1.Font = Common.Font.GetFont(40);
-            grid.Widgets.Add(line1);
+            grid.Widgets.Add(new Label {
+                Text = "Green enemy is bigger then it actually is",
+                TextColor=Color.Green,
+                HorizontalAlignment=HorizontalAlignment.Center,
+                VerticalAlignment=VerticalAlignment.Top,
+                Margin=new Thickness(0, 20, 0 ,0),
+                Padding=new Thickness(10),
+                GridRow=4,
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(28)
+            });
 
 
             panel.Widgets.Add(grid);
 
-            var button = Common.getButton("Back", 50);
-            button.HorizontalAlignment = HorizontalAlignment.Center;
-            button.VerticalAlignment = VerticalAlignment.Bottom;
+            var button = Common.getButton("Back", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom);
             button.Margin = new Thickness(0, 0, 0, 50);
             
             button.Click += (s, a) =>

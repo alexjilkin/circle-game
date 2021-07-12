@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IaksJCpGB+eIMNviTVH1mlFs+txQ+QLJah9dehlzCwSL7I3uFSZUDI05i/6Pk3xXK+KnNGhSUJHgPIMFGETvTA==",
+  "dgSpecHash": "tA/xHlzIVmUpPZXjD115Pp74P0J+WhGRr/jVDSS+mzqnlDPMRqjALAkV4gKosW3+qzaDe8IvOneYHR+vmrlnog==",
   "success": true,
   "projectFilePath": "C:\\Users\\jilki\\Documents\\GitHub\\circle-game\\CircleGameApi\\CircleGameApi.csproj",
   "expectedPackageFiles": [
@@ -45,7 +45,10 @@
     "C:\\Users\\jilki\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",
     "C:\\Users\\jilki\\.nuget\\packages\\system.security.permissions\\5.0.0\\system.security.permissions.5.0.0.nupkg.sha512",
     "C:\\Users\\jilki\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
-    "C:\\Users\\jilki\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
+    "C:\\Users\\jilki\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\5.0.1\\microsoft.netcore.app.runtime.win-x64.5.0.1.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\5.0.1\\microsoft.windowsdesktop.app.runtime.win-x64.5.0.1.nupkg.sha512",
+    "C:\\Users\\jilki\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\5.0.1\\microsoft.aspnetcore.app.runtime.win-x64.5.0.1.nupkg.sha512"
   ],
   "logs": []
 }

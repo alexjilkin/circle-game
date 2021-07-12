@@ -9,7 +9,6 @@
             "args": [
                 "build",
                 "${workspaceFolder}/CircleGame/CircleGame.csproj",
-                "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"

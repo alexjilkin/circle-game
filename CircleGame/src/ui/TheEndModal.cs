@@ -21,30 +21,22 @@ namespace CircleGame.ui
             var panel = new Panel();
 
             string titleText = GameManager.State == GameState.Dead ? "You are DEAD" : "You Finished!";
-            var title = new Label {
+
+            panel.Widgets.Add(new Label {
                 Text = titleText,
                 TextColor=Color.Red,
                 HorizontalAlignment=HorizontalAlignment.Center,
                 VerticalAlignment=VerticalAlignment.Top,
                 Margin=new Thickness(0, 20, 0 ,0),
                 Padding=new Thickness(20),
-                Background = new SolidBrush(Color.Transparent)
-            };
-
-            title.Font = Common.Font.GetFont(62);
-            panel.Widgets.Add(title);
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(62)
+            });
 
             panel.Widgets.Add(getNameInputGrid());
 
-            var button = Common.getButton("Restart", 50);
-            button.HorizontalAlignment = HorizontalAlignment.Center;
-            button.VerticalAlignment = VerticalAlignment.Bottom;
+            var button = Common.getButton("Restart", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom, (s, a) => GameManager.restart());
             button.Margin = new Thickness(0, 0, 0, 50);
-            
-            button.Click += (s, a) =>
-            {
-                GameManager.restart();
-            };
 
             panel.Widgets.Add(button);
 

@@ -1,0 +1,3 @@
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\bin\Debug\netcoreapp3.1\publish\CommonClasses.dll
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\bin\Debug\netcoreapp3.1\publish\CommonClasses.deps.json
+C:\Users\jilki\Documents\GitHub\circle-game\CommonClasses\bin\Debug\netcoreapp3.1\publish\CommonClasses.pdb

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using FontStashSharp;
 using System.IO;
@@ -30,6 +31,15 @@ namespace CircleGame.utils
             button.HorizontalAlignment = horizontalAlignment;
             button.VerticalAlignment = verticalAlignment;
 
+            return button;
+        }
+
+        public static TextButton getButton(string text, int fontSize, HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment, EventHandler onClick) {
+            var button = Common.getButton(text, fontSize);
+            
+            button.HorizontalAlignment = horizontalAlignment;
+            button.VerticalAlignment = verticalAlignment;
+            button.Click += onClick;
             return button;
         }
     }

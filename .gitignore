@@ -4,4 +4,3 @@ Game2/bin/Debug/netcoreapp3.1/Game2.dll
 *.puml
 */publish/**
 **/Release/**
-**/Debug/**

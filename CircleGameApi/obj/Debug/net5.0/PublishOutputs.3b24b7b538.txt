@@ -1,6 +1,16 @@
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\CircleGameApi.exe
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\publish\web.config
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\web.config
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\appsettings.Development.json
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\appsettings.json
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\appsettings.Development.json
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\appsettings.json
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\CircleGameApi.deps.json
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\CircleGameApi.runtimeconfig.json
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\publish\appsettings.Development.json
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\publish\appsettings.json
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\publish\CircleGameApi.deps.json
+C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\publish\publish\CircleGameApi.runtimeconfig.json
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\CircleGameApi.dll
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\CircleGameApi.deps.json
 C:\Users\jilki\Documents\GitHub\circle-game\CircleGameApi\bin\Debug\net5.0\publish\CircleGameApi.runtimeconfig.json

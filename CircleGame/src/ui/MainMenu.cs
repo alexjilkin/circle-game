@@ -1,3 +1,4 @@
+
 using System.Net.Http;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -33,78 +34,62 @@ namespace CircleGame.ui
         private void draw(HighScore[] highScores) {
             var panel = new Panel();
 
-            var title = new Label {
+            panel.Widgets.Add(new Label {
                 Text = "Circle Game",
                 TextColor = Color.Pink,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(0, 20, 0 ,0),
                 Padding = new Thickness(20),
-                Background = new SolidBrush(Color.Transparent)
-            };
-
-            title.Font = Common.Font.GetFont(65);
-
-            panel.Widgets.Add(title);
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(65)
+            });
 
             var scoreGrid = new Grid(){
                 ColumnSpacing = 50,
                 RowSpacing = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Margin=new Thickness(0, 150, 0, 0),
+                Margin = new Thickness(0, 150, 0, 0),
             };
-
-            var a = FontSystemFactory.Create(GameManager.graphicsDevice);
 
             for (int i = 0; i < highScores.Length; i++)
             {
                 scoreGrid.ColumnsProportions.Add(new Proportion());
                 scoreGrid.RowsProportions.Add(new Proportion());
 
-                var name = new Label
-                {
+                scoreGrid.Widgets.Add(new Label {
                     Id = "name",
                     Text = highScores[i].name,
                     TextColor = Color.Red,
                     GridColumn = 1,
                     GridRow = i,
-                    Background= new SolidBrush(Color.Transparent)
-                };
+                    Background= new SolidBrush(Color.Transparent),
+                    Font = Common.Font.GetFont(25)
+                });
 
-                var score = new Label
-                {
+                scoreGrid.Widgets.Add(new Label {
                     Id = "score",
                     Text = highScores[i].score.ToString(),
                     TextColor = Color.Red,
                     GridColumn = 2,
                     GridRow = i,
-                    Background= new SolidBrush(Color.Transparent)
-                };
-            
-                name.Font = Common.Font.GetFont(25);
-                score.Font = Common.Font.GetFont(25);
-
-                scoreGrid.Widgets.Add(name);
-                scoreGrid.Widgets.Add(score);
+                    Background= new SolidBrush(Color.Transparent),
+                    Font = Common.Font.GetFont(25)
+                });
             }
 
             panel.Widgets.Add(scoreGrid);
 
-            var button = Common.getButton("Start", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom);
-            button.Margin = new Thickness(0, 0, 0, 50);
-
-            button.Click += (s, a) =>
-            {
+            var button = Common.getButton("Start", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom, (s, a) => {
                 themeAudio.Stop();
                 GameManager.restart();
-            };
+            });
+            
+            button.Margin = new Thickness(0, 0, 0, 50);
 
             panel.Widgets.Add(button);
 
-            var instructionsButton = Common.getButton("How?", 30, HorizontalAlignment.Left, VerticalAlignment.Bottom);
-            instructionsButton.Margin = new Thickness(50, 0, 0, 50);
-    
-            instructionsButton.Click += (s, a) =>
+            System.EventHandler handleClick = (s, a) =>
             {
                 content.Widgets.Clear();
                 content.Widgets.Add(instructionsModal.Content);
@@ -113,6 +98,8 @@ namespace CircleGame.ui
                     content.Widgets.Add(panel);
                 };
             };
+            var instructionsButton = Common.getButton("How?", 30, HorizontalAlignment.Left, VerticalAlignment.Bottom, handleClick);
+            instructionsButton.Margin = new Thickness(50, 0, 0, 50);
 
             panel.Widgets.Add(instructionsButton);
 
@@ -123,36 +110,18 @@ namespace CircleGame.ui
         private void noScoreDraw() {
             var panel = new Panel();
 
-            var title = new TextBox{
+            panel.Widgets.Add(new TextBox{
                 Text = "Circle Game",
-                TextColor=Color.Pink,
-                HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Top,
-                Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(20),
-                Background= new SolidBrush(Color.Transparent)
-            };
+                TextColor = Color.Pink,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 20, 0 ,0),
+                Padding = new Thickness(20),
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(65)
+            });
 
-            title.Font = Common.Font.GetFont(65);
-
-            panel.Widgets.Add(title);
-
-            var button = new TextButton
-            {
-                Text = "Start",
-                HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Bottom,
-                Margin=new Thickness(0, 0, 0, 50),
-                Padding=new Thickness(10),
-                Background= new SolidBrush(Color.LightGreen)
-            };
-
-            button.Font = Common.Font.GetFont(50);
-
-            button.Click += (s, a) =>
-            {
-                GameManager.restart();
-            };
+            var button = Common.getButton("Start", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom, (s, a) => { GameManager.restart(); });
 
             panel.Widgets.Add(button);
 
@@ -174,7 +143,5 @@ namespace CircleGame.ui
         public void init() {
             Task _ = initHighScore();
         }
-
-
     }
 }

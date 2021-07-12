@@ -39,20 +39,21 @@ namespace CircleGame.ui
             OpenModal = ModalType.MainMenu;
             desktop.Root = mainMenu.Content;
             
-            GameManager.StateChanged += () => {
-                if(new GameState[]{GameState.End, GameState.Dead}.Contains(GameManager.State)) {
-                    theEndModal.init();
-                    OpenModal = ModalType.TheEnd;
-                    desktop.Root = theEndModal.Content;
-                } else if(GameManager.State == GameState.Initial) {
-                    mainMenu.init();
-                    OpenModal = ModalType.MainMenu;
-                    desktop.Root = mainMenu.Content;
-                } else if (GameManager.State == GameState.Play) {
-                    desktop.Root = null;
-                    OpenModal = ModalType.None;
-                }
-            };
+            GameManager.StateChanged += handleStateChanged;
+        }
+        private void handleStateChanged() {
+            if(new GameState[]{GameState.End, GameState.Dead}.Contains(GameManager.State)) {
+                theEndModal.init();
+                OpenModal = ModalType.TheEnd;
+                desktop.Root = theEndModal.Content;
+            } else if(GameManager.State == GameState.Initial) {
+                mainMenu.init();
+                OpenModal = ModalType.MainMenu;
+                desktop.Root = mainMenu.Content;
+            } else if (GameManager.State == GameState.Play) {
+                desktop.Root = null;
+                OpenModal = ModalType.None;
+            }
         }
         public void draw(SpriteBatch _) {
             desktop.Render();

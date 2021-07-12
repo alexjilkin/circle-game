@@ -41,28 +41,29 @@ namespace CircleGame
         public static List<EnemyCircle> Enemies {
             get => enemies;
         }
-        private static Player player;
+
         public static Player Player {
-            get => player;
+            get;
+            private set;
         }
 
         public static GraphicsDevice graphicsDevice;
         
         public static void handleItersection(GameTime gameTime) {
             MovingCircle enemy;
-            enemy = getIntersecting(enemies, player);
+            enemy = getIntersecting(enemies, Player);
 
             if (enemy != null) {
-                if (player.Radius >= enemy.Radius) {
+                if (Player.Radius >= enemy.Radius) {
                     score += enemy.Radius / 5;
                     enemies = enemies.FindAll(e => e != enemy);
                     if (enemies.Count == 0) {
                        State = GameState.End;
                     }
                     if(enemy is FlashEnemy) {
-                        player.setPerk(Rules.Instance.FlashPerk, gameTime);
+                        Player.setPerk(Rules.Instance.FlashPerk, gameTime);
                     } else if (enemy is HulkEnemy) {
-                        player.setPerk(Rules.Instance.HulkPerk, gameTime);
+                        Player.setPerk(Rules.Instance.HulkPerk, gameTime);
                     }
 
                     
@@ -74,7 +75,7 @@ namespace CircleGame
             }
         }
 
-         public static MovingCircle getIntersecting(IEnumerable<MovingCircle> circles, Player player) {
+        public static MovingCircle getIntersecting(IEnumerable<MovingCircle> circles, Player player) {
             foreach (MovingCircle circle in circles) 
             {
                 if (player.isIntersecting(circle)) {
@@ -95,7 +96,7 @@ namespace CircleGame
             EnemyConfig[] enemiesConfig = Rules.Instance.Enemies;
 
             enemies = new List<EnemyCircle>();
-            player = new Player(30);
+            Player = new Player(30);
             Vector2 boundryPosition = Rules.Instance.BoundryPosition;
 
             foreach (EnemyConfig enemyConfig in enemiesConfig)
@@ -103,8 +104,8 @@ namespace CircleGame
                 EnemyCircle enemy = EnemyManager.createEnemy(
                     enemyConfig.Type, 
                     enemyConfig.Radius, 
-                    boundryPosition + new Vector2(new System.Random().Next(100, Rules.Instance.Width), 
-                    new System.Random().Next(100, Rules.Instance.Height))
+                    boundryPosition + new Vector2(new System.Random().Next(300, Rules.Instance.Width), 
+                    new System.Random().Next(300, Rules.Instance.Height))
                 );
                 enemies.Add(enemy);
             }
