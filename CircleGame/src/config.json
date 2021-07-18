@@ -5,6 +5,7 @@
     "height": 1300,
     "BaseSpeed": 2.5,
     "PlayerSpeed": 4.0,
+    "MovementsLimits": 2,
     "Enemies": [{
         "Type": "flash",
         "Radius": 10

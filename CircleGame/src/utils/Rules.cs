@@ -24,6 +24,9 @@ namespace CircleGame.world
         public Vector2 BoundryPosition {
             get => new Vector2(this.getConfig<int>("boundry-start-x"), this.getConfig<int>("boundry-start-y"));
         }
+        public int MovementsLimit {
+            get => this.getConfig<int>("MovementsLimits");
+        }
         public int Width {
             get => this.getConfig<int>("width");
         }
