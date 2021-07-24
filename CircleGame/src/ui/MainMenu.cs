@@ -34,7 +34,7 @@ namespace CircleGame.ui
         private void draw(HighScore[] highScores) {
             var panel = new Panel();
 
-            panel.Widgets.Add(new Label {
+            panel.Widgets.Add(new Label{
                 Text = "Circle Game",
                 TextColor = Color.Pink,
                 HorizontalAlignment = HorizontalAlignment.Center,
@@ -57,7 +57,7 @@ namespace CircleGame.ui
                 scoreGrid.ColumnsProportions.Add(new Proportion());
                 scoreGrid.RowsProportions.Add(new Proportion());
 
-                scoreGrid.Widgets.Add(new Label {
+                scoreGrid.Widgets.Add(new Label{
                     Id = "name",
                     Text = highScores[i].name,
                     TextColor = Color.Red,
@@ -110,7 +110,7 @@ namespace CircleGame.ui
         private void noScoreDraw() {
             var panel = new Panel();
 
-            panel.Widgets.Add(new TextBox{
+            panel.Widgets.Add(new Label{
                 Text = "Circle Game",
                 TextColor = Color.Pink,
                 HorizontalAlignment = HorizontalAlignment.Center,
@@ -129,10 +129,29 @@ namespace CircleGame.ui
             content.Widgets.Add(panel);
         }
 
+        private void loading() {
+            var panel = new Panel();
+
+            panel.Widgets.Add(new Label{
+                Text = "Loading...",
+                TextColor = Color.Pink,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 20, 0 ,0),
+                Padding = new Thickness(20),
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(50)
+            });
+
+            content.Widgets.Clear();
+            content.Widgets.Add(panel);
+        }
+
         public async Task initHighScore() {
             HttpClient client = new HttpClient();
 
             try {
+                loading();
                 var highScores = await Api.GetHighScores();
                 draw(highScores);
             }
