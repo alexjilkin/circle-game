@@ -22,26 +22,20 @@ namespace CircleGameApi
             db = muxer.GetDatabase();
         }
 
-        public async Task SortedSetAddAsync<T>(string key, double score, T value)
-        {
+        public async Task SortedSetAddAsync<T>(string key, double score, T value) {
             await db.SortedSetAddAsync(key, JsonConvert.SerializeObject(value), score);
         }
 
-        public  async Task<T> GetObjectAsync<T>(string key)
-        {
+        public  async Task<T> GetObjectAsync<T>(string key) {
             var value = await db.StringGetAsync(key);
 
             return JsonConvert.DeserializeObject<T>(value);
         }
-
-        public  async Task<T[]> GetSortedSet<T>(string key, int limit)
-        {
+        public  async Task<T[]> GetSortedSet<T>(string key, int limit) {
             RedisValue[] set = await db.SortedSetRangeByRankAsync(key, 0, limit, Order.Descending);
             return set.Select(d => JsonConvert.DeserializeObject<T>(d)).ToArray();
         }
-
-        public  async Task<T> GetHighestInSet<T>(string key)
-        {
+        public async Task<T> GetHighestInSet<T>(string key) {
             RedisValue[] set = await db.SortedSetRangeByRankAsync(key, 0, 1, Order.Descending);
             return JsonConvert.DeserializeObject<T>(set[0]);
         }

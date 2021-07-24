@@ -15,17 +15,35 @@
         })
     }
 
+    function renderMedian(median) {
+        $median = document.querySelector('.median-score .value')
+        $median.innerHTML = `${median}`
+    }
+
+    function renderAverage(average) {
+        $median = document.querySelector('.average-score .value')
+        $median.innerHTML = `${average}`
+    }
+
     circleGameApiClient.getScores().then(res => {
         scores = res
         filteredScores = scores;
         renderScores(scores)
     })
 
+    circleGameApiClient.getMedian().then(median => {
+        renderMedian(median)
+    })
+
+    circleGameApiClient.getAverage().then(average => {
+        renderAverage(average)
+    })
+
     const input = document.getElementById('input-filter')
-P
+
     input.addEventListener('input', e => {
         filterValue = e.target.value
-        filteredScores = scores.filter(({name}) => name.toLowerCase().includes(filterValue.toLowerCase()))
+        filteredScores = scores.filter(({name}) => name && name.toLowerCase().includes(filterValue.toLowerCase()))
         renderScores(filteredScores)
     });
 })()

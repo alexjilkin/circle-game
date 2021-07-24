@@ -23,7 +23,7 @@ namespace CircleGameApi.Controllers
         [HttpGet]
         public async Task<HighScore[]> Get()
         {
-            this._logger.LogInformation("Get HighScore");
+            this._logger.LogInformation("Get high score list");
 
             return await DB.Instance.GetSortedSet<HighScore>("score", -1);
         }
@@ -32,9 +32,28 @@ namespace CircleGameApi.Controllers
         [Route("Max")]
         public async Task<HighScore> GetMax()
         {
-            this._logger.LogInformation("Get Max Score");
+            this._logger.LogInformation("Get max score");
 
             return await DB.Instance.GetHighestInSet<HighScore>("score");
+        }
+        [HttpGet]
+        [Route("Median")]
+        public async Task<int> GetMedian()
+        {
+            this._logger.LogInformation("Get median");
+
+            HighScore[] scores = await DB.Instance.GetSortedSet<HighScore>("score", -1);
+            return scores[(int)Math.Round(scores.Count() / 2.0)].score;
+        }
+        [HttpGet]
+        [Route("Average")]
+        public async Task<int> GetAverage()
+        {
+            this._logger.LogInformation("Get average");
+
+            HighScore[] scores = await DB.Instance.GetSortedSet<HighScore>("score", -1);
+            return scores.Sum(score => score.score) / scores.Count();
+
         }
 
         [HttpGet]
