@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using CircleGame.ui;
 using CircleGame.clips;
 using CircleGame.world;
+using CircleGame.utils;
 using Myra;
 
 namespace CircleGame
@@ -37,8 +38,6 @@ namespace CircleGame
 			    SurfaceFormat.Color, DepthFormat.None, pp.MultiSampleCount, RenderTargetUsage.DiscardContents);
 
             GameManager.State = GameState.Initial;
-            background = new Background();
-            bounderies = new Bounderies();
 
             graphics.IsFullScreen = false;
             graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
@@ -49,9 +48,12 @@ namespace CircleGame
         }
 
         protected override void LoadContent() {
+            Common.init();
             MyraEnvironment.Game = this;
             hud = new HUD();
-            
+            background = new Background();
+            bounderies = new Bounderies();
+
             Window.TextInput += (s, a) =>
             {
                 ModalManager.Instance.Desktop.OnChar(a.Character);
@@ -62,8 +64,8 @@ namespace CircleGame
             drawables.Add(bounderies);
             drawables.Add(hud);
 
-            
             initGame();
+            base.LoadContent();
         }
 
         private void initGame() {

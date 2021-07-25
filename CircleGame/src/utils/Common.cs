@@ -10,7 +10,7 @@ namespace CircleGame.utils
 {
     public static class Common
     {
-        static Common() {
+        public static void init() {
             Font.AddFont(File.ReadAllBytes("..\\assets\\ka1.ttf"));
         }
         public static readonly FontSystem  Font = FontSystemFactory.Create(GameManager.graphicsDevice);

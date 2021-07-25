@@ -9,9 +9,6 @@ using CircleGame.utils;
 using Myra.Graphics2D.UI;
 using CommonClasses;
 
-using FontStashSharp;
-
-
 namespace CircleGame.ui
 {
     public class MainMenu: IModal

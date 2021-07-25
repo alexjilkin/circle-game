@@ -32,14 +32,15 @@ namespace CircleGame.ui
 
         private ModalManager() {
             desktop = new Desktop();
-            theEndModal = new TheEndModal();
             mainMenu = new MainMenu();
+            mainMenu.init();
+            desktop.Root = mainMenu.Content;
+
+            theEndModal = new TheEndModal();
             nextLevelModal = new NextLevelModal();
             desktop.HasExternalTextInput = true;
             
-            mainMenu.init();
             OpenModal = ModalType.MainMenu;
-            desktop.Root = mainMenu.Content;
             
             GameManager.StateChanged += handleStateChanged;
         }
