@@ -20,8 +20,8 @@ namespace CircleGame.world
         }
 
         public void update(Player player) {
-            int width = GameManager.graphicsDevice.DisplayMode.Width;
-            int height = GameManager.graphicsDevice.DisplayMode.Height;
+            int width = 1920;
+            int height = 1080;
 
             Camera.Instance.position = player.Position - new Vector2(width / 2, height / 2);
 
