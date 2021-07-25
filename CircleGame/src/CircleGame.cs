@@ -13,37 +13,42 @@ namespace CircleGame
 {
     public class CircleGame : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
         private List<clips.IDrawable> drawables = new List<clips.IDrawable>();
         private Background background;
         private HUD hud;
         private Bounderies bounderies;
+        private RenderTarget2D renderTarget;
         
-        public CircleGame()
-        {
-            _graphics = new GraphicsDeviceManager(this);
+        public CircleGame() {
+            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
 
-        protected override void Initialize()
-        {
+        protected override void Initialize() {
             GameManager.graphicsDevice = GraphicsDevice;
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
+
+            renderTarget = new RenderTarget2D(graphics.GraphicsDevice, 1920, 1080, false,
+			    SurfaceFormat.Color, DepthFormat.None, pp.MultiSampleCount, RenderTargetUsage.DiscardContents);
+
             GameManager.State = GameState.Initial;
             background = new Background();
             bounderies = new Bounderies();
 
-            _graphics.IsFullScreen = false;
-            _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
-            _graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+            graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
 
-            _graphics.ApplyChanges();
+            graphics.ApplyChanges();
             base.Initialize();
         }
 
-        protected override void LoadContent()
-        {
+        protected override void LoadContent() {
             MyraEnvironment.Game = this;
             hud = new HUD();
             
@@ -57,7 +62,7 @@ namespace CircleGame
             drawables.Add(bounderies);
             drawables.Add(hud);
 
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
             initGame();
         }
 
@@ -65,8 +70,7 @@ namespace CircleGame
             GameManager.initCircles();
         }
 
-        protected override void Update(GameTime gameTime)
-        {
+        protected override void Update(GameTime gameTime) {
             KeyboardState state = Keyboard.GetState();
             
             if (GameManager.State != GameState.Play) {
@@ -75,7 +79,7 @@ namespace CircleGame
             }
 
            
-            Camera.Instance.update(GameManager.Player, GraphicsDevice);
+            Camera.Instance.update(GameManager.Player);
             GameManager.handleItersection(gameTime);
 
             GameManager.Player.update(state, gameTime);
@@ -91,29 +95,33 @@ namespace CircleGame
             base.Update(gameTime);
         }
         
-        protected override void Draw(GameTime gameTime)
-        {
+        protected override void Draw(GameTime gameTime) {
             if (GameManager.State != GameState.Play) {
-                GraphicsDevice.Clear(Color.SeaShell);
-                ModalManager.Instance.draw(_spriteBatch);
+                GameManager.graphicsDevice.Clear(Color.SeaShell);
+                ModalManager.Instance.draw(spriteBatch);
                 return;
             }
+            GameManager.graphicsDevice.SetRenderTarget(renderTarget);
+            
+            spriteBatch.Begin();
 
-            _spriteBatch.Begin();
-
-            foreach (clips.IDrawable drawable in drawables) 
-            {
-                drawable.draw(_spriteBatch);
-            }
-            foreach (Clip enemy in GameManager.Enemies)
-            {
-              enemy.draw(_spriteBatch);
+            foreach (clips.IDrawable drawable in drawables) {
+                drawable.draw(spriteBatch);
             }
 
-            GameManager.Player.draw(_spriteBatch);
+            foreach (Clip enemy in GameManager.Enemies) {
+                enemy.draw(spriteBatch);
+            }
+
+            GameManager.Player.draw(spriteBatch);
+
+            spriteBatch.End();
             
-            _spriteBatch.End();
-            
+            GameManager.graphicsDevice.SetRenderTarget(null);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(renderTarget, new Rectangle(0, 0,  GraphicsDevice.DisplayMode.Width,  GraphicsDevice.DisplayMode.Height), Color.White);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

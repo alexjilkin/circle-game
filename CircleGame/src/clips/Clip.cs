@@ -7,22 +7,17 @@ namespace CircleGame.clips
 {
     public class Clip: IDrawable
     {
-        private GraphicsDevice _graphicsDevice;
         public Color Color { get; protected set; }
         public Vector2 Position { get; protected set; }
         public Vector2 Origin { get; protected set; }
         protected Texture2D Texture { get; set; }
-        public GraphicsDevice GraphicsDevice { get => _graphicsDevice; }
-        public Clip()
-        {
-            _graphicsDevice = GameManager.graphicsDevice;
+        public Clip() {
             Position = new Vector2(0, 0);
             Origin = new Vector2(0, 0);
-            Texture = new Texture2D(_graphicsDevice, 1, 1);
+            Texture = new Texture2D(GameManager.graphicsDevice, 1, 1);
         }
        
-        public virtual void draw(SpriteBatch spriteBatch)
-        {
+        public virtual void draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(this.Texture, this.Position - Camera.Instance.position, null, this.Color, 0, this.Origin, 1, SpriteEffects.None, 0);
         }                            
 

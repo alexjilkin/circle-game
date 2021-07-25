@@ -6,40 +6,88 @@
     "BaseSpeed": 2.5,
     "PlayerSpeed": 4.0,
     "MovementsLimits": 2,
-    "Enemies": [{
-        "Type": "flash",
-        "Radius": 10
-    },{
-        "Type": "flash",
-        "Radius": 10
-    },
-    {
-        "Type": "flash",
-        "Radius": 10
-    },
-    {
-        "Type": "hulk",
-        "Radius": 20
-    },{
-        "Radius": 15
-    },{
-        "Radius": 25
-    },
-    {
-        "Radius": 25
-    },
-    {
-        "Radius": 20
-    },{
-        "Type": "flash",
-        "Radius": 30
-    },{
-        "Radius": 40
-    },{
-        "Radius": 40
-    },{
-        "Radius": 60
-    }
+    "Levels": [
+        [{
+            "Radius": 10
+        }, {
+            "Radius": 10
+        }, {
+            "Radius": 15
+        }
+        ],
+        [{
+            "Type": "flash",
+            "Radius": 10
+        }, {
+            "Type": "hulk",
+            "Radius": 20
+        }, {
+            "Radius": 15
+        }, {
+            "Radius": 25
+        }, {
+            "Radius": 25
+        }
+        ],
+        [{
+            "Type": "flash",
+            "Radius": 10
+        },{
+            "Type": "flash",
+            "Radius": 10
+        },
+        {
+            "Type": "flash",
+            "Radius": 10
+        },
+        {
+            "Type": "hulk",
+            "Radius": 20
+        },{
+            "Radius": 15
+        },{
+            "Radius": 25
+        },
+        {
+            "Radius": 25
+        },
+        {
+            "Radius": 20
+        }],
+        [{
+            "Type": "flash",
+            "Radius": 10
+        },{
+            "Type": "flash",
+            "Radius": 10
+        },
+        {
+            "Type": "flash",
+            "Radius": 10
+        },
+        {
+            "Type": "hulk",
+            "Radius": 20
+        },{
+            "Radius": 15
+        },{
+            "Radius": 25
+        },
+        {
+            "Radius": 25
+        },
+        {
+            "Radius": 20
+        },{
+            "Type": "flash",
+            "Radius": 30
+        },{
+            "Radius": 40
+        },{
+            "Radius": 40
+        },{
+            "Radius": 60
+        }]
     ],
     "Perks": [
          {

@@ -19,9 +19,9 @@ namespace CircleGame.world
             position = new Vector2(0, 0);
         }
 
-        public void update(Player player, GraphicsDevice device) {
-            int width = device.DisplayMode.Width;
-            int height = device.DisplayMode.Height;
+        public void update(Player player) {
+            int width = GameManager.graphicsDevice.DisplayMode.Width;
+            int height = GameManager.graphicsDevice.DisplayMode.Height;
 
             Camera.Instance.position = player.Position - new Vector2(width / 2, height / 2);
 

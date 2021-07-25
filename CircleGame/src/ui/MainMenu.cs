@@ -27,9 +27,9 @@ namespace CircleGame.ui
             init();
             instructionsModal = new InstructionsModal();
             instructionsModal.init();
-            themeAudio = SoundManager.theme.CreateInstance();
-            themeAudio.Volume = 0.6f;
-            themeAudio.Play();
+            //themeAudio = SoundManager.theme.CreateInstance();
+            // themeAudio.Volume = 0.6f;
+            // themeAudio.Play();
         }
         private void draw(HighScore[] highScores) {
             var panel = new Panel();
@@ -81,7 +81,7 @@ namespace CircleGame.ui
             panel.Widgets.Add(scoreGrid);
 
             var button = Common.getButton("Start", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom, (s, a) => {
-                themeAudio.Stop();
+                //themeAudio.Stop();
                 GameManager.restart();
             });
             

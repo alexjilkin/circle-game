@@ -9,6 +9,7 @@ namespace CircleGame.ui
     public enum ModalType {
         None,
         TheEnd,
+        NextLevel,
         MainMenu,
         Instructions
     }
@@ -17,6 +18,7 @@ namespace CircleGame.ui
         private static readonly Lazy<ModalManager> lazy = new Lazy<ModalManager>(() => new ModalManager());
         private Desktop desktop;
         private TheEndModal theEndModal;
+        private NextLevelModal nextLevelModal;
         private MainMenu mainMenu;
         public ModalType OpenModal { set; get; }
 
@@ -32,7 +34,7 @@ namespace CircleGame.ui
             desktop = new Desktop();
             theEndModal = new TheEndModal();
             mainMenu = new MainMenu();
-            
+            nextLevelModal = new NextLevelModal();
             desktop.HasExternalTextInput = true;
             
             mainMenu.init();
@@ -42,7 +44,11 @@ namespace CircleGame.ui
             GameManager.StateChanged += handleStateChanged;
         }
         private void handleStateChanged() {
-            if(new GameState[]{GameState.End, GameState.Dead}.Contains(GameManager.State)) {
+            if (GameManager.State == GameState.End) {
+                nextLevelModal.init();
+                OpenModal = ModalType.NextLevel;
+                desktop.Root = nextLevelModal.Content;
+            } else if(GameManager.State == GameState.Dead) {
                 theEndModal.init();
                 OpenModal = ModalType.TheEnd;
                 desktop.Root = theEndModal.Content;

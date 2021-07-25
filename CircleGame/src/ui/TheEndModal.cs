@@ -11,9 +11,7 @@ namespace CircleGame.ui
     public class TheEndModal: IModal
     {
         private Panel content;
-        public Panel Content {
-            get => content;
-        }
+        public Panel Content { get => content; }
         public TheEndModal() {
             init();
         }
@@ -59,7 +57,7 @@ namespace CircleGame.ui
             grid.ColumnsProportions.Add(new Proportion());
 
             var text = new Label {
-                Text = "You scored " + GameManager.Score + " !  type in your name for eternal glory",
+                Text = "You scored " + GameManager.TotalScore + " !  type in your name for eternal glory",
                 TextColor=Color.Red,
                 Padding=new Thickness(20),
                 Background = new SolidBrush(Color.Transparent),
@@ -80,35 +78,35 @@ namespace CircleGame.ui
 
             button.Click += async (s, a) =>
             {
+                if (nameInput.Text == null) {
+                    return;
+                }
+
                 try {
                     await Api.SetHighScore(new HighScore(){
-                        score=GameManager.Score,
-                        name=nameInput.Text
+                        score = GameManager.TotalScore,
+                        name = nameInput.Text
                     });
                     SoundManager.positive.Play();
                     grid.Widgets.Clear();
 
-                    var text = new Label {
+                    grid.Widgets.Add(new Label{
                         Text = "Submitted!",
                         TextColor=Color.Green,
                         Padding=new Thickness(20),
                         Background = new SolidBrush(Color.Transparent),
                         GridRow = 1,
                         Font = Common.Font.GetFont(32)
-                    };
-
-                    grid.Widgets.Add(text);
+                    });
                 } catch (HttpRequestException) {
-                    var text = new Label {
+                    grid.Widgets.Add(new Label{
                         Text = "Failed to submit, try again later or never.",
                         TextColor=Color.Red,
                         Padding=new Thickness(20),
                         Background = new SolidBrush(Color.Transparent),
                         GridRow = 1,
                         Font = Common.Font.GetFont(32)
-                    };
-
-                    grid.Widgets.Add(text);
+                    });
                 }
                 
             };

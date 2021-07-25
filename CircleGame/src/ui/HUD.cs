@@ -28,18 +28,18 @@ namespace CircleGame.ui
             var panel = new Panel() {};
 
             score = new Label() {
-                Text = "Score " + GameManager.Score,
+                Text = "",
                 TextColor = Color.Pink,
-                Padding = new Thickness(12)
+                Padding = new Thickness(12),
+                Font = Common.Font.GetFont(32)
             };
-            score.Font = Common.Font.GetFont(32);
 
             panel.Widgets.Add(score);
             _desktop.Root = panel;
         }
 
         public override void update(KeyboardState state) {
-            score.Text = "Score " + GameManager.Score;
+            score.Text = "Score " + (GameManager.Score + GameManager.TotalScore);
         }
 
         public override void draw(SpriteBatch _) {

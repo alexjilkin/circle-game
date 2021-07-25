@@ -33,8 +33,8 @@ namespace CircleGame.world
         public int Height {
             get => this.getConfig<int>("height");
         }
-        public EnemyConfig[] Enemies {
-            get => this.getConfig<EnemyConfig[]>("Enemies");
+        public EnemyConfig[][] Levels {
+            get => this.getConfig<EnemyConfig[][]>("Levels");
         }
 
         public Perk[] Perks {

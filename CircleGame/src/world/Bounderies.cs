@@ -1,13 +1,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CircleGame.clips;
+using CircleGame;
 
 namespace CircleGame.world
 {
     public class Bounderies: Clip
     {
         public Bounderies(): base() {
-            this.Texture = new Texture2D(GraphicsDevice, 1, 1);
+            this.Texture = new Texture2D(GameManager.graphicsDevice, 1, 1);
             this.Texture.SetData(new[] { Color.White });
         }
         public override void draw(SpriteBatch spriteBatch) {

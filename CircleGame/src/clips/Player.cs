@@ -10,7 +10,6 @@ namespace CircleGame.clips
         private double TotalSecondsAtPerk { get; set; }
         public IPerk Perk { get; private set; }
         private int AllowedMovements { get; set; }
-
         private bool IsRightHandled { get; set; }
         private bool IsLeftHandled { get; set; }
         private bool IsUpHandled { get; set; }
