@@ -26,7 +26,6 @@ namespace CircleGame.clips
         }
 
         public float Speed { get; protected set; }
-
         public int Scale {
             get => this.scale;
             protected set {

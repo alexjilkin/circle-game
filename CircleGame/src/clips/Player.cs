@@ -58,7 +58,6 @@ namespace CircleGame.clips
         }
 
         private void handleMovement(KeyboardState state) {
-            
             bool isRight = state.IsKeyDown(Keys.Right);
             bool isLeft = state.IsKeyDown(Keys.Left);
             bool isUp = state.IsKeyDown(Keys.Up);

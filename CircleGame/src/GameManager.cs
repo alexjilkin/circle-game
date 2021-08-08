@@ -13,6 +13,7 @@ namespace CircleGame
         Initial,
         Play,
         Pause,
+        LevelEnd,
         End,
         Dead
     }
@@ -55,8 +56,15 @@ namespace CircleGame
                 if (Player.Radius >= enemy.Radius) {
                     Score += enemy.Radius / 5;
                     enemies = enemies.FindAll(e => e != enemy);
+                    
                     if (enemies.Count == 0) {
-                       State = GameState.End;
+                        TotalScore += Score;
+                        if (Level == Rules.Instance.Levels.Length - 1) {
+                            State = GameState.End;
+                        } else {
+                            State = GameState.LevelEnd;
+                        }
+                       
                     } else if (enemy is FlashEnemy) {
                         Player.setPerk(Rules.Instance.FlashPerk, gameTime);
                     } else if (enemy is HulkEnemy) {
@@ -93,7 +101,6 @@ namespace CircleGame
 
         public static void goToNextLevel() {
             Level++;
-            TotalScore += Score;
             Score = 0;
             initCircles();
             State = GameState.Play;

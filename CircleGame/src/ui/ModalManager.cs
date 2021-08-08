@@ -45,11 +45,11 @@ namespace CircleGame.ui
             GameManager.StateChanged += handleStateChanged;
         }
         private void handleStateChanged() {
-            if (GameManager.State == GameState.End) {
+            if (GameManager.State == GameState.LevelEnd) {
                 nextLevelModal.init();
                 OpenModal = ModalType.NextLevel;
                 desktop.Root = nextLevelModal.Content;
-            } else if(GameManager.State == GameState.Dead) {
+            } else if(GameManager.State == GameState.Dead || GameManager.State == GameState.End) {
                 theEndModal.init();
                 OpenModal = ModalType.TheEnd;
                 desktop.Root = theEndModal.Content;
