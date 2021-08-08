@@ -1,4 +1,3 @@
-
 using Myra.Graphics2D.UI;
 
 namespace CircleGame.ui

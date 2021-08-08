@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CircleGame.clips;
-using CircleGame;
 
 namespace CircleGame.world
 {

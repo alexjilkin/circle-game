@@ -1,14 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;    
-using System.Threading.Tasks;
-using CircleGame;
-using Myra;
 using Myra.Graphics2D;
 using Myra.Graphics2D.UI;
-using CommonClasses;
 using CircleGame.clips;
-using CircleGame.utils;
 
 namespace CircleGame.ui
 {

@@ -86,8 +86,7 @@ namespace CircleGame.ui
 
             panel.Widgets.Add(button);
 
-            System.EventHandler handleClick = (s, a) =>
-            {
+            System.EventHandler handleClick = (s, a) => {
                 content.Widgets.Clear();
                 content.Widgets.Add(instructionsModal.Content);
                 instructionsModal.Back += () => {

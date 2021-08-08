@@ -2,7 +2,6 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CircleGame.clips;
-using CircleGame;
 
 namespace CircleGame.world
 {
@@ -10,12 +9,13 @@ namespace CircleGame.world
     {
         private Texture2D background;
 
-        public Background() : base()
-        {
+        public Background() : base() {
             FileStream setStream = File.Open("..\\assets\\background.png", FileMode.Open);
             this.background = Texture2D.FromStream(GameManager.graphicsDevice, setStream);
         }
         public override void draw(SpriteBatch spriteBatch) {
+            // Background moves differently to the camera, to create 
+            // depth effect.
             spriteBatch.End();
             spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale(3f));
  

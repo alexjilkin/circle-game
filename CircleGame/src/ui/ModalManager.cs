@@ -2,7 +2,6 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;    
 using Myra.Graphics2D.UI;
-using System.Linq;
 
 namespace CircleGame.ui
 {

@@ -10,8 +10,7 @@ namespace CircleGame.ui
 {
     public class TheEndModal: IModal
     {
-        private Panel content;
-        public Panel Content { get => content; }
+        public Panel Content { get; private set; }
         public TheEndModal() {
             init();
         }
@@ -38,12 +37,11 @@ namespace CircleGame.ui
 
             panel.Widgets.Add(button);
 
-            content = panel;
+            Content = panel;
         }
 
         private Grid getNameInputGrid() {
-            var grid = new Grid
-            {
+            var grid = new Grid {
                 ShowGridLines = true,
                 ColumnSpacing = 8,
                 RowSpacing = 8,
@@ -76,8 +74,7 @@ namespace CircleGame.ui
             var button = Common.getButton("Submit", 20);
             button.GridRow = 3;
 
-            button.Click += async (s, a) =>
-            {
+            button.Click += async (s, a) => {
                 if (nameInput.Text == null) {
                     return;
                 }
@@ -110,7 +107,6 @@ namespace CircleGame.ui
                 }
                 
             };
-
 
             grid.Widgets.Add(text);
             grid.Widgets.Add(nameInput);

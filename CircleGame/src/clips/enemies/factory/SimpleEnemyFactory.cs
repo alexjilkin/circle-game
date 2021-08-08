@@ -1,6 +1,4 @@
-using CircleGame.clips;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace CircleGame.clips.enemies
 {

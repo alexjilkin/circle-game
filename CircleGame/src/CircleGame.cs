@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework.Input;
 using CircleGame.ui;
 using CircleGame.clips;
 using CircleGame.world;
-using CircleGame.utils;
 using Myra;
 
 namespace CircleGame
@@ -46,7 +45,6 @@ namespace CircleGame
             graphics.ApplyChanges();
             base.Initialize();
         }
-
         protected override void LoadContent() {
             Common.init();
             MyraEnvironment.Game = this;
@@ -54,8 +52,8 @@ namespace CircleGame
             background = new Background();
             bounderies = new Bounderies();
 
-            Window.TextInput += (s, a) =>
-            {
+            // Myra framework prequesite
+            Window.TextInput += (s, a) => {
                 ModalManager.Instance.Desktop.OnChar(a.Character);
             };
             
@@ -80,20 +78,18 @@ namespace CircleGame
                 return;
             }
 
-           
             Camera.Instance.update(GameManager.Player);
             GameManager.handleItersection(gameTime);
-
             GameManager.Player.update(state, gameTime);
 
-            foreach (Clip enemy in GameManager.Enemies)
-            {
+            foreach (Clip enemy in GameManager.Enemies) {
                 enemy.update(state);
             }
 
             foreach (clips.IDrawable drawable in drawables) {
                 drawable.update(state);
             }
+
             base.Update(gameTime);
         }
         
@@ -101,29 +97,29 @@ namespace CircleGame
             if (GameManager.State != GameState.Play) {
                 GameManager.graphicsDevice.Clear(Color.SeaShell);
                 ModalManager.Instance.draw(spriteBatch);
+
                 return;
             }
+
             GameManager.graphicsDevice.SetRenderTarget(renderTarget);
             
             spriteBatch.Begin();
-
             foreach (clips.IDrawable drawable in drawables) {
                 drawable.draw(spriteBatch);
             }
-
             foreach (Clip enemy in GameManager.Enemies) {
                 enemy.draw(spriteBatch);
             }
-
             GameManager.Player.draw(spriteBatch);
-
             spriteBatch.End();
             
             GameManager.graphicsDevice.SetRenderTarget(null);
 
+            // Render target to screen size, game stays the same on all screens.
             spriteBatch.Begin();
             spriteBatch.Draw(renderTarget, new Rectangle(0, 0,  GraphicsDevice.DisplayMode.Width,  GraphicsDevice.DisplayMode.Height), Color.White);
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }

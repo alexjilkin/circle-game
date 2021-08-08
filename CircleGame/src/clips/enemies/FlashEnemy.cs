@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using CircleGame.world;
 
-
 namespace CircleGame.clips.enemies
 {
     public class FlashEnemy: EnemyCircle, IPerk 
@@ -20,8 +19,7 @@ namespace CircleGame.clips.enemies
             get { return scaleIncrease; }
         }
 
-        public FlashEnemy(int radius, Vector2 position) : base(radius, position)
-        {
+        public FlashEnemy(int radius, Vector2 position) : base(radius, position) {
             this.Color = Color.Red;
             this.Speed = Rules.Instance.BaseSpeed;
             this.Speed = this.Speed + speedIncrease;

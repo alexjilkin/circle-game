@@ -1,6 +1,4 @@
-using CircleGame.clips;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using CircleGame.world;
 
 namespace CircleGame.clips.enemies
@@ -20,8 +18,7 @@ namespace CircleGame.clips.enemies
             get => scaleIncrease;
         }
 
-        public HulkEnemy(int radius, Vector2 position) : base(radius, position)
-        {
+        public HulkEnemy(int radius, Vector2 position) : base(radius, position) {
             this.Color = Color.Green;
             this.Speed = Rules.Instance.BaseSpeed;
             this.Scale = this.ScaleIncrease;
