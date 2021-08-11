@@ -15,7 +15,6 @@
   </head>
 
   <body>
-
     <div class="container">
       <div class="section">
         <h1 class="title is-1">
@@ -23,7 +22,6 @@
         </h1>
       </div>
       <div class="tile is-ancestor is-vertical">
-        
         <div class="tile is-parent">
           <article class="tile is-child box">
             <header class=" is-flex is-justify-content-space-between is-align-items-center">
@@ -33,6 +31,12 @@
               <input class="input filter" id="input-filter" type="text" placeholder="Filter by name">
             </header>
             <div class="scores">
+            </div>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <canvas id="scatter" width="800" height="250">
             </div>
           </article>
         </div>
@@ -61,7 +65,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>  
     <script src="/circleGameApiClient.js"></script>
     <script src="/main.js"></script>
+    <script src="/graph.js"></script>
   </body>
 </html>
