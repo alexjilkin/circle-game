@@ -7,14 +7,7 @@
     "PlayerSpeed": 4.0,
     "MovementsLimits": 2,
     "Levels": [
-        [{
-            "Radius": 10
-        }, {
-            "Radius": 10
-        }, {
-            "Radius": 15
-        }
-        ],
+
         [{
             "Type": "flash",
             "Radius": 10

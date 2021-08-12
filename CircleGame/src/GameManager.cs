@@ -81,8 +81,7 @@ namespace CircleGame
         }
 
         public static MovingCircle getIntersecting(IEnumerable<MovingCircle> circles, Player player) {
-            foreach (MovingCircle circle in circles) 
-            {
+            foreach (MovingCircle circle in circles) {
                 if (player.isIntersecting(circle)) {
                     return circle;
                 }
