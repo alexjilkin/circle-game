@@ -26,6 +26,7 @@
     }
 
     circleGameApiClient.getScores().then(res => {
+        window.scores = res;
         scores = res
         filteredScores = scores;
         renderScores(scores)
