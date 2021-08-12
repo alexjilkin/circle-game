@@ -17,9 +17,9 @@ namespace CircleGame.world
             // Background moves differently to the camera, to create 
             // depth effect.
             spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale(3f));
+            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale(2.5f));
  
-            spriteBatch.Draw(background, Vector2.Multiply(Camera.Instance.position, -0.1f), Color.White);
+            spriteBatch.Draw(background, Vector2.Multiply(Camera.Instance.position, -0.06f), Color.White);
             spriteBatch.End();
             spriteBatch.Begin();
         }

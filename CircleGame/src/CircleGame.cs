@@ -32,25 +32,25 @@ namespace CircleGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
-
             renderTarget = new RenderTarget2D(graphics.GraphicsDevice, 1920, 1080, false,
 			    SurfaceFormat.Color, DepthFormat.None, pp.MultiSampleCount, RenderTargetUsage.DiscardContents);
-
-            GameManager.State = GameState.Initial;
 
             graphics.IsFullScreen = false;
             graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
-
             graphics.ApplyChanges();
+
+            GameManager.State = GameState.Initial;
+            
             base.Initialize();
         }
         protected override void LoadContent() {
             Common.init();
             MyraEnvironment.Game = this;
-            hud = new HUD();
+            
             background = new Background();
             bounderies = new Bounderies();
+            hud = new HUD(); 
 
             // Myra framework prequesite
             Window.TextInput += (s, a) => {
@@ -71,7 +71,12 @@ namespace CircleGame
             
             if (GameManager.State != GameState.Play) {
                 ModalManager.Instance.update(state);
+                base.Update(gameTime);
                 return;
+            }
+
+            if (state.IsKeyDown(Keys.Escape)) {
+                GameManager.State = GameState.Pause;
             }
 
             Camera.Instance.update(GameManager.Player);
@@ -95,6 +100,7 @@ namespace CircleGame
                 GameManager.graphicsDevice.Clear(Color.SeaShell);
                 ModalManager.Instance.draw(spriteBatch);
 
+                base.Draw(gameTime);
                 return;
             }
 

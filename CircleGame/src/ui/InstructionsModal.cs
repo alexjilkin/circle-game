@@ -23,7 +23,7 @@ namespace CircleGame.ui
 
             var grid = new Grid
             {
-                ShowGridLines = true,
+                ShowGridLines = false,
                 ColumnSpacing = 8,
                 RowSpacing = 8,
                 HorizontalAlignment=HorizontalAlignment.Center,
@@ -38,7 +38,7 @@ namespace CircleGame.ui
 
             grid.Widgets.Add(new Label {
                 Text = "Use your arrow keys to change direction",
-                TextColor=Color.LightGreen,
+                TextColor=Color.Gray,
                 HorizontalAlignment=HorizontalAlignment.Center,
                 VerticalAlignment=VerticalAlignment.Top,
                 Margin=new Thickness(0, 20, 0 ,0),
@@ -49,8 +49,8 @@ namespace CircleGame.ui
             });
 
             grid.Widgets.Add(new Label {
-                Text = "Eat circles whose radius is smaller then your own",
-                TextColor=Color.LightPink,
+                Text = "Eat circles whose radius is smaller than your own",
+                TextColor=Color.Salmon,
                 HorizontalAlignment=HorizontalAlignment.Center,
                 VerticalAlignment=VerticalAlignment.Top,
                 Margin=new Thickness(0, 20, 0 ,0),
@@ -62,24 +62,24 @@ namespace CircleGame.ui
 
             grid.Widgets.Add(new Label {
                 Text = "Red enemy boosts your speed",
-                TextColor=Color.Red,
-                HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Top,
-                Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(10),
-                GridRow=3,
+                TextColor = Color.Red,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 20, 0 ,0),
+                Padding = new Thickness(10),
+                GridRow = 3,
                 Background = new SolidBrush(Color.Transparent),
                 Font = Common.Font.GetFont(28)
             });
 
             grid.Widgets.Add(new Label {
-                Text = "Green enemy is bigger then it actually is",
-                TextColor=Color.Green,
-                HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Top,
-                Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(10),
-                GridRow=4,
+                Text = "Green enemy is bigger than it actually is",
+                TextColor = Color.Green,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 20, 0 ,0),
+                Padding = new Thickness(10),
+                GridRow = 4,
                 Background = new SolidBrush(Color.Transparent),
                 Font = Common.Font.GetFont(28)
             });
@@ -90,8 +90,7 @@ namespace CircleGame.ui
             var button = Common.getButton("Back", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom);
             button.Margin = new Thickness(0, 0, 0, 50);
             
-            button.Click += (s, a) =>
-            {
+            button.Click += (s, a) => {
                 OnBack();
             };
 

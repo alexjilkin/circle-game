@@ -42,7 +42,7 @@ namespace CircleGame.ui
 
         private Grid getNameInputGrid() {
             var grid = new Grid {
-                ShowGridLines = true,
+                ShowGridLines = false,
                 ColumnSpacing = 8,
                 RowSpacing = 8,
                 HorizontalAlignment=HorizontalAlignment.Center,

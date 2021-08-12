@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;    
 using Myra.Graphics2D.UI;
+using System.Linq;
 
 namespace CircleGame.ui
 {
@@ -48,11 +49,11 @@ namespace CircleGame.ui
                 nextLevelModal.init();
                 OpenModal = ModalType.NextLevel;
                 desktop.Root = nextLevelModal.Content;
-            } else if(GameManager.State == GameState.Dead || GameManager.State == GameState.End) {
+            } else if(new GameState[]{GameState.Dead, GameState.End}.Contains(GameManager.State)) {
                 theEndModal.init();
                 OpenModal = ModalType.TheEnd;
                 desktop.Root = theEndModal.Content;
-            } else if(GameManager.State == GameState.Initial) {
+            } else if( new GameState[]{GameState.Initial, GameState.Pause}.Contains(GameManager.State)) {
                 mainMenu.init();
                 OpenModal = ModalType.MainMenu;
                 desktop.Root = mainMenu.Content;

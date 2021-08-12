@@ -1,8 +1,8 @@
 {
-    "boundry-start-x": 500,
-    "boundry-start-y": 500,
-    "width": 1300,
-    "height": 1300,
+    "boundry-start-x": 600,
+    "boundry-start-y": 600,
+    "width": 1000,
+    "height": 700,
     "BaseSpeed": 2.5,
     "PlayerSpeed": 4.0,
     "MovementsLimits": 2,
