@@ -30,12 +30,11 @@ namespace CircleGame
                 OnStateChanged();
             }
         }
-
+        public static GameTime GameTime { get; set; }
+        public static double TimeAtStart {get; set;}
         public static int Score { get; private set; } = 0;
         public static int TotalScore { get; private set; } = 0;
-
         public static int Level { get; private set; } = 0;
-
         private static List<EnemyCircle> enemies = new List<EnemyCircle>();
         public static List<EnemyCircle> Enemies {
             get => enemies;
@@ -45,9 +44,7 @@ namespace CircleGame
             get;
             private set;
         }
-
         public static GraphicsDevice graphicsDevice;
-        public static float MasterScale { get; set; } = 2f;
         public static void handleItersection(GameTime gameTime) {
             MovingCircle enemy;
             enemy = getIntersecting(enemies, Player);
@@ -96,6 +93,7 @@ namespace CircleGame
             Level = 0;
             Score = 0;
             initCircles();
+            TimeAtStart = GameManager.GameTime.TotalGameTime.TotalSeconds;
         }
 
         public static void goToNextLevel() {

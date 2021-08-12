@@ -82,7 +82,8 @@ namespace CircleGame.ui
                 try {
                     await Api.SetHighScore(new HighScore(){
                         score = GameManager.TotalScore,
-                        name = nameInput.Text
+                        name = nameInput.Text,
+                        time = GameManager.GameTime.TotalGameTime.TotalSeconds - GameManager.TimeAtStart
                     });
                     SoundManager.positive.Play();
                     grid.Widgets.Clear();

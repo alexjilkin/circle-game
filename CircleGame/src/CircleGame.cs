@@ -62,15 +62,11 @@ namespace CircleGame
             drawables.Add(bounderies);
             drawables.Add(hud);
 
-            initGame();
             base.LoadContent();
         }
 
-        private void initGame() {
-            GameManager.initCircles();
-        }
-
         protected override void Update(GameTime gameTime) {
+            GameManager.GameTime = gameTime;
             KeyboardState state = Keyboard.GetState();
             
             if (GameManager.State != GameState.Play) {
@@ -89,7 +85,8 @@ namespace CircleGame
             foreach (clips.IDrawable drawable in drawables) {
                 drawable.update(state);
             }
-
+            
+            
             base.Update(gameTime);
         }
         

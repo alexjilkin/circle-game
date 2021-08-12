@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CircleGame.utils
 {
+    
     public class Api
     {
         static HttpClient client = new HttpClient() {

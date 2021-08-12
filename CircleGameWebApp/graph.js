@@ -3,10 +3,11 @@
     let graph;
 
     circleGameApiClient.getScores().then(scores => {
-        const data = scores.map((score, x) => ({
-            x,
-            y: score.score
+        const data = scores.map(({score, time}) => ({
+            x: time,
+            y: score
         }))
+
         graph = new Chart(ctx, {
             type: 'scatter',
             data: {
@@ -17,18 +18,14 @@
             },
             options: {
                 responsive: true,
-                scales: {
-                    x: {
-                        min: -5,
-                        max: data.length + 10,
-                        ticks: {
-                            display: false,
-                        },
-                        title: 'something random'
-                    },
-                    y: {
-                        title: 'score'
-                    }
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                           label: function({dataIndex}) {
+                              return scores[dataIndex].name;
+                           }
+                        }
+                     }
                 },
                 backgroundColor: 'pink'
             },
