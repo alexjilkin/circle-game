@@ -9,36 +9,36 @@ namespace CircleGame.ui
 {
     public class HUD: Clip
     {
-        private Desktop _desktop;
-        Label score;
+        private Desktop Desktop { get; set; }
+        private Label Score { get; set; }
         public bool IsOpen { get; set; }
 
         public HUD() : base() {
             IsOpen = true;
-            _desktop = new Desktop();
+            Desktop = new Desktop();
             
             drawScore();
         }
         private void drawScore() {
             var panel = new Panel() {};
 
-            score = new Label() {
+            Score = new Label() {
                 Text = "",
                 TextColor = Color.Pink,
                 Padding = new Thickness(12),
                 Font = Common.Font.GetFont(32)
             };
 
-            panel.Widgets.Add(score);
-            _desktop.Root = panel;
+            panel.Widgets.Add(Score);
+            Desktop.Root = panel;
         }
 
         public override void update(KeyboardState state) {
-            score.Text = "Score " + (GameManager.Score + GameManager.TotalScore);
+            Score.Text = "Score " + (GameManager.Score + GameManager.TotalScore);
         }
 
         public override void draw(SpriteBatch _) {
-            _desktop.Render();
+            Desktop.Render();
         }
     }
 }

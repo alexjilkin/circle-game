@@ -18,7 +18,7 @@ namespace CircleGame.clips
         }
        
         public virtual void draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(this.Texture, this.Position - Camera.Instance.position, null, this.Color, 0, this.Origin, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(this.Texture, this.Position - Camera.Instance.Position, null, this.Color, 0, this.Origin, 1, SpriteEffects.None, 0);
         }                            
 
         public virtual void update(KeyboardState state) {}

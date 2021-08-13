@@ -8,10 +8,9 @@ namespace CircleGame.ui
 {
     public class NextLevelModal: IModal
     {
-        private Panel content;
-
         public Panel Content {
-            get => content;
+            private set;
+            get;
         }
         public NextLevelModal() {
             init();
@@ -33,7 +32,7 @@ namespace CircleGame.ui
 
             grid.Widgets.Add(new Label {
                 Text = "Congratulations, you finished level " + GameManager.Level,
-                TextColor = Color.Pink,
+                TextColor = Color.Salmon,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(0, 20, 0 ,0),
@@ -45,7 +44,7 @@ namespace CircleGame.ui
 
             panel.Widgets.Add(grid);
 
-            var button = Common.getButton("Next", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom);
+            var button = Common.getButton("Next", 60, HorizontalAlignment.Center, VerticalAlignment.Bottom);
             button.Margin = new Thickness(0, 0, 0, 50);
             
             button.Click += (s, a) => {
@@ -53,7 +52,7 @@ namespace CircleGame.ui
             };
 
             panel.Widgets.Add(button);
-            content = panel;
+            Content = panel;
         }
     }
 }

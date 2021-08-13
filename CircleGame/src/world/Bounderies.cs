@@ -15,10 +15,10 @@ namespace CircleGame.world
             int width = Rules.Instance.Width;
             int height = Rules.Instance.Height;
 
-            spriteBatch.Draw(Texture, startVector - Camera.Instance.position, null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(15f, height), SpriteEffects.None, 0f);
-            spriteBatch.Draw(Texture, startVector - Camera.Instance.position, null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(width, 15f), SpriteEffects.None, 0f);
-            spriteBatch.Draw(Texture, startVector + new Vector2(width, 0) - Camera.Instance.position, null, Color.Chocolate, 0f, Vector2.Zero,  new Vector2(15f, height), SpriteEffects.None, 0f);
-            spriteBatch.Draw(Texture, startVector + new Vector2(0, height) - Camera.Instance.position, null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(width + 15, 15f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, startVector - Camera.Instance.Position, null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(15f, height), SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, startVector - Camera.Instance.Position, null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(width, 15f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, startVector + new Vector2(width, 0) - Camera.Instance.Position, null, Color.Chocolate, 0f, Vector2.Zero,  new Vector2(15f, height), SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, startVector + new Vector2(0, height) - Camera.Instance.Position, null, Color.Chocolate, 0f, Vector2.Zero, new Vector2(width + 15, 15f), SpriteEffects.None, 0f);
         }    
     }
 }

@@ -8,12 +8,12 @@ namespace CircleGame.ui
 {
     public class InstructionsModal: IModal
     {
-        private Panel content;
         public Action Back;
         private void OnBack() => Back?.Invoke();
 
         public Panel Content {
-            get => content;
+            private set;
+            get;
         }
         public InstructionsModal() {
             init();
@@ -34,30 +34,43 @@ namespace CircleGame.ui
             grid.RowsProportions.Add(new Proportion());
             grid.RowsProportions.Add(new Proportion());
             grid.RowsProportions.Add(new Proportion());
+            grid.RowsProportions.Add(new Proportion());
             grid.ColumnsProportions.Add(new Proportion());
 
             grid.Widgets.Add(new Label {
                 Text = "Use your arrow keys to change direction",
-                TextColor=Color.Gray,
-                HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Top,
-                Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(10),
-                GridRow=1,
+                TextColor = Color.Gray,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 20, 0 ,0),
+                Padding = new Thickness(10),
+                GridRow = 1,
                 Background = new SolidBrush(Color.Transparent),
                 Font = Common.Font.GetFont(36)
             });
 
+             grid.Widgets.Add(new Label {
+                Text = "press ESC to stop",
+                TextColor = Color.Gray,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 20, 0 ,0),
+                Padding = new Thickness(10),
+                GridRow = 2,
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(36)
+            });
+            
             grid.Widgets.Add(new Label {
                 Text = "Eat circles whose radius is smaller than your own",
-                TextColor=Color.Salmon,
-                HorizontalAlignment=HorizontalAlignment.Center,
-                VerticalAlignment=VerticalAlignment.Top,
-                Margin=new Thickness(0, 20, 0 ,0),
-                Padding=new Thickness(10),
-                GridRow=2,
+                TextColor = Color.Salmon,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0, 20, 0 ,0),
+                Padding = new Thickness(10),
+                GridRow = 3,
                 Background = new SolidBrush(Color.Transparent),
-                Font = Common.Font.GetFont(32)
+                Font = Common.Font.GetFont(34)
             });
 
             grid.Widgets.Add(new Label {
@@ -67,9 +80,9 @@ namespace CircleGame.ui
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(0, 20, 0 ,0),
                 Padding = new Thickness(10),
-                GridRow = 3,
+                GridRow = 4,
                 Background = new SolidBrush(Color.Transparent),
-                Font = Common.Font.GetFont(28)
+                Font = Common.Font.GetFont(30)
             });
 
             grid.Widgets.Add(new Label {
@@ -79,9 +92,9 @@ namespace CircleGame.ui
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(0, 20, 0 ,0),
                 Padding = new Thickness(10),
-                GridRow = 4,
+                GridRow = 5,
                 Background = new SolidBrush(Color.Transparent),
-                Font = Common.Font.GetFont(28)
+                Font = Common.Font.GetFont(30)
             });
 
 
@@ -96,7 +109,7 @@ namespace CircleGame.ui
 
             panel.Widgets.Add(button);
 
-            content = panel;
+            Content = panel;
         }
     }
 }

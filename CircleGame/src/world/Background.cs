@@ -7,11 +7,9 @@ namespace CircleGame.world
 {
     public class Background: Clip
     {
-        private Texture2D background;
-
         public Background() : base() {
             FileStream setStream = File.Open("..\\assets\\background.png", FileMode.Open);
-            this.background = Texture2D.FromStream(GameManager.graphicsDevice, setStream);
+            this.Texture = Texture2D.FromStream(GameManager.graphicsDevice, setStream);
         }
         public override void draw(SpriteBatch spriteBatch) {
             // Background moves differently to the camera, to create 
@@ -19,7 +17,7 @@ namespace CircleGame.world
             spriteBatch.End();
             spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale(2.5f));
  
-            spriteBatch.Draw(background, Vector2.Multiply(Camera.Instance.position, -0.06f), Color.White);
+            spriteBatch.Draw(this.Texture, Vector2.Multiply(Camera.Instance.Position, -0.06f), Color.White);
             spriteBatch.End();
             spriteBatch.Begin();
         }

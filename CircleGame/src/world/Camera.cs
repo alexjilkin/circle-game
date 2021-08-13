@@ -7,30 +7,29 @@ namespace CircleGame.world
     public sealed class Camera
     {
         private static readonly Lazy<Camera> lazy = new Lazy<Camera>(() => new Camera());
-        public Vector2 position { get; set;}
-
+        public Vector2 Position { get; set;}
         public static Camera Instance {
             get => lazy.Value;
         }
 
         private Camera()
         {
-            position = new Vector2(0, 0);
+            Position = new Vector2(0, 0);
         }
 
         public void update(Player player) {
             int width = 1920;
             int height = 1080;
 
-            Camera.Instance.position = player.Position - new Vector2(width / 2, height / 2);
+            Camera.Instance.Position = player.Position - new Vector2(width / 2, height / 2);
 
-            if (Camera.Instance.position.X < 0)
+            if (Camera.Instance.Position.X < 0)
             {
-                Camera.Instance.position = new Vector2(0, Camera.Instance.position.Y);
+                Camera.Instance.Position = new Vector2(0, Camera.Instance.Position.Y);
             }
-            if (Camera.Instance.position.Y < 0)
+            if (Camera.Instance.Position.Y < 0)
             {
-                Camera.Instance.position = new Vector2(Camera.Instance.position.X, 0);
+                Camera.Instance.Position = new Vector2(Camera.Instance.Position.X, 0);
             }
         }
 

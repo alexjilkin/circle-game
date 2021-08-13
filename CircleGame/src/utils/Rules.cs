@@ -11,7 +11,6 @@ namespace CircleGame.world
         public int Radius { get; set; }
         public string Type { get; set; }
     }
-
     public class Perk: IPerk {
         public string PerkName { get; set;  }
         public int SpeedIncrease { get; set; }
@@ -36,15 +35,12 @@ namespace CircleGame.world
         public EnemyConfig[][] Levels {
             get => this.getConfig<EnemyConfig[][]>("Levels");
         }
-
         public Perk[] Perks {
             get => this.getConfig<Perk[]>("Perks");
         }
-
         public Perk FlashPerk {
             get => this.Perks.Where(p => p.PerkName == "flash").First();
         }
-
         public Perk HulkPerk {
             get => this.Perks.Where(p => p.PerkName == "hulk").First();
         }
@@ -54,7 +50,6 @@ namespace CircleGame.world
         public float PlayerSpeed {
             get => this.getConfig<float>("PlayerSpeed");
         }
-
         private IConfigurationRoot configuration;
         public static Rules Instance {
             get => lazy.Value;

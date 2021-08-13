@@ -1,4 +1,5 @@
 
+using System;
 using System.Net.Http;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -31,26 +32,37 @@ namespace CircleGame.ui
         private void draw(HighScore[] highScores) {
             var panel = new Panel();
 
-            panel.Widgets.Add(new Label{
-                Text = "Circle Game",
-                TextColor = Color.Pink,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(0, 20, 0 ,0),
-                Padding = new Thickness(20),
-                Background = new SolidBrush(Color.Transparent),
-                Font = Common.Font.GetFont(65)
-            });
-
-            var scoreGrid = new Grid(){
+            var containerGrid = new Grid(){
                 ColumnSpacing = 50,
                 RowSpacing = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new Thickness(0, 150, 0, 0),
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(300, 0, 0 ,0)
+            };
+            containerGrid.RowsProportions.Add(new Proportion());
+            containerGrid.RowsProportions.Add(new Proportion());
+            containerGrid.ColumnsProportions.Add(new Proportion());
+
+            containerGrid.Widgets.Add(new Label {
+                Text = "Circle Game",
+                TextColor = Color.Pink,
+                
+               // Margin = new Thickness(0, 0, 0 ,0),
+                Padding = new Thickness(20),
+                Background = new SolidBrush(Color.Transparent),
+                Font = Common.Font.GetFont(65),
+                GridRow = 1
+            });
+
+            var scoreGrid = new Grid() {
+                ColumnSpacing = 50,
+                RowSpacing = 50,
+                GridRow = 2
             };
 
             for (int i = 0; i < highScores.Length; i++)
             {
+                scoreGrid.ColumnsProportions.Add(new Proportion());
                 scoreGrid.ColumnsProportions.Add(new Proportion());
                 scoreGrid.RowsProportions.Add(new Proportion());
 
@@ -73,11 +85,22 @@ namespace CircleGame.ui
                     Background= new SolidBrush(Color.Transparent),
                     Font = Common.Font.GetFont(25)
                 });
+
+                scoreGrid.Widgets.Add(new Label {
+                    Id = "time",
+                    Text = (Math.Floor(highScores[i].time * 10) / 10).ToString() + 's',
+                    TextColor = Color.Red,
+                    GridColumn = 3,
+                    GridRow = i,
+                    Background= new SolidBrush(Color.Transparent),
+                    Font = Common.Font.GetFont(25)
+                });
             }
 
-            panel.Widgets.Add(scoreGrid);
+            containerGrid.Widgets.Add(scoreGrid);
 
-            var button = Common.getButton("Start", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom, (s, a) => {
+            panel.Widgets.Add(containerGrid);
+            var button = Common.getButton("Start", 70, HorizontalAlignment.Center, VerticalAlignment.Bottom, (s, a) => {
                 themeAudio.Stop();
                 GameManager.restart();
             });
@@ -94,7 +117,7 @@ namespace CircleGame.ui
                     content.Widgets.Add(panel);
                 };
             };
-            var instructionsButton = Common.getButton("How?", 30, HorizontalAlignment.Left, VerticalAlignment.Bottom, handleClick);
+            var instructionsButton = Common.getButton("How?", 38, HorizontalAlignment.Left, VerticalAlignment.Bottom, handleClick);
             instructionsButton.Margin = new Thickness(50, 0, 0, 50);
 
             panel.Widgets.Add(instructionsButton);

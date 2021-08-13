@@ -71,7 +71,7 @@ namespace CircleGame.ui
             };
 
 
-            var button = Common.getButton("Submit", 20);
+            var button = Common.getButton("Submit", 26);
             button.GridRow = 3;
 
             button.Click += async (s, a) => {
@@ -94,13 +94,13 @@ namespace CircleGame.ui
                         Padding=new Thickness(20),
                         Background = new SolidBrush(Color.Transparent),
                         GridRow = 1,
-                        Font = Common.Font.GetFont(32)
+                        Font = Common.Font.GetFont(40)
                     });
                 } catch (HttpRequestException) {
                     grid.Widgets.Add(new Label{
                         Text = "Failed to submit, try again later or never.",
-                        TextColor=Color.Red,
-                        Padding=new Thickness(20),
+                        TextColor = Color.Red,
+                        Padding =new Thickness(20),
                         Background = new SolidBrush(Color.Transparent),
                         GridRow = 1,
                         Font = Common.Font.GetFont(32)
