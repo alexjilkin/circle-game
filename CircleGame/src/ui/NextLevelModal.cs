@@ -39,7 +39,7 @@ namespace CircleGame.ui
                 Padding = new Thickness(10),
                 GridRow = 1,
                 Background = new SolidBrush(Color.Transparent),
-                Font = Common.Font.GetFont(36)
+                Font = Common.Font.GetFont(50)
         });
 
             panel.Widgets.Add(grid);

@@ -21,16 +21,16 @@ namespace CircleGame.world
         private static readonly Lazy<Rules> lazy = new Lazy<Rules>(() => new Rules());
 
         public Vector2 BoundryPosition {
-            get => new Vector2(this.getConfig<int>("boundry-start-x"), this.getConfig<int>("boundry-start-y"));
+            get => new Vector2(this.getConfig<int>("BoundryStartX"), this.getConfig<int>("BoundryStartY"));
         }
         public int MovementsLimit {
             get => this.getConfig<int>("MovementsLimits");
         }
         public int Width {
-            get => this.getConfig<int>("width");
+            get => this.getConfig<int>("Width");
         }
         public int Height {
-            get => this.getConfig<int>("height");
+            get => this.getConfig<int>("Height");
         }
         public EnemyConfig[][] Levels {
             get => this.getConfig<EnemyConfig[][]>("Levels");

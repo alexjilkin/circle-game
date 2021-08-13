@@ -46,9 +46,7 @@ namespace CircleGame.ui
             containerGrid.Widgets.Add(new Label {
                 Text = "Circle Game",
                 TextColor = Color.Pink,
-                
-               // Margin = new Thickness(0, 0, 0 ,0),
-                Padding = new Thickness(20),
+                Padding = new Thickness(70),
                 Background = new SolidBrush(Color.Transparent),
                 Font = Common.Font.GetFont(65),
                 GridRow = 1
@@ -57,7 +55,7 @@ namespace CircleGame.ui
             var scoreGrid = new Grid() {
                 ColumnSpacing = 50,
                 RowSpacing = 50,
-                GridRow = 2
+                GridRow = 2,
             };
 
             for (int i = 0; i < highScores.Length; i++)
@@ -73,7 +71,7 @@ namespace CircleGame.ui
                     GridColumn = 1,
                     GridRow = i,
                     Background= new SolidBrush(Color.Transparent),
-                    Font = Common.Font.GetFont(25)
+                    Font = Common.Font.GetFont(27)
                 });
 
                 scoreGrid.Widgets.Add(new Label {
@@ -83,17 +81,17 @@ namespace CircleGame.ui
                     GridColumn = 2,
                     GridRow = i,
                     Background= new SolidBrush(Color.Transparent),
-                    Font = Common.Font.GetFont(25)
+                    Font = Common.Font.GetFont(27)
                 });
 
                 scoreGrid.Widgets.Add(new Label {
                     Id = "time",
-                    Text = (Math.Floor(highScores[i].time * 10) / 10).ToString() + 's',
+                    Text = (Math.Floor(highScores[i].time * 10) / 10).ToString() + "   s",
                     TextColor = Color.Red,
                     GridColumn = 3,
                     GridRow = i,
                     Background= new SolidBrush(Color.Transparent),
-                    Font = Common.Font.GetFont(25)
+                    Font = Common.Font.GetFont(27)
                 });
             }
 
