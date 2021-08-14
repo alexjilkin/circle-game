@@ -14,36 +14,40 @@ namespace CircleGame.ui
 {
     public class MainMenu: IModal
     {
-        private Panel content = new Panel();
         private InstructionsModal instructionsModal;
         private SoundEffectInstance themeAudio;
-        public Panel Content {
-            get => content;
-        }
+        public Panel Content { get; private set; }
+
+        private Panel Container { get; set; }
         
         public MainMenu() {
             init();
             instructionsModal = new InstructionsModal();
             instructionsModal.init();
+
+            Content = new Panel();
+            Container = new Panel();
+            
             themeAudio = SoundManager.theme.CreateInstance();
             themeAudio.Volume = 0.6f;
             themeAudio.Play();
         }
         private void draw(HighScore[] highScores) {
-            var panel = new Panel();
+            Container = new Panel();
 
-            var containerGrid = new Grid(){
+            var topGrid = new Grid(){
                 ColumnSpacing = 50,
                 RowSpacing = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(300, 0, 0 ,0)
-            };
-            containerGrid.RowsProportions.Add(new Proportion());
-            containerGrid.RowsProportions.Add(new Proportion());
-            containerGrid.ColumnsProportions.Add(new Proportion());
 
-            containerGrid.Widgets.Add(new Label {
+            };
+            topGrid.RowsProportions.Add(new Proportion());
+            topGrid.RowsProportions.Add(new Proportion());
+            topGrid.ColumnsProportions.Add(new Proportion());
+
+            topGrid.Widgets.Add(new Label {
                 Text = "Circle Game",
                 TextColor = Color.Pink,
                 Padding = new Thickness(70),
@@ -58,15 +62,16 @@ namespace CircleGame.ui
                 GridRow = 2,
             };
 
-            for (int i = 0; i < highScores.Length; i++)
-            {
+            for (int i = 0; i < highScores.Length; i++) {
+                HighScore highScore = highScores[i];
+
                 scoreGrid.ColumnsProportions.Add(new Proportion());
                 scoreGrid.ColumnsProportions.Add(new Proportion());
                 scoreGrid.RowsProportions.Add(new Proportion());
 
                 scoreGrid.Widgets.Add(new Label{
                     Id = "name",
-                    Text = highScores[i].name,
+                    Text = highScore.name,
                     TextColor = Color.Red,
                     GridColumn = 1,
                     GridRow = i,
@@ -76,7 +81,7 @@ namespace CircleGame.ui
 
                 scoreGrid.Widgets.Add(new Label {
                     Id = "score",
-                    Text = highScores[i].score.ToString(),
+                    Text = highScore.score.ToString(),
                     TextColor = Color.Red,
                     GridColumn = 2,
                     GridRow = i,
@@ -86,7 +91,7 @@ namespace CircleGame.ui
 
                 scoreGrid.Widgets.Add(new Label {
                     Id = "time",
-                    Text = (Math.Floor(highScores[i].time * 10) / 10).ToString() + "   s",
+                    Text = (Math.Floor(highScore.time * 10) / 10).ToString() + "  s",
                     TextColor = Color.Red,
                     GridColumn = 3,
                     GridRow = i,
@@ -95,9 +100,9 @@ namespace CircleGame.ui
                 });
             }
 
-            containerGrid.Widgets.Add(scoreGrid);
+            topGrid.Widgets.Add(scoreGrid);
 
-            panel.Widgets.Add(containerGrid);
+            Container.Widgets.Add(topGrid);
             var button = Common.getButton("Start", 70, HorizontalAlignment.Center, VerticalAlignment.Bottom, (s, a) => {
                 themeAudio.Stop();
                 GameManager.restart();
@@ -105,29 +110,31 @@ namespace CircleGame.ui
             
             button.Margin = new Thickness(0, 0, 0, 50);
 
-            panel.Widgets.Add(button);
+            Container.Widgets.Add(button);
 
-            System.EventHandler handleClick = (s, a) => {
-                content.Widgets.Clear();
-                content.Widgets.Add(instructionsModal.Content);
-                instructionsModal.Back += () => {
-                    content.Widgets.Clear();
-                    content.Widgets.Add(panel);
-                };
-            };
-            var instructionsButton = Common.getButton("How?", 38, HorizontalAlignment.Left, VerticalAlignment.Bottom, handleClick);
+            
+            var instructionsButton = Common.getButton("How?", 38, HorizontalAlignment.Left, VerticalAlignment.Bottom, handleInstructionClick);
             instructionsButton.Margin = new Thickness(50, 0, 0, 50);
 
-            panel.Widgets.Add(instructionsButton);
+            Container.Widgets.Add(instructionsButton);
 
-            content.Widgets.Clear();
-            content.Widgets.Add(panel);
+            Content.Widgets.Clear();
+            Content.Widgets.Add(Container);
+        }
+
+        private void handleInstructionClick (object s, EventArgs e) {
+            Content.Widgets.Clear();
+            Content.Widgets.Add(instructionsModal.Content);
+            instructionsModal.Back += () => {
+                Content.Widgets.Clear();
+                Content.Widgets.Add(Container);
+            };
         }
 
         private void noScoreDraw() {
-            var panel = new Panel();
+            Container = new Panel();
 
-            panel.Widgets.Add(new Label{
+            Container.Widgets.Add(new Label{
                 Text = "Circle Game",
                 TextColor = Color.Pink,
                 HorizontalAlignment = HorizontalAlignment.Center,
@@ -138,41 +145,44 @@ namespace CircleGame.ui
                 Font = Common.Font.GetFont(65)
             });
 
-            var button = Common.getButton("Start", 50, HorizontalAlignment.Center, VerticalAlignment.Bottom, (s, a) => { GameManager.restart(); });
+            var button = Common.getButton("Start", 70, HorizontalAlignment.Center, VerticalAlignment.Center, (s, a) => {
+                themeAudio.Stop();
+                GameManager.restart();
+            });
 
-            panel.Widgets.Add(button);
+            Container.Widgets.Add(button);
 
-            content.Widgets.Clear();
-            content.Widgets.Add(panel);
+            var instructionsButton = Common.getButton("How?", 38, HorizontalAlignment.Left, VerticalAlignment.Bottom, handleInstructionClick);
+            instructionsButton.Margin = new Thickness(50, 0, 0, 50);
+
+            Container.Widgets.Add(instructionsButton);
+            Content.Widgets.Clear();
+            Content.Widgets.Add(Container);
         }
 
-        private void loading() {
-            var panel = new Panel();
-
-            panel.Widgets.Add(new Label{
+        private void Loading() {
+            Container.Widgets.Add(new Label{
                 Text = "Loading...",
                 TextColor = Color.Pink,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Top,
+                VerticalAlignment = VerticalAlignment.Center,
                 Margin = new Thickness(0, 20, 0 ,0),
                 Padding = new Thickness(20),
                 Background = new SolidBrush(Color.Transparent),
-                Font = Common.Font.GetFont(50)
+                Font = Common.Font.GetFont(60)
             });
 
-            content.Widgets.Clear();
-            content.Widgets.Add(panel);
+            Content.Widgets.Clear();
+            Content.Widgets.Add(Container);
         }
 
         public async Task initHighScore() {
-            HttpClient client = new HttpClient();
-
             try {
-                loading();
-                var highScores = await Api.GetHighScores();
+                Loading();
+                HighScore[] highScores = await Api.GetHighScores();
                 draw(highScores);
-            }
-            catch(HttpRequestException) {
+                
+            } catch(HttpRequestException) {
                 noScoreDraw();
             }
         }
